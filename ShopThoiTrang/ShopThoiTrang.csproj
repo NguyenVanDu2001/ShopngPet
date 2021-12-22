@@ -1,0 +1,800 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D73B9A17-1F2D-4D1D-AB5F-0B45AB05E8C1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShopThoiTrang</RootNamespace>
+    <AssemblyName>ShopThoiTrang</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\..\Desktop\payment-master\c#\MoMo\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\payment-master\c#\MoMo\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Public\alertifyjs\alertify.js" />
+    <Content Include="Public\alertifyjs\alertify.min.js" />
+    <Content Include="Public\alertifyjs\css\alertify.min.css" />
+    <Content Include="Public\alertifyjs\css\themes\default.min.css" />
+    <Content Include="Public\css\bo2otstrap.min.css" />
+    <Content Include="Public\css\bootstrap.min.css" />
+    <Content Include="Public\css\cssNganLuong.css" />
+    <Content Include="Public\css\fonts.css" />
+    <Content Include="Public\css\fStyle.css" />
+    <Content Include="Public\css\homeIndex.css" />
+    <Content Include="Public\css\icons.min.css" />
+    <Content Include="Public\css\plugins.css" />
+    <Content Include="Public\css\style.css" />
+    <Content Include="Public\dist\css\adminlte.min.css" />
+    <Content Include="Public\dist\img\AdminLTELogo.png" />
+    <Content Include="Public\dist\img\user2-160x160.jpg" />
+    <Content Include="Public\dist\js\adminlte.js" />
+    <Content Include="Public\dist\js\adminlte.min.js" />
+    <Content Include="Public\dist\js\demo.js" />
+    <Content Include="Public\dist\js\pages\dashboard.js" />
+    <Content Include="Public\dist\js\pages\dashboard2.js" />
+    <Content Include="Public\dist\js\pages\dashboard3.js" />
+    <Content Include="Public\fonts\fontawesome-webfont.svg" />
+    <Content Include="Public\fonts\Pe-icon-7-stroke.svg" />
+    <Content Include="Public\images\banks.PNG" />
+    <Content Include="Public\images\bg-images\demo1.png" />
+    <Content Include="Public\images\bg-images\hai-san-cao-cap.jpg" />
+    <Content Include="Public\images\bg-images\nguyen-van-du.png.jpg" />
+    <Content Include="Public\images\bg-images\nguyen-van-hung-asda-.jpg" />
+    <Content Include="Public\images\bg-images\nguyendu.jpg" />
+    <Content Include="Public\images\bg-images\seller5theway.jpeg" />
+    <Content Include="Public\images\bg-images\truyen-thong.jpg" />
+    <Content Include="Public\images\bg-images\tuyen-thong.jpg" />
+    <Content Include="Public\images\brand-logo\barnd-logo-1.png" />
+    <Content Include="Public\images\brand-logo\barnd-logo-2.png" />
+    <Content Include="Public\images\brand-logo\barnd-logo-3.png" />
+    <Content Include="Public\images\brand-logo\barnd-logo-4.png" />
+    <Content Include="Public\images\brand-logo\barnd-logo-5.png" />
+    <Content Include="Public\images\cart\cart-1.png" />
+    <Content Include="Public\images\cart\cart-2.png" />
+    <Content Include="Public\images\chach-chon-size.jpg" />
+    <Content Include="Public\images\cod.PNG" />
+    <Content Include="Public\images\favicon.png" />
+    <Content Include="Public\images\icon-img\13.png" />
+    <Content Include="Public\images\icon-img\14.png" />
+    <Content Include="Public\images\icon-img\2.png" />
+    <Content Include="Public\images\icon-img\cart.png" />
+    <Content Include="Public\images\icon-img\select.png" />
+    <Content Include="Public\images\icon-img\slider-shape.png" />
+    <Content Include="Public\images\icon-img\support-1.png" />
+    <Content Include="Public\images\icon-img\support-2.png" />
+    <Content Include="Public\images\icon-img\support-3.png" />
+    <Content Include="Public\images\icon-img\support-4.png" />
+    <Content Include="Public\images\icon-img\suscribe.png" />
+    <Content Include="Public\images\loading.gif" />
+    <Content Include="Public\images\logo\footer-logo.png" />
+    <Content Include="Public\images\logo\logo-2.png" />
+    <Content Include="Public\images\logo\logo-header.png" />
+    <Content Include="Public\images\logo\logo.png" />
+    <Content Include="Public\images\logo\logofooter.png" />
+    <Content Include="Public\images\momo.PNG" />
+    <Content Include="Public\images\NL.png" />
+    <Content Include="Public\images\Post\blog\cam-nang-local-brand---nhung-item-khong-the-thieu-cho-mot-outfit-xin-xo-.jpg" />
+    <Content Include="Public\images\Post\gioithieu\-5theway---su-ket-hop-day-y-nghia-giua-van-hoa-phuong-dong-va-xu-huong-thoi-trang-the-gioi.jpg" />
+    <Content Include="Public\images\Post\gioithieu\-bad-habits-x-hades--cai-bat-tay-bat-ngo-tu-hai-ga-quai-vat-streetwear-viet-nam.jpg" />
+    <Content Include="Public\images\Post\gioithieu\5thewayxunderwater-tung-ra-hinh-anh-ve-part-1-bo-collab-u5-se-ra-mat-vao-cuoi-tuan-nay.jpg" />
+    <Content Include="Public\images\Post\gioithieu\bad-habits---va---bad-rabbit-club----dau-la-su-khac-biet-.jpg" />
+    <Content Include="Public\images\Post\gioithieu\bad-habits-x-hades----nhung-hinh-anh-buoi-offline-release.jpg" />
+    <Content Include="Public\images\Post\gioithieu\gioi-thieu-ve-chung-toi.png" />
+    <Content Include="Public\images\Post\gioithieu\recap--5theway®-tai-sole-ex-tour-2019-voi-make-global-local-workshop.jpg" />
+    <Content Include="Public\images\Post\topic\post-title.jpg" />
+    <Content Include="Public\images\Post\topic\post-title.png" />
+    <Content Include="Public\images\product\accessories\5oty-tote-bag-limited.jpg" />
+    <Content Include="Public\images\product\accessories\5oty-tote-bag-limitedBehind.jpg" />
+    <Content Include="Public\images\product\accessories\la-femme-mini-backpack-green.jpg" />
+    <Content Include="Public\images\product\accessories\la-femme-mini-backpack-greenBehind.jpg" />
+    <Content Include="Public\images\product\accessories\la-femme-mini-backpack-pink.jpg" />
+    <Content Include="Public\images\product\accessories\la-femme-mini-backpack-pinkBehind.jpg" />
+    <Content Include="Public\images\product\accessories\la-femme-mini-backpack-white.jpg" />
+    <Content Include="Public\images\product\accessories\la-femme-mini-backpack-whiteBehind.jpg" />
+    <Content Include="Public\images\product\accessories\regular-mask-black.jpg" />
+    <Content Include="Public\images\product\accessories\regular-mask-white.jpg" />
+    <Content Include="Public\images\product\accessories\solid-long-wallet-burgundy.jpg" />
+    <Content Include="Public\images\product\accessories\solid-long-wallet-burgundyBehind.jpg" />
+    <Content Include="Public\images\product\accessories\solid-long-wallet-olive.jpg" />
+    <Content Include="Public\images\product\accessories\solid-long-wallet-oliveBehind.jpg" />
+    <Content Include="Public\images\product\accessories\solid-rocket-backpack-black-white.jpg" />
+    <Content Include="Public\images\product\accessories\solid-rocket-backpack-black-whiteBehind.jpg" />
+    <Content Include="Public\images\product\accessories\solid-square-wallet-burgundy.jpg" />
+    <Content Include="Public\images\product\accessories\solid-square-wallet-burgundyBehind.jpg" />
+    <Content Include="Public\images\product\accessories\solid-square-wallet-olive.jpg" />
+    <Content Include="Public\images\product\accessories\solid-square-wallet-oliveBehind.jpg" />
+    <Content Include="Public\images\product\accessories\two-tones-rocket-backpack-purple-green.jpg" />
+    <Content Include="Public\images\product\accessories\two-tones-rocket-backpack-purple-greenBehind.jpg" />
+    <Content Include="Public\images\product\accessories\two-tons-rocket-backpack-pink-green.jpg" />
+    <Content Include="Public\images\product\accessories\two-tons-rocket-backpack-pink-greenBehind.jpg" />
+    <Content Include="Public\images\product\accessories\two-tons-rocket-backpack-rose-blue.jpg" />
+    <Content Include="Public\images\product\accessories\two-tons-rocket-backpack-rose-blueBehind.jpg" />
+    <Content Include="Public\images\product\accessories\two-tons-rocket-backpack-white-blue.jpg" />
+    <Content Include="Public\images\product\accessories\two-tons-rocket-backpack-white-blueBehind.jpg" />
+    <Content Include="Public\images\product\category\product.jpg" />
+    <Content Include="Public\images\product\category\product.png" />
+    <Content Include="Public\images\product\category\productBehind.png" />
+    <Content Include="Public\images\product\jacket\coock.png" />
+    <Content Include="Public\images\product\jacket\jacket-university.jpg" />
+    <Content Include="Public\images\product\jacket\jacket-universityBehind.jpg" />
+    <Content Include="Public\images\product\jacket\outdoor-jacket-bw.jpg" />
+    <Content Include="Public\images\product\jacket\outdoor-jacket-bwBehind.jpg" />
+    <Content Include="Public\images\product\jacket\outdoor-jacket-yb.jpg" />
+    <Content Include="Public\images\product\jacket\outdoor-jacket-ybBehind.jpg" />
+    <Content Include="Public\images\product\jacket\oval-coach-jacket-butterfly.jpg" />
+    <Content Include="Public\images\product\jacket\oval-coach-jacket-butterflyBehind.jpg" />
+    <Content Include="Public\images\product\jacket\oval-coach-jacket-warmsand.jpg" />
+    <Content Include="Public\images\product\jacket\oval-coach-jacket-warmsandBehind.jpg" />
+    <Content Include="Public\images\product\jacket\oval-coach-jacket-white.jpg" />
+    <Content Include="Public\images\product\jacket\oval-coach-jacket-whiteBehind.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-coach-jacket-grey.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-coach-jacket-greyBehind.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-coach-jacket-papaya-punch.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-coach-jacket-papaya-punchBehind.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-coach-jacket-rose.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-coach-jacket-roseBehind.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-coach-jacket-starlight-blue.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-coach-jacket-starlight-blueBehind.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-coach-jacket-white.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-coach-jacket-whiteBehind.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-sweater-biglogo-pastel-lilac.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-sweater-biglogo-pastel-lilacBehind.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-sweater-biglogo-rose.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-sweater-biglogo-roseBehind.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-sweater-biglogo-white.jpg" />
+    <Content Include="Public\images\product\jacket\stroke-sweater-biglogo-whiteBehind.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-backpack---bgw.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-backpack---bgwBehind.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-backpack---university.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-backpack---universityBehind.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-khaki-jacket.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-khaki-jacketBehind.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-messenger-bag---black.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-messenger-bag---blackBehind.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-messenger-bag---white.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-messenger-bag---whiteBehind.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-shorts.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-shortsBehind.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-terry-short---pink.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-terry-short---pinkBehind.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-wallet---black.jpg" />
+    <Content Include="Public\images\product\jacket\tsun-wallet---blackBehind.jpg" />
+    <Content Include="Public\images\product\jacket\tuyen-thong123121231212121.jpg" />
+    <Content Include="Public\images\product\jacket\tuyen-thong123121231212121Behind.jpg" />
+    <Content Include="Public\images\product\jacket\yotr-sweater-black.jpg" />
+    <Content Include="Public\images\product\jacket\yotr-sweater-blackBehind.jpg" />
+    <Content Include="Public\images\product\jacket\yotr-sweater-white.jpg" />
+    <Content Include="Public\images\product\jacket\yotr-sweater-whiteBehind.jpg" />
+    <Content Include="Public\images\product\outerwear\-dystopia-jacket..jpg" />
+    <Content Include="Public\images\product\outerwear\-dystopia-jacket.Behind.jpg" />
+    <Content Include="Public\images\product\outerwear\big-logo-tiedye-jacket.jpg" />
+    <Content Include="Public\images\product\outerwear\big-logo-tiedye-jacketBehind.jpg" />
+    <Content Include="Public\images\product\pants\barbed-short---black.jpg" />
+    <Content Include="Public\images\product\pants\barbed-short---blackBehind.jpg" />
+    <Content Include="Public\images\product\pants\baseketball-mesh-short-black.jpg" />
+    <Content Include="Public\images\product\pants\baseketball-mesh-short-blackBehind.jpg" />
+    <Content Include="Public\images\product\pants\baseketball-mesh-short-white.jpg" />
+    <Content Include="Public\images\product\pants\baseketball-mesh-short-whiteBehind.jpg" />
+    <Content Include="Public\images\product\pants\skate-kaki-short-beige.jpg" />
+    <Content Include="Public\images\product\pants\skate-kaki-short-beigeBehind.jpg" />
+    <Content Include="Public\images\product\pants\skate-kaki-short-black.jpg" />
+    <Content Include="Public\images\product\pants\skate-kaki-short-blackBehind.jpg" />
+    <Content Include="Public\images\product\pants\skate-kaki-short-grey.jpg" />
+    <Content Include="Public\images\product\pants\skate-kaki-short-greyBehind.jpg" />
+    <Content Include="Public\images\product\pants\stroke-mesh-short-black.jpg" />
+    <Content Include="Public\images\product\pants\stroke-mesh-short-blackBehind.jpg" />
+    <Content Include="Public\images\product\pants\stroke-mesh-short-white.jpg" />
+    <Content Include="Public\images\product\pants\stroke-mesh-short-whiteBehind.jpg" />
+    <Content Include="Public\images\product\pants\stroke-sweat-pants-black.jpg" />
+    <Content Include="Public\images\product\pants\stroke-sweat-pants-blackBehind.jpg" />
+    <Content Include="Public\images\product\pants\stroke-sweat-pants-cream.jpg" />
+    <Content Include="Public\images\product\pants\stroke-sweat-pants-creamBehind.jpg" />
+    <Content Include="Public\images\product\pants\tsun-black---white-pants.jpg" />
+    <Content Include="Public\images\product\pants\tsun-black---white-pantsBehind.jpg" />
+    <Content Include="Public\images\product\pants\tsun-terry-short---black.jpg" />
+    <Content Include="Public\images\product\pants\tsun-terry-short---blackBehind.jpg" />
+    <Content Include="Public\images\product\shoe\giay-ultraboost-summer---rdy.jpg" />
+    <Content Include="Public\images\product\shoe\giay-ultraboost-summer---rdyBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\asian-spirit-new-tee-black.jpg" />
+    <Content Include="Public\images\product\t-shirt\asian-spirit-new-tee-blackBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\asian-spirit-new-tee-white.jpg" />
+    <Content Include="Public\images\product\t-shirt\asian-spirit-new-tee-whiteBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\balloon-new-tee-black.jpg" />
+    <Content Include="Public\images\product\t-shirt\balloon-new-tee-blackBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\balloon-new-tee-white.jpg" />
+    <Content Include="Public\images\product\t-shirt\balloon-new-tee-whiteBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\earthquake-new-tee-black.jpg" />
+    <Content Include="Public\images\product\t-shirt\earthquake-new-tee-blackBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\earthquake-new-tee-butterfly.jpg" />
+    <Content Include="Public\images\product\t-shirt\earthquake-new-tee-butterflyBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\earthquake-new-tee-warmsand.jpg" />
+    <Content Include="Public\images\product\t-shirt\earthquake-new-tee-warmsandBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\falling-in-love-new-tee-black.jpg" />
+    <Content Include="Public\images\product\t-shirt\falling-in-love-new-tee-blackBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\falling-in-love-new-tee-white.jpg" />
+    <Content Include="Public\images\product\t-shirt\falling-in-love-new-tee-whiteBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\oval-square-tee-black.jpg" />
+    <Content Include="Public\images\product\t-shirt\oval-square-tee-blackBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\oval-square-tee-blue.jpg" />
+    <Content Include="Public\images\product\t-shirt\oval-square-tee-blueBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\oval-square-tee-butterfly.jpg" />
+    <Content Include="Public\images\product\t-shirt\oval-square-tee-butterflyBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\oval-square-tee-purple.jpg" />
+    <Content Include="Public\images\product\t-shirt\oval-square-tee-purpleBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\oval-square-tee-warmsand.jpg" />
+    <Content Include="Public\images\product\t-shirt\oval-square-tee-warmsandBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\oval-square-tee-white.jpg" />
+    <Content Include="Public\images\product\t-shirt\oval-square-tee-whiteBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\purple-tie-dye-tee-1.jpg" />
+    <Content Include="Public\images\product\t-shirt\purple-tie-dye-tee-1Behind.jpg" />
+    <Content Include="Public\images\product\t-shirt\rain-bow-tie-dye-tee.jpg" />
+    <Content Include="Public\images\product\t-shirt\rain-bow-tie-dye-teeBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\scary-tee---black.jpg" />
+    <Content Include="Public\images\product\t-shirt\scary-tee---blackBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\sig-2---pink.jpg" />
+    <Content Include="Public\images\product\t-shirt\sig-2---pinkBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\sketch-drop-shoulder-longsleeve-.jpg" />
+    <Content Include="Public\images\product\t-shirt\sketch-drop-shoulder-longsleeve-Behind.jpg" />
+    <Content Include="Public\images\product\t-shirt\sketch-drop-shoulder-polo-tee.jpg" />
+    <Content Include="Public\images\product\t-shirt\sketch-drop-shoulder-polo-teeBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\stroke-new-tee-biglogo-bitter-sweat.jpg" />
+    <Content Include="Public\images\product\t-shirt\stroke-new-tee-biglogo-bitter-sweatBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\stroke-new-tee-biglogo-black.jpg" />
+    <Content Include="Public\images\product\t-shirt\stroke-new-tee-biglogo-blackBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\stroke-new-tee-biglogo-butterfly.jpg" />
+    <Content Include="Public\images\product\t-shirt\stroke-new-tee-biglogo-butterflyBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\stroke-new-tee-biglogo-pastel-lilac.jpg" />
+    <Content Include="Public\images\product\t-shirt\stroke-new-tee-biglogo-pastel-lilacBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\stroke-new-tee-biglogo-rose.jpg" />
+    <Content Include="Public\images\product\t-shirt\stroke-new-tee-biglogo-roseBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\stroke-new-tee-biglogo-white.jpg" />
+    <Content Include="Public\images\product\t-shirt\stroke-new-tee-biglogo-whiteBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\time-stop-tee---orange.jpg" />
+    <Content Include="Public\images\product\t-shirt\time-stop-tee---orangeBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\uzi-kids-new-tee-rose.jpg" />
+    <Content Include="Public\images\product\t-shirt\uzi-kids-new-tee-roseBehind.jpg" />
+    <Content Include="Public\images\product\t-shirt\uzi-kids-new-tee-white.jpg" />
+    <Content Include="Public\images\product\t-shirt\uzi-kids-new-tee-whiteBehind.jpg" />
+    <Content Include="Public\images\vietcombankkk.PNG" />
+    <Content Include="Public\js\bootstrap.min.js" />
+    <Content Include="Public\js\main.js" />
+    <Content Include="Public\js\plugins.js" />
+    <Content Include="Public\js\popper.min.js" />
+    <Content Include="Public\js\vendor\jquery-1.12.4.min.js" />
+    <Content Include="Public\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="Public\plugins\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Public\plugins\datatables-bs4\css\dataTables.bootstrap4.css" />
+    <Content Include="Public\plugins\datatables-bs4\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Public\plugins\datatables-bs4\js\dataTables.bootstrap4.js" />
+    <Content Include="Public\plugins\datatables-bs4\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Public\plugins\datatables-responsive\css\responsive.bootstrap4.css" />
+    <Content Include="Public\plugins\datatables-responsive\css\responsive.bootstrap4.min.css" />
+    <Content Include="Public\plugins\datatables-responsive\js\dataTables.responsive.js" />
+    <Content Include="Public\plugins\datatables-responsive\js\dataTables.responsive.min.js" />
+    <Content Include="Public\plugins\datatables-responsive\js\responsive.bootstrap4.js" />
+    <Content Include="Public\plugins\datatables-responsive\js\responsive.bootstrap4.min.js" />
+    <Content Include="Public\plugins\datatables\jquery.dataTables.js" />
+    <Content Include="Public\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="Public\plugins\overlayScrollbars\css\OverlayScrollbars.min.css" />
+    <Content Include="Public\plugins\overlayScrollbars\js\jquery.overlayScrollbars.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ar-AR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ar-AR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ar-AR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-az-AZ.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-az-AZ.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-az-AZ.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-bg-BG.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-bg-BG.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-bg-BG.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ca-ES.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ca-ES.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ca-ES.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-cs-CZ.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-cs-CZ.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-cs-CZ.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-da-DK.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-da-DK.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-da-DK.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-de-DE.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-de-DE.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-de-DE.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-el-GR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-el-GR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-el-GR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-ES.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-ES.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-ES.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-EU.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-EU.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-es-EU.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fa-IR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fa-IR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fa-IR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fi-FI.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fi-FI.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fi-FI.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fr-FR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fr-FR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-fr-FR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-gl-ES.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-gl-ES.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-gl-ES.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-he-IL.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-he-IL.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-he-IL.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hr-HR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hr-HR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hr-HR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hu-HU.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hu-HU.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-hu-HU.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-id-ID.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-id-ID.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-id-ID.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-it-IT.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-it-IT.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-it-IT.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ja-JP.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ja-JP.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ja-JP.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ko-KR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ko-KR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ko-KR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LT.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LT.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LT.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LV.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LV.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-lt-LV.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-mn-MN.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-mn-MN.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-mn-MN.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nb-NO.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nb-NO.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nb-NO.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nl-NL.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nl-NL.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-nl-NL.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pl-PL.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pl-PL.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pl-PL.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-BR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-BR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-BR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-PT.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-PT.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-pt-PT.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ro-RO.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ro-RO.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ro-RO.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ru-RU.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ru-RU.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ru-RU.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sk-SK.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sk-SK.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sk-SK.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sl-SI.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sl-SI.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sl-SI.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS-Latin.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS-Latin.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sr-RS.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sv-SE.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sv-SE.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-sv-SE.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ta-IN.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ta-IN.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-ta-IN.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-th-TH.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-th-TH.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-th-TH.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-tr-TR.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-tr-TR.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-tr-TR.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uk-UA.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uk-UA.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uk-UA.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uz-UZ.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uz-UZ.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-uz-UZ.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-vi-VN.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-vi-VN.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-vi-VN.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-CN.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-CN.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-CN.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-TW.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-TW.min.js" />
+    <Content Include="Public\plugins\summernote\lang\summernote-zh-TW.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\plugin\databasic\summernote-ext-databasic.css" />
+    <Content Include="Public\plugins\summernote\plugin\databasic\summernote-ext-databasic.js" />
+    <Content Include="Public\plugins\summernote\plugin\hello\summernote-ext-hello.js" />
+    <Content Include="Public\plugins\summernote\plugin\specialchars\summernote-ext-specialchars.js" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.css" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.js" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.min.css" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.min.js" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\summernote-lite.css" />
+    <Content Include="Public\plugins\summernote\summernote-lite.js" />
+    <Content Include="Public\plugins\summernote\summernote-lite.min.css" />
+    <Content Include="Public\plugins\summernote\summernote-lite.min.js" />
+    <Content Include="Public\plugins\summernote\summernote-lite.min.js.LICENSE.txt" />
+    <Content Include="Public\plugins\summernote\summernote.css" />
+    <Content Include="Public\plugins\summernote\summernote.js" />
+    <Content Include="Public\plugins\summernote\summernote.min.css" />
+    <Content Include="Public\plugins\summernote\summernote.min.js" />
+    <Content Include="Public\plugins\summernote\summernote.min.js.LICENSE.txt" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PostController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SliderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TopicController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Common\CommonConstants.cs" />
+    <Compile Include="Common\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Common\Userlogin.cs" />
+    <Compile Include="Controllers\AuthCusController.cs" />
+    <Compile Include="Controllers\BaseCusController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\ModulesController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="GiaoHangTietKiem\SendRequest.cs" />
+    <Compile Include="GiaoHangTietKiem\TransportGHTK.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="library\Message.cs" />
+    <Compile Include="library\Mystring.cs" />
+    <Compile Include="library\Util.cs" />
+    <Compile Include="Migrations\202111270420385_init-migration.cs" />
+    <Compile Include="Migrations\202111270420385_init-migration.Designer.cs">
+      <DependentUpon>202111270420385_init-migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Mcontact.cs" />
+    <Compile Include="Models\Mpost.cs" />
+    <Compile Include="Models\Mtopic.cs" />
+    <Compile Include="Models\ShopThoiTrangDbContext.cs" />
+    <Compile Include="Models\Cart_item.cs" />
+    <Compile Include="Models\link.cs" />
+    <Compile Include="Models\Mcategory.cs" />
+    <Compile Include="Models\MessageModel.cs" />
+    <Compile Include="Models\Mmenu.cs" />
+    <Compile Include="Models\Morder.cs" />
+    <Compile Include="Models\Mordersdetail.cs" />
+    <Compile Include="Models\Mslider.cs" />
+    <Compile Include="Models\Muser.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\role.cs" />
+    <Compile Include="Models\Size.cs" />
+    <Compile Include="Models\SizeShoe.cs" />
+    <Compile Include="MomoAPI\momoInfo.cs" />
+    <Compile Include="MomoAPI\MoMoSecurity.cs" />
+    <Compile Include="MomoAPI\PaymentRequest.cs" />
+    <Compile Include="nganluonAPI\APICheckoutV3.cs" />
+    <Compile Include="nganluonAPI\nganluongInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Areas\Admin\Views\Auth\_information.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\_login.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\_information.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\_userNav.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Orderdetail.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\401.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_leftMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_mainmenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_MessgeAlert.cshtml" />
+    <Content Include="Areas\Admin\Views\Slider\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Slider\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Slider\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Slider\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Post\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\Topic\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Topic\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Topic\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Topic\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\_productDetailCheckOut.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\_subproductOrdersuccess.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Trash.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\_Statistical.cshtml" />
+    <None Include="packages.config" />
+    <Content Include="Views\Site\page404.cshtml" />
+    <Content Include="Views\Shared\_layoutSite.cshtml" />
+    <Content Include="Views\Shared\_MessgeAlert.cshtml" />
+    <Content Include="Views\Shared\_MessgeAlertc.cshtml" />
+    <Content Include="Views\Site\home.cshtml" />
+    <Content Include="Views\Modules\_ProductNewHome.cshtml" />
+    <Content Include="Views\Site\ProductDetail.cshtml" />
+    <Content Include="Views\Modules\_relatedProducts.cshtml" />
+    <Content Include="Views\Modules\_footer.cshtml" />
+    <Content Include="Views\Modules\_header.cshtml" />
+    <Content Include="Views\Modules\_mainmenu.cshtml" />
+    <Content Include="Views\Modules\_slider.cshtml" />
+    <Content Include="Views\Modules\_SubMainMenu1.cshtml" />
+    <Content Include="Views\Modules\_SubMainMenu2.cshtml" />
+    <Content Include="Views\Site\productOfCategory.cshtml" />
+    <Content Include="Views\Modules\_category.cshtml" />
+    <Content Include="Views\AuthCus\login.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Cart\_cartHeader.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Checkout\cancel_order.cshtml" />
+    <Content Include="Views\Checkout\confirm_orderPaymentOnline.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Checkout\oderComplete.cshtml" />
+    <Content Include="Views\Checkout\_productDetailCheckOut.cshtml" />
+    <Content Include="Views\Checkout\_subproductOrdersuccess.cshtml" />
+    <Content Include="Views\Site\getAllPost.cshtml" />
+    <Content Include="Views\Site\postDetail.cshtml" />
+    <Content Include="Views\Modules\_postHome.cshtml" />
+    <Content Include="Views\Site\contact.cshtml" />
+    <Content Include="Public\css\bootstrap.min.css.map" />
+    <Content Include="Public\css\style.css.map" />
+    <Content Include="Public\dist\css\adminlte.min.css.map" />
+    <Content Include="Public\dist\js\adminlte.js.map" />
+    <Content Include="Public\dist\js\adminlte.min.js.map" />
+    <Content Include="Public\fonts\CormorantGaramond-Bold.eot" />
+    <Content Include="Public\fonts\CormorantGaramond-Bold.ttf" />
+    <Content Include="Public\fonts\CormorantGaramond-Bold.woff" />
+    <Content Include="Public\fonts\CormorantGaramond-Bold.woff2" />
+    <Content Include="Public\fonts\CormorantGaramond-Light.eot" />
+    <Content Include="Public\fonts\CormorantGaramond-Light.ttf" />
+    <Content Include="Public\fonts\CormorantGaramond-Light.woff" />
+    <Content Include="Public\fonts\CormorantGaramond-Light.woff2" />
+    <Content Include="Public\fonts\CormorantGaramond-Medium.eot" />
+    <Content Include="Public\fonts\CormorantGaramond-Medium.ttf" />
+    <Content Include="Public\fonts\CormorantGaramond-Medium.woff" />
+    <Content Include="Public\fonts\CormorantGaramond-Medium.woff2" />
+    <Content Include="Public\fonts\CormorantGaramond-Regular.eot" />
+    <Content Include="Public\fonts\CormorantGaramond-Regular.ttf" />
+    <Content Include="Public\fonts\CormorantGaramond-Regular.woff" />
+    <Content Include="Public\fonts\CormorantGaramond-Regular.woff2" />
+    <Content Include="Public\fonts\CormorantGaramond-SemiBold.eot" />
+    <Content Include="Public\fonts\CormorantGaramond-SemiBold.ttf" />
+    <Content Include="Public\fonts\CormorantGaramond-SemiBold.woff" />
+    <Content Include="Public\fonts\CormorantGaramond-SemiBold.woff2" />
+    <Content Include="Public\fonts\fontawesome-webfont.eot" />
+    <Content Include="Public\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Public\fonts\fontawesome-webfont.woff" />
+    <Content Include="Public\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Public\fonts\FontAwesome.otf" />
+    <Content Include="Public\fonts\Pe-icon-7-stroke.eot" />
+    <Content Include="Public\fonts\Pe-icon-7-stroke.ttf" />
+    <Content Include="Public\fonts\Pe-icon-7-stroke.woff" />
+    <Content Include="Public\images\Post\gioithieu\-5theway---su-ket-hop-day-y-nghia-giua-van-hoa-phuong-dong-va-xu-huong-thoi-trang-the-gioi" />
+    <Content Include="Public\images\product\category\productBehind" />
+    <Content Include="Public\js\bootstrap.min.js.map" />
+    <Content Include="Public\js\slinky.min.js.map" />
+    <Content Include="Public\plugins\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Public\plugins\summernote\font\summernote.eot" />
+    <Content Include="Public\plugins\summernote\font\summernote.ttf" />
+    <Content Include="Public\plugins\summernote\font\summernote.woff" />
+    <Content Include="Public\plugins\summernote\font\summernote.woff2" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.js.map" />
+    <Content Include="Public\plugins\summernote\summernote-bs4.min.js.map" />
+    <Content Include="Public\plugins\summernote\summernote-lite.js.map" />
+    <Content Include="Public\plugins\summernote\summernote-lite.min.js.map" />
+    <Content Include="Public\plugins\summernote\summernote.js.map" />
+    <Content Include="Public\plugins\summernote\summernote.min.js.map" />
+    <Content Include="Public\scss\style.scss" />
+    <Content Include="Public\scss\_about.scss" />
+    <Content Include="Public\scss\_banner.scss" />
+    <Content Include="Public\scss\_blog-details.scss" />
+    <Content Include="Public\scss\_blog.scss" />
+    <Content Include="Public\scss\_brand-logo.scss" />
+    <Content Include="Public\scss\_breadcrumb.scss" />
+    <Content Include="Public\scss\_cart.scss" />
+    <Content Include="Public\scss\_checkout.scss" />
+    <Content Include="Public\scss\_common.scss" />
+    <Content Include="Public\scss\_contact.scss" />
+    <Content Include="Public\scss\_footer.scss" />
+    <Content Include="Public\scss\_header.scss" />
+    <Content Include="Public\scss\_instagram.scss" />
+    <Content Include="Public\scss\_login-register.scss" />
+    <Content Include="Public\scss\_my-account.scss" />
+    <Content Include="Public\scss\_product-details.scss" />
+    <Content Include="Public\scss\_product.scss" />
+    <Content Include="Public\scss\_section-title.scss" />
+    <Content Include="Public\scss\_shop.scss" />
+    <Content Include="Public\scss\_sidebar.scss" />
+    <Content Include="Public\scss\_slider.scss" />
+    <Content Include="Public\scss\_support.scss" />
+    <Content Include="Public\scss\_suscribe.scss" />
+    <Content Include="Public\scss\_testimonial.scss" />
+    <Content Include="Public\scss\_timers.scss" />
+    <Content Include="Public\scss\_variabls.scss" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\BaseCus\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202111270420385_init-migration.resx">
+      <DependentUpon>202111270420385_init-migration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64861</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:64861/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

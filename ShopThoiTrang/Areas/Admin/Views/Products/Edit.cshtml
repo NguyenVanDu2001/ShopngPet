@@ -1,0 +1,230 @@
+﻿@model ShopThoiTrang.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@{
+
+    List<SelectListItem> listorder = new List<SelectListItem>();
+    List<SelectListItem> status = new List<SelectListItem>();
+
+    SelectListItem statusitem1 = new SelectListItem() { Value = "1", Text = "Hiện" };
+    SelectListItem statusitem2 = new SelectListItem() { Value = "2", Text = "Ẩn" };
+    status.Add(statusitem1);
+    status.Add(statusitem2);
+
+
+    List<SelectListItem> listcat = new List<SelectListItem>();
+    SelectListItem listcatitem;
+    foreach (var item in ViewBag.listCate)
+    {
+        listcatitem = new SelectListItem() { Value = item.ID + "", Text = item.name + "" };
+        listcat.Add(listcatitem);
+    }
+
+
+
+    var size = ViewBag.size;
+    var Shoesize = ViewBag.ShoeSize;
+}
+<div class="card card-title bg-white p-1">
+    <div class="row">
+        <div class="col-md-6 "> <h5 class="pl-2 mt-2 text-blues">Cập nhật sản phẩm</h5> </div>
+        <div class="col-md-6 m-0">
+            <ol class="breadcrumb bg-white float-sm-right m-0">
+                <li class="breadcrumb-item m-0"><a href="~/Admin">Trang chủ</a></li>
+                <li class="breadcrumb-item active m-0">Cập nhật sản phẩm</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+  
+    <section class="pt-2">
+        @Html.Partial("_MessgeAlert")
+        <div class="container bg-white p-4 card">
+
+            @using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ID)
+                @Html.HiddenFor(model => model.created_at)
+                @Html.HiddenFor(model => model.created_by)
+                @Html.HiddenFor(model => model.img)
+                @Html.HiddenFor(model => model.imgBehind)
+                @Html.HiddenFor(model => model.type)
+
+                <div class=" row ">
+                    <div class="col-md-4">  </div>
+                    <div class="col-md-4"> <h5 class="text-center font-weight-bold text-danger ">Cập nhật sản phẩm</h5> </div>
+                    <div class="col-md-4 ">
+                        <div class="float-right">
+                            <button class="btn btn-sm bg-warning text-white"><i class="far fa-save"></i> Lưu lại</button>
+                            <a href="~/admin/category" class="btn btn-sm bg-danger text-white"><i class="far fa-window-close"></i> Bỏ qua</a>
+                        </div>
+                    </div>
+                </div>
+                <div class=" row ">
+                    <div class="col-md-8">
+                        <div>
+                            <label for="psw"><span class="text-dark col-form-label">Tên sản phẩm</span></label>
+                            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                        </div>
+
+
+                        <label for="psw"><span class="text-dark ">Chọn kiểu </span></label>
+                        <div>
+                            @Html.DropDownListFor(model => model.catid, listcat, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.catid, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span class="text-dark ">Giá</span></label>
+                            @Html.EditorFor(model => model.price, new { htmlAttributes = new { min = "1000", step = "1000", Type = "number", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span class="text-dark ">Khuyến mãi</span></label>
+                            @Html.EditorFor(model => model.pricesale, new { htmlAttributes = new { min = "0", step = "1", max = "100", Type = "number", @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.pricesale, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <label for="psw"><span class="text-dark ">Ảnh sản phẩm</span></label>
+                            <input type="file" class="form-control" name="img" />
+                        </div>
+                        <div>
+                            <label><span class="font-weight-bold text-dark">Ảnh khác (if any)</span></label>
+                            <input type="file" class="form-control" name="imgBehind" />
+                            @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
+                        </div>
+                        <div id="status1">
+                            <label for="psw"><span class="text-dark ">Trạng thái </span></label>
+                            @Html.DropDownListFor(model => model.status, status, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+
+                        </div>
+                        <script>
+                            $("div#status1 select").val("@Model.status");
+                        </script>
+                        <div>
+                            <label for="psw"><span class="text-dark ">Detail product</span></label>
+                            @Html.TextAreaFor(model => model.detail, new { @class = "form-control textarea" })
+                            @Html.ValidationMessageFor(model => model.detail, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div id="ProductType">
+                            <label for="productType"><span class="font-weight-bold text-dark">Chọn nhóm sản phẩm</span></label>
+                            <select id="productType" name="ProductType" class="form-control">
+                                <option value="nam">Nam</option>
+                                <option value="nu">Nữ</option>
+                                <option value="CaHai">Tất cả</option>
+                            </select>
+                        </div>
+
+                        @if (Model.type == 1)
+                        {
+                            <div class="pt-5">
+                                <label><span class="font-weight-bold text-dark"> [ size S ]</span></label>
+                                <input class="form-control" value="@size.SizeS" type="number" name="SizeS" />
+                            </div>
+                            <div>
+                                <label><span class="font-weight-bold text-dark"> Số lượng size M</span></label>
+                                <input class="form-control" value="@size.SizeM" type="number" name="SizeM" />
+                            </div>
+
+                            <div>
+                                <label><span class="font-weight-bold text-dark">Số lượng size L</span></label>
+                                <input class="form-control" value="@size.SizeL" type="number" name="SizeL" />
+                            </div>
+
+                            <div>
+                                <label><span class="font-weight-bold text-dark">Số lượng size XL</span></label>
+                                <input class="form-control" value="@size.SizeXL" type="number" name="SizeXL" />
+                            </div>
+
+                            <div>
+                                <label><span class="font-weight-bold text-dark">Số lượng size XXL</span></label>
+                                <input class="form-control" value="@size.SizeXXL" type="number" name="SizeXXL" />
+                            </div>
+
+                        }
+                        else if (Model.type == 2)
+                        {
+                            <div class="pt-1">
+                                <label><span class="font-weight-bold text-dark">Số lượng [ size 36 ]</span></label>
+                                <input class="form-control" value="@Shoesize.Size_36" type="number" name="Size_36" />
+                            </div>
+                            <div>
+                                <label><span class="font-weight-bold text-dark">Số lượng [ size 37 ]</span></label>
+                                <input class="form-control" value="@Shoesize.Size_37" type="number" name="Size_37" />
+                            </div>
+                            <div>
+                                <label><span class="font-weight-bold text-dark">Số lượng [ size 38 ]</span></label>
+                                <input class="form-control" value="@Shoesize.Size_38" type="number" name="Size_38" />
+                            </div>
+
+                            <div>
+                                <label><span class="font-weight-bold text-dark">Số lượng [ size 39 ]</span></label>
+                                <input class="form-control" value="@Shoesize.Size_39" type="number" name="Size_39" />
+                            </div>
+
+                            <div>
+                                <label><span class="font-weight-bold text-dark">Số lượng [ size 40 ]</span></label>
+                                <input class="form-control" value="@Shoesize.Size_40" type="number" name="Size_40" />
+                            </div>
+                            <div class="pt-1">
+                                <label><span class="font-weight-bold text-dark">Số lượng [ size 41 ]</span></label>
+                                <input class="form-control" value="@Shoesize.Size_41" type="number" name="Size_41" />
+                            </div>
+                            <div class="pt-1">
+                                <label><span class="font-weight-bold text-dark">Số lượng [ size 42 ]</span></label>
+                                <input class="form-control" value="@Shoesize.Size_42" type="number" name="Size_42" />
+                            </div>
+                            <div class="pt-1">
+                                <label><span class="font-weight-bold text-dark">Số lượng [ size 43 ]</span></label>
+                                <input class="form-control" value="@Shoesize.Size_43" type="number" name="Size_43" />
+                            </div>
+                            <div class="pt-1">
+                                <label><span class="font-weight-bold text-dark">Số lượng [ size 44 ]</span></label>
+                                <input class="form-control" value="@Shoesize.Size_44" type="number" name="Size_44" />
+                            </div>
+                            <div class="pt-1">
+                                <label><span class="font-weight-bold text-dark">Số lượng [ size 45 ]</span></label>
+                                <input class="form-control" value="@Shoesize.Size_45" type="number" name="Size_45" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="pt-1">
+                                <label><span class="font-weight-bold text-dark">Số lượng SP</span></label>
+                                <input class="form-control" value="@Model.number" type="number" name="number" required />
+                            </div>
+                        }
+
+
+                        <div class="pt-5">
+                            <div> <span>Ảnh</span></div>
+                            <img class="w-100" src="~/public/images/product/@Html.DisplayFor(modelItem => modelItem.img)">
+                            <div class="pt-2">
+                                <img class="w-100" src="~/public/images/product/@Html.DisplayFor(modelItem => modelItem.imgBehind)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+    <script>
+        $(function () {
+            // Summernote
+            $('.textarea').summernote()
+        })
+
+        $("#product").addClass("active");
+    </script>
+

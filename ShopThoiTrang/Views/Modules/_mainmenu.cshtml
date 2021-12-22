@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ShopThoiTrang.Models.Mmenu>
+<div class="header-bottom sticky-bar header-res-padding header-padding-2 header-color">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-3">
+                <div class="logo">
+                    <a href="~/">
+                        <p class="title-logo">Dilys Pet</p>
+                      @*  <img alt="" src="~/public/images/logo/logo-header.png" style="max-height: 46px; display: block; margin-left: 28px; margin-top: -17px;">*@
+                    </a>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 d-none d-lg-block" style="text-align:right;">
+                <div class="main-menu">
+                    <nav>
+                        <ul>
+                            @foreach (var list in Model)
+                            {
+                                @Html.Action("SubMainMenu", "Modules", new { parentid = list.ID })
+
+
+                            }
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-6 col-8">
+                
+                <div class="header-right-wrap">
+                    <div id="current-time" style="padding-right: 91px; -webkit-box-reflect: below -19px linear-gradient(transparent, #0004);"></div>
+                    <div class="same-style header-search">
+                        <a class="search-active" href="#"><i class="pe-7s-search px-1"></i></a>
+                        <div class="search-content">
+                            <form action="tim-kiem-san-pham" method="GET">
+                                <input type="text" name="keyW" placeholder="Search" />
+                                <button type="submit" class="button-search"><i class="pe-7s-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="same-style account-satting">
+                        <a class="account-satting-active" href="#"><i class="pe-7s-user-female px-3"></i></a>
+                        <div class="account-dropdown">
+                            <ul>
+                                @if (ViewBag.fullname == null)
+                                {
+                                    <li><a href="~/dang-nhap-dang-ky">Đăng nhập</a></li>
+                                    <li><a href="~/dang-nhap-dang-ky"> Đăng ký</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="~/AuthCus/logout">Đăng xuất</a></li>
+                                    <li><a href="~/thong-tin-khach-hang">Tài Khoản</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    @Html.Action("cart_header", "Cart")
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mobile-menu-area">
+            <div class="mobile-menu">
+                <nav id="mobile-menu-active">
+                    <ul class="menu-overflow">
+                        @foreach (var list in Model)
+                        {
+                            @Html.Action("SubMainMenu", "Modules", new { parentid = list.ID })
+
+
+                        }
+                      
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script type ="text/javascript">
+    function Dong_ho() {
+        var curDate = new Date();
+        var curhour = curDate.getHours();
+        var curMin = curDate.getMinutes();
+        var curSec = curDate.getSeconds();
+        if (curhour < 10) { curhour = '0' + curhour; }
+        if (curMin < 10) { curMin = '0' + curMin; }
+        if (curSec < 10) { curSec = '0' + curSec; }
+        document.getElementById('current-time').innerHTML = curhour + ":" + curMin + ":" + curSec;
+    }
+    var Dem_gio = setInterval(Dong_ho, 1000);
+</script>

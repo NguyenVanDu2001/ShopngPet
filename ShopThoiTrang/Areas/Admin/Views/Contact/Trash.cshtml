@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ShopThoiTrang.Models.Mcontact>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="card card-title bg-white p-1">
+    <div class="row">
+        <div class="col-md-6 "> <h5 class="pl-2 mt-2 text-blues">Quản lý Liên hệ</h5> </div>
+        <div class="col-md-6 m-0">
+            <ol class="breadcrumb bg-white float-sm-right m-0">
+                <li class="breadcrumb-item m-0"><a href="~/Admin">Home</a></li>
+                <li class="breadcrumb-item active m-0">Quản lý loại liên hệ</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<section class=" ">
+    <div class=" bg-white card p-3 ">
+
+        <div class="row">
+            <div class="col-md-9  w-100 ">
+                @Html.Partial("_MessgeAlert")
+            </div>
+            <div class="col-md-3 ">
+                <div class=" pt-1 ml-5">
+                    <a class="text-white btn-sm btn-danger " href="~/admin/Contact">Out</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9  w-100 ">
+                @Html.Partial("_MessgeAlert")
+            </div>
+            <div class="col-md-12 p-3">
+
+                <table id="myTable" class="table px-3 table-striped table-bordered dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>Fullname</th>
+                            <th>Phone number</th>
+                            <th>Title</th>
+                            <th>Date created</th>
+                            <th>Option</th>
+                            <th>ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            string title = item.title;
+                            <tr>
+
+                                <td class="pt-4"> @Html.DisplayFor(modelItem => item.fullname)</td>
+                                <td class="pt-4"> @Html.DisplayFor(modelItem => item.phone)</td>
+                                <td class="pt-4">
+                                    <a class="text-cam font-weight-bold card-link " href="">
+                                        @if (title.Length > 100)
+                                        {@title.Substring(0, 30)}
+                                    else
+                                    { @title}
+                                    </a>
+
+                                </td>
+                                <td class="pt-4">@Html.DisplayFor(modelItem => item.created_at)</td>
+                                <td class="pt-4">
+                                    <a class="btn btn-sm btn-info" href="@Url.Action("Retrash", "Contact", new { id = item.ID })"> <i class="fas fa-undo"></i></a>
+                                    <a class="btn btn-sm btn-danger text-white" href="@Url.Action("deleteTrash", "Contact", new { id = item.ID })">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                                <td class="text-cam pt-4">@Html.DisplayFor(modelItem => item.ID)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $("#contact").addClass("active");
+</script>

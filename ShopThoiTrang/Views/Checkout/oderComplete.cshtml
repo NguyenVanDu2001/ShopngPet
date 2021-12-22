@@ -1,0 +1,96 @@
+﻿@model ShopThoiTrang.Models.Morder
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<div class="breadcrumb-area pt-35 pb-35 bg-gray-3">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li>
+                    <a href="~/">Trang chủ</a>
+                </li>
+                <li class="active">Đặt hàng thành công</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- order complete Page Start -->
+<section class="order-complete inner-page-sec-padding-bottom p-3 bg-light">
+    <div class="container bg-white p-3">
+        <div class="row">
+            <div class="col-12">
+                <div class="order-complete-message text-center">
+                    <h1>♡тɦαηƙ үσυ♡</h1>
+                    <p class="p-3 text-danger">Đã nhận được đơn đặt hàng của bạn.</p>
+                </div>
+
+                <table class="table order-details-table">
+                    <tfoot>
+                        <tr>
+                            <th>Mã đơn hàng:</th>
+                            <td><span>@Model.ID</span></td>
+                        </tr>
+                        <tr>
+                            <th>Tên khách hàng:</th>
+                            <td>@Model.deliveryname</td>
+                        </tr>
+                        <tr>
+                            <th>Số thiện thoại:</th>
+                            <td><span>@Model.deliveryphone</span></td>
+                        </tr>
+                        <tr>
+                            <th>Email: </th>
+                            <td><span>@Model.deliveryemail</span></td>
+                        </tr>
+                        <tr>
+                            <th>địa chỉ nhận hàng:</th>
+                            <td><span>@Model.deliveryaddress</span></td>
+                        </tr>
+                        <tr>
+                            <th>Ngày đặt hàng:</th>
+                            <td><span>@Model.created_ate <span class="text-danger">(MM/DD/YY)</span> </span></td>
+                        </tr>
+                        @if (Model.StatusPayment == 1)
+                        {
+                            <tr>
+                                <th>Trạng thái thanh toán:</th>
+                                <td><span class="text-success">Đã thanh toán.</span></td>
+                            </tr>
+                        }
+                        else if (Model.StatusPayment == 3)
+                        {
+                            <tr>
+                                <th>Trạng thái thanh toán:</th>
+                                <td><span>Thanh toán khi nhận hàng.</span></td>
+                            </tr>
+                        }
+                        else if (Model.StatusPayment == 4)
+                        {
+                            <tr>
+                                <th>Trạng thái thanh toán:</th>
+                                <td><span>CHUYỂN KHOẢN NGÂN HÀNG, CHÚNG TÔI SẼ LIÊN HỆ BẠN SAU.</span></td>
+                            </tr>
+                        }
+                        else if (ViewBag.statusCod == 2)
+                        {
+                            <tr>
+                                <th>Trạng thái thanh toán:</th>
+                                <td><span>Chưa thanh toán vui lòng thanh toán lại.</span></td>
+                            </tr>
+                        }
+                        <tr>
+                            <th>Phương thức thanh toán: </th>
+                            <td><span>@Model.deliveryPaymentMethod.</span></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <h3 class="order-table-title">Detail đơn hàng</h3>
+                <div class="table-responsive">
+                    @Html.Action("productDetailCheckOut", "Checkout", new { orderId = Model.ID })
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

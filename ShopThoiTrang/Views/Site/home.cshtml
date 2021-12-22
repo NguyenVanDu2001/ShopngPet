@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "home";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+
+@Html.Action("_slider", "Modules")
+<div class="suppoer-area pt-100 pb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="support-wrap-2 mb-30 support-shape text-center">
+                    <div class="support-content-2">
+                        <img class="animated" src="~/public/images/icon-img/support-1.png" alt="">
+                        <h5>Miễn phí giao hàng</h5>
+                        <p>Miễn phí giao hàng với đơn hàng trên 2,000,000 VNĐ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="support-wrap-2 mb-30 support-shape text-center">
+                    <div class="support-content-2">
+                        <img class="animated" src="~/public/images/icon-img/support-2.png" alt="">
+                        <h5>Chăm sóc khách hàng 24/7</h5>
+                        <p>
+                            Hãy gọi cho chúng tôi, nếu bạn cần giúp đỡ
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="support-wrap-2 mb-30 text-center">
+                    <div class="support-content-2">
+                        <img class="animated" src="~/public/images/icon-img/support-3.png" alt="">
+                        <h5>Hoàn tiền</h5>
+                        <p>Hoàn tiền 100% nếu hàng giả hàng kém chất lượng</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("_ProductNewHome", "Modules")
+<div class="blog-area pb-55">
+    <div class="container">
+        <div class="section-title text-center mb-55">
+            <h2>Mới nhất</h2>
+        </div>
+        <div class="row">
+            @Html.Action("_postHome", "Modules")
+        </div>
+    </div>
+</div>

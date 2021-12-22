@@ -1,0 +1,61 @@
+﻿<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewData["Title"]-SELLER 5THEWAY</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/public/images/favicon.png">
+
+    <!-- CSS
+    ============================================ -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/public/css/bootstrap.min.css">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="~/public/css/icons.min.css">
+
+    <link href="~/Public/alertifyjs/css/alertify.min.css" rel="stylesheet" />
+    <link href="~/Public/alertifyjs/css/themes/default.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <!-- google font -->
+    <link rel="stylesheet" href="~/public/css/fonts.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="~/public/css/plugins.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="~/public/css/style.css">
+    <link href="~/Public/css/homeIndex.css" rel="stylesheet" />
+    <!-- Modernizer JS -->
+    <script src="~/public/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+    <!-- header -->
+    @Html.Action("_header", "Modules")
+    <!-- banner -->
+    @*@Html.Action("_mainmenu", "Modules")*@
+
+    @RenderBody()
+    @Html.Action("_footer", "Modules")
+    <!-- JS
+    ============================================ -->
+    <!-- jQuery JS -->
+    <script src="~/public/js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- Popper JS -->
+    <script src="~/public/js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/public/js/bootstrap.min.js"></script>
+    <!-- Plugins JS -->
+    <script src="~/public/js/plugins.js"></script>
+    <script src="~/Public/alertifyjs/alertify.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="~/public/js/main.js"></script>
+
+</body>
+
+</html>

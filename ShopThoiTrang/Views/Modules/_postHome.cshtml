@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ShopThoiTrang.Models.Mpost>
+
+@foreach (var item in Model)
+{
+    string title = item.title;
+    <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="blog-wrap mb-30 scroll-zoom">
+            <div class="blog-img">
+                <a href="@item.slug"><img src="~/Public/images/Post/@item.img" alt=""></a>
+                <span class="purple">Admin</span>
+            </div>
+            <div class="blog-content-wrap">
+                <div class="blog-content text-center">
+                    @if (title.Length > 20)
+                    {
+                        <h3 class="m-0"><a href="@item.slug">@title.Substring(0, 20) ...</a></h3>
+                    }
+                    else
+                    {
+                        <h3><a href="@item.slug">@item.title</a></h3>
+                    }
+                   
+                    <span>By Shop <a href="#">Admin</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

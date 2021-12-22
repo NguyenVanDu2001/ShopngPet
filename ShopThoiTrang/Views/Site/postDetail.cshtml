@@ -1,0 +1,151 @@
+﻿@model ShopThoiTrang.Models.Mpost
+@{
+    ViewBag.Title = "postDetail";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<div class="breadcrumb-area pt-35 pb-35 bg-gray-3 bg-white border ">
+    <div class="container ">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li>
+                    <a href="~/">Trang chủ</a>
+                </li>
+                <li class="active">Chi tiết bài viết </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="Blog-area pt-100 pb-100 bg-light">
+    <div class="container bg-white p-3">
+        <div class="row flex-row-reverse">
+            <div class="col-lg-9">
+                <div class="blog-details-wrapper ml-20 ">
+                    <div class="blog-details-top">
+                        <div class="blog-details-img">
+                            <img alt="" src="~/Public/images/Post/@Model.img">
+                        </div>
+                        <div class="blog-details-content">
+                            <div class="blog-meta-2">
+                                <ul>
+                                    <li>22 April, 2018</li>
+                                    <li><a href="#">4 <i class="fa fa-comments-o"></i></a></li>
+                                </ul>
+                            </div>
+                            <h3>@Model.title</h3>
+                            <p>@Html.Raw(Model.detail)</p>
+                        
+                        </div>
+                    </div>
+   
+                   
+                    <div class="next-previous-post">
+                        <a href="#"> <i class="fa fa-angle-left"></i> Trang trước</a>
+                        <a href="#">Xem tiếp <i class="fa fa-angle-right"></i></a>
+                    </div>
+                    @*<div class="blog-comment-wrapper mt-55">
+                        <h4 class="blog-dec-title">comments : 02</h4>
+                        <div class="single-comment-wrapper mt-35">
+                            <div class="blog-comment-img">
+                                <img src="assets/img/blog/comment-1.jpg" alt="">
+                            </div>
+                            <div class="blog-comment-content">
+                                <h4>Anthony Stephens</h4>
+                                <span>October 14, 2018 </span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor magna aliqua. Ut enim ad minim veniam, </p>
+                                <div class="blog-details-btn">
+                                    <a href="blog-details.html">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single-comment-wrapper mt-50 ml-120">
+                            <div class="blog-comment-img">
+                                <img src="assets/img/blog/comment-2.jpg" alt="">
+                            </div>
+                            <div class="blog-comment-content">
+                                <h4>DX Joxova</h4>
+                                <span>October 14, 2018 </span>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor magna aliqua. Ut enim ad minim veniam, </p>
+                                <div class="blog-details-btn">
+                                    <a href="blog-details.html">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-reply-wrapper mt-50">
+                        <h4 class="blog-dec-title">post a comment</h4>
+                        <form class="blog-form" action="#">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="leave-form">
+                                        <input type="text" placeholder="Full Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="leave-form">
+                                        <input type="email" placeholder="Email Address ">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="text-leave">
+                                        <textarea placeholder="Message"></textarea>
+                                        <input type="submit" value="SEND MESSAGE">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>*@
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="sidebar-style">
+                    <div class="sidebar-widget">
+                        <h4 class="pro-sidebar-title">Tìm kiếm</h4>
+                        <div class="pro-sidebar-search mb-55 mt-25">
+                            <form class="pro-sidebar-search-form" action="#">
+                                <input type="text" placeholder="Tìm kiếm...">
+                                <button>
+                                    <i class="pe-7s-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget">
+                        <div class="sidebar-widget border p-2">
+                            <h4 class="pro-sidebar-title" style="border-bottom:2px #424242 solid;">Bài viết nổi bật </h4>
+                            <div class="sidebar-project-wrap mt-30">
+
+                                @foreach (var item in ViewBag.post)
+                                {
+                                    string title = item.title;
+                                    <div class="single-sidebar-blog">
+                                        <div class="sidebar-blog-img">
+                                            <a href="#"><img src="~/Public/images/Post/@item.img" alt=""></a>
+                                        </div>
+                                        <div class="sidebar-blog-content ">
+
+                                            @if (title.Length > 20)
+                                            {
+                                                <h4 class="m-0"><a href="@item.slug">@title.Substring(0, 15) ...</a></h4>
+                                            }
+                                            else
+                                            {
+                                                <h4><a href="@item.slug">@item.title</a></h4>
+                                            }
+                                            <span>Bài viết</span>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="sidebar-widget mt-35 border">
+                            <h4 class="pro-sidebar-title text-center p-2" style="border-bottom:2px #424242 solid;"> Danh mục product  </h4>
+                            <div class="sidebar-widget-list mt-20 ">
+                                @Html.Action("_category", "Modules")
+                            </div>
+                        </div>
+                        
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

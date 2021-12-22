@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ShopThoiTrang.Models.Product>
+
+<div class="related-product-area pb-95">
+    <div class="container">
+        <div class="section-title text-center mb-50">
+            <h2>Similar products</h2>
+        </div>
+        <div class="related-product-active owl-carousel">
+            @foreach (var item in Model)
+            {
+                int sale = (int)item.pricesale;
+                float price = (int)item.price - (int)item.price / 100 * (int)sale;
+                <div class="product-wrap">
+                    <div class="product-img">
+                        <a href="~/@item.slug">
+                            <img class="default-img" src="~/public/images/product/@item.img" alt="">
+                            <img class="hover-img" src="~/public/images/product/@item.imgBehind" alt="">
+                        </a>
+                        @if (item.pricesale > 0)
+                        {
+                            <span class="pink bg-danger">-@item.pricesale%</span>
+                        }
+                     
+                    </div>
+                    <div class="product-content text-center">
+                        <h3><a class="font-weight-bold" href="~/@item.slug">@item.name</a></h3>
+                       
+                        <div class="product-price">
+                            <span>@price.ToString("N0") đ</span>
+                            <span class="old">@item.price.ToString("N0") đ</span>
+                        </div>
+                    </div>
+                </div>
+            }
+            </div>
+    </div>
+</div>

@@ -1,0 +1,147 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<ShopThoiTrang.Models.Mpost>
+@{
+    ViewBag.Title = "getAllPost";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<div class="breadcrumb-area pt-35 pb-35 bg-gray-3">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li>
+                    <a href="index.html">Trang chủ</a>
+                </li>
+                <li class="active">Bài viết </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="Blog-area pt-100 pb-100">
+    <div class="container">
+        <div class="row flex-row-reverse">
+            <div class="col-lg-9">
+                <div class="ml-20">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="blog-wrap-2 mb-30">
+                                    <div class="blog-img-2">
+                                        <a href="@item.slug"><img src="~/Public/images/Post/@item.img" alt=""></a>
+                                    </div>
+                                    <div class="blog-content-2">
+                                        <div class="blog-meta-2">
+                                            <ul>
+                                                <li>22 April, 2018</li>
+                                                <li><a href="#">4 <i class="fa fa-comments-o"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <h4><a href="@item.slug">@item.title</a></h4>
+                                        <p>@item.descriptionShort</p>
+                                        <div class="blog-share-comment">
+                                            <div class="blog-btn-2">
+                                                <a href="@item.slug">Đọc thêm</a>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                    <div class="pro-pagination-style text-center mt-30">
+
+                        <ul>
+                            <li>  <a href="~/@ViewBag.url?page=1" class="prev">prev</a></li>
+                            <li>
+                                @{
+                                    var firstPage = 1;
+                                    if ((int)Model.PageNumber > 1)
+                                    {
+                                        firstPage = (int)Model.PageNumber - 1;
+                                    }
+
+                                    var lastpage = Model.PageNumber;
+                                    if (lastpage < Model.PageCount)
+                                    {
+                                        lastpage = (int)Model.PageNumber + 1;
+                                    }
+
+                                }
+                                <a href="~/@ViewBag.url?page=@firstPage" class="prev"><i class="fa fa-angle-double-left"></i></a>
+
+                            </li>
+
+                            @for (int i = Model.PageNumber; i <= Model.PageCount; i++)
+                            {
+
+                                if (i < Model.PageNumber + 5)
+                                {
+                                    <li> <a id="active_@i" href="~/@ViewBag.url?page=@i">@i  </a> </li>
+                                }
+
+                            }
+                            <li>
+                                <a href="~/@ViewBag.url?page=@lastpage" class="next"><i class="fa fa-angle-double-right"></i></a>
+                            </li>
+                            <li>
+                                <a href="~/@ViewBag.url?page=@lastpage" class="next">Next</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="sidebar-style">
+                    <div class="sidebar-widget">
+                        <h4 class="pro-sidebar-title">Tìm kiếm </h4>
+                        <div class="pro-sidebar-search mb-55 mt-25">
+                            <form class="pro-sidebar-search-form" action="#">
+                                <input type="text" placeholder="Tìm kiếm bài viết ...">
+                                <button>
+                                    <i class="pe-7s-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget border p-2" style="width: 267px;height: 222px;">
+                        <h4 class="pro-sidebar-title bg-black" style="color: white; height: 41px; text-align: left; margin: -8px -8px 0px; padding: 8px; ">Bài viết mới nhất</h4>
+
+                        <div class="sidebar-project-wrap mt-30">
+
+                            @foreach (var item in Model)
+                            {
+                                string title = item.title;
+                                <div class="single-sidebar-blog">
+                                    <div class="sidebar-blog-img">
+                                        <a href="#"><img src="~/Public/images/Post/@item.img" alt=""></a>
+                                    </div>
+                                    <div class="sidebar-blog-content ">
+
+                                        @if (title.Length > 20)
+                                        {
+                                            <h4 class="m-0"><a href="@item.slug">@title.Substring(0, 15) ...</a></h4>
+                                        }
+                                        else
+                                        {
+                                            <h4><a href="@item.slug">@item.title</a></h4>
+                                        }
+                                        <span>Bài viết</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="sidebar-widget mt-35 border">
+                        <h4 class="pro-sidebar-title  p-2 bg-black" style="border-bottom: 2px #424242 solid; color: white; text-align: left;"> Product catalog  </h4>
+                        <div class="sidebar-widget-list mt-20 ">
+                            @Html.Action("_category", "Modules")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

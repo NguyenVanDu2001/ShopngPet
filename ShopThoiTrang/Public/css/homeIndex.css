@@ -1,0 +1,12 @@
+﻿.header-color, .header-color::after,.header-color::before {
+    background-color: #f5c6d7 !important;
+}
+.title-logo {
+    margin: auto;
+    display: flex;
+    vertical-align: c;
+    padding-top: 10px;
+    color: #d43606;
+    font-size: 21px;
+    font-weight: 600;
+}

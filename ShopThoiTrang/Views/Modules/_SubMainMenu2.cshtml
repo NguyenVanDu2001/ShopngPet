@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ShopThoiTrang.Models.Mmenu>
+@{
+    var menuitem = ViewBag.menuitem;
+}
+<li>
+    <a href="@menuitem.link" >@menuitem.name <i class="fa fa-angle-down"></i></a>
+    <ul class="submenu">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="~/@item.link">@item.name</a>
+            </li>
+        }
+    </ul>
+</li>

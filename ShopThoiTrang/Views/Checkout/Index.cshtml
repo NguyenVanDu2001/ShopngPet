@@ -1,0 +1,398 @@
+﻿@model IEnumerable<ShopThoiTrang.Models.Cart_item>
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<link href="~/Public/css/cssNganLuong.css" rel="stylesheet" />
+<div class="breadcrumb-area pt-35 pb-35 bg-gray-3">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li>
+                    <a href="~/">Trang chủ</a>
+                </li>
+                <li class="active">Thanh toán </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="checkout-area pt-95 pb-100">
+    <div class="container">
+        <form class="form" method="POST" action="" id="formCheckout">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="billing-info-wrap">
+                        <h3>Chi tiết đặt hàng</h3>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <label>Họ và tên<span style="color:red">*</span></label>
+                                    <input type="text" name="deliveryname" placeholder="" required="required">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <label>Số điện thoại<span style="color:red">*</span></label>
+                                    <input type="number" name="deliveryphone" placeholder="" required="required">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <label>Địa chỉ email<span style="color:red">*</span></label>
+                                    <input type="email" name="deliveryemail" placeholder="" required="required">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <label>Địa chỉ giao hàng<span style="color:red">*</span></label>
+                                    <input type="text" name="deliveryaddress" placeholder="" required="required">
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-12">
+                                <div class="form-group">
+                                    <label>Ghi chú<span style="color:red">*</span></label>
+                                    <textarea type="text" name="note" placeholder=""></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="your-order-area">
+                        <h3>List product</h3>
+                        <div class="your-order-wrap gray-bg-4">
+                            <div class="your-order-product-info">
+                                <div class="your-order-top">
+                                    <ul>
+                                        <li>Sản phẩm</li>
+                                        <li>Tổng</li>
+                                    </ul>
+                                </div>
+                                <div class="your-order-middle">
+                                    <ul>
+                                        @{ float sum = 0; }
+                                        @foreach (var iten in Model)
+                                        {
+                                            int sale = (int)iten.product.pricesale;
+                                            float price = ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale);
+                                            float price1 = ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * (iten.quantity);
+                                            float priveNsale = (int)iten.product.price * iten.quantity;
+                                            if (sale > 0)
+                                            {
+                                                sum += ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * ((int)iten.quantity);
+                                            }
+                                            else
+                                            {
+                                                sum += (int)iten.product.price * (int)iten.quantity;
+                                            }
+                                            <li>
+                                                @iten.product.name  X @iten.quantity |  Size @iten.Size
+                                                <br />
+                                                <del class="price-old">@iten.product.price.ToString("N0") đ</del>
+                                                <span class="text-danger font-weight-bold">@price.ToString("N0") đ </span>
+                                            </li>
+                                        }
+
+                                    </ul>
+                                </div>
+                                <div class="your-order-bottom">
+                                    <ul>
+                                        <li class="your-order-shipping">Transport fee</li>
+                                        <li><input type="checkbox" name="transport_fee" checked value="35000">   <span>  35.000 đ</span></li>
+                                    </ul>
+                                </div>
+                                  @{ 
+                            var total_sum = sum + 35000;
+                                }
+                                <div class="your-order-total">
+                                    <ul>
+                                        <li class="order-total">Total</li>
+                                        <li>@total_sum.ToString("N0") đ</li>
+                                    </ul>
+                                </div>
+                                <input type="hidden" name="sumOrder" value="@total_sum" />
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-accordion element-mrg">
+                                    <div class="panel-group" id="accordion">
+                                        <div> <h3>delivery method (<span class="text-danger">*</span>)</h3></div>
+                                        <div class="panel payment-accordion">
+                                            <div class="panel-heading" id="method-one">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#method1">
+                                                        Ship Cod (Mặc định)
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="method1" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <div class="p-3 bg-white">
+
+                                                        <input type="radio" class="w-25" id="7" name="option_payment" value="COD" checked>
+                                                        <label for="7" class="text-success">
+                                                            <img style="width:100px" src="public/images/COD.png" alt="Alternate Text" />
+                                                            <span class="pl-2 text-secondary" style="font-size:15px;">Ship COD</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                       
+
+                                        <div class="panel payment-accordion">
+                                            <div class="panel-heading" id="method-three">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#method3">
+                                                        Thanh toán với NGÂN LƯỢNG
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="method3" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <div class="p-3 bg-white">
+                                                        <input class="float-left w-25" type="radio" id="2" name="option_payment" value="NL">
+                                                        <label class="slide-trigger " for="2" data-target="#NL1">
+                                                            <img style="width:100px" src="public/images/NL.png" alt="Alternate Text" />
+                                                            <span class="pl-2 text-secondary" style="font-size:15px;"> Ngân lượng </span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel payment-accordion">
+                                            <div class="panel-heading" id="method-three">
+                                                <h4 class="panel-title">
+                                                    <a onclick="check()" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#method4">
+                                                        Thanh toán với ATM online
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="method4" class="panel-collapse collapse">
+                                                <divq class="panel-body">
+                                                    <div class="p-3 bg-white">
+                                                        <input type="radio" id="CheckNH" class="w-25" name="option_payment" value="ATM_ONLINE">
+
+                                                        <label for="3" class="slide-trigger" data-toggle="collapse" data-target="#NH">
+                                                            <img style="width:100px" class=" pl-3 " src="public/images/banks.png" alt="Alternate Text" />
+                                                            <span class="pl-2 text-secondary" style="font-size:15px;">ATM Online</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="border checkout-slidedown-box card-body  " id="NH1">
+
+                                                        <p style="color:#000">
+                                                            <span style="color:#000;font-weight:bold;text-decoration:underline;">Caution</span>: You need to register for Internet-Banking or online payment service at your bank before doing so.</i></pstyle="color:#000>
+                                                            <ul class="cardList clearfix">
+
+                                                                <li class="bank-online-methods">
+                                                                    <label for="vcb_ck_on">
+                                                                        <i class="VCB" title="Ngân hàng TMCP Ngoại Thương Việt Nam"></i>
+                                                                        <input type="radio" value="VCB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="vnbc_ck_on">
+                                                                        <i class="DAB" title="Ngân hàng Đông Á"></i>
+                                                                        <input type="radio" value="DAB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="tcb_ck_on">
+                                                                        <i class="TCB" title="Ngân hàng Kỹ Thương"></i>
+                                                                        <input type="radio" value="TCB" runat="server" name="bankcode" />
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="sml_atm_mb_ck_on">
+                                                                        <i class="MB" title="Ngân hàng Quân Đội"></i>
+                                                                        <input type="radio" value="MB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="shb_ck_on">
+                                                                        <i class="SHB" title="Ngân hàng Sài Gòn - Hà Nội"></i>
+                                                                        <input type="radio" value="SHB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="sml_atm_vib_ck_on">
+                                                                        <i class="VIB" title="Ngân hàng Quốc tế"></i>
+                                                                        <input type="radio" value="VIB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="sml_atm_vtb_ck_on">
+                                                                        <i class="ICB" title="Ngân hàng Công Thương Việt Nam"></i>
+                                                                        <input type="radio" value="ICB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="sml_atm_exb_ck_on">
+                                                                        <i class="EXB" title="Ngân hàng Xuất Nhập Khẩu"></i>
+                                                                        <input type="radio" value="EXB" runat="server" name="bankcode" checked />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="sml_atm_acb_ck_on">
+                                                                        <i class="ACB" title="Ngân hàng Á Châu"></i>
+                                                                        <input type="radio" value="ACB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="sml_atm_hdb_ck_on">
+                                                                        <i class="HDB" title="Ngân hàng Phát triển Nhà TPHCM"></i>
+                                                                        <input type="radio" value="HDB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="sml_atm_msb_ck_on">
+                                                                        <i class="MSB" title="Ngân hàng Hàng Hải"></i>
+                                                                        <input type="radio" value="MSB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="sml_atm_nvb_ck_on">
+                                                                        <i class="NVB" title="Ngân hàng Nam Việt"></i>
+                                                                        <input type="radio" value="NVB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="sml_atm_vab_ck_on">
+                                                                        <i class="VAB" title="Ngân hàng Việt Á"></i>
+                                                                        <input type="radio" value="VAB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="sml_atm_vpb_ck_on">
+                                                                        <i class="VPB" title="Ngân Hàng Việt Nam Thịnh Vượng"></i>
+                                                                        <input type="radio" value="VPB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="sml_atm_scb_ck_on">
+                                                                        <i class="SCB" title="Ngân hàng Sài Gòn Thương tín"></i>
+                                                                        <input type="radio" value="SCB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="ojb_ck_on">
+                                                                        <i class="OJB" title="Ngân hàng Đại Dương"></i>
+                                                                        <input type="radio" value="OJB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="bnt_atm_pgb_ck_on">
+                                                                        <i class="PGB" title="Ngân hàng Xăng dầu Petrolimex"></i>
+                                                                        <input type="radio" value="PGB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="bnt_atm_gpb_ck_on">
+                                                                        <i class="GPB" title="Ngân hàng TMCP Dầu khí Toàn Cầu"></i>
+                                                                        <input type="radio" value="GPB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="bnt_atm_agb_ck_on">
+                                                                        <i class="AGB" title="Ngân hàng Nông nghiệp &amp; Phát triển nông thôn"></i>
+                                                                        <input type="radio" value="AGB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="bnt_atm_sgb_ck_on">
+                                                                        <i class="SGB" title="Ngân hàng Sài Gòn Công Thương"></i>
+                                                                        <input type="radio" value="SGB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="bnt_atm_nab_ck_on">
+                                                                        <i class="NAB" title="Ngân hàng Nam Á"></i>
+                                                                        <input type="radio" value="NAB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                                <li class="bank-online-methods ">
+                                                                    <label for="sml_atm_bab_ck_on">
+                                                                        <i class="BAB" title="Ngân hàng Bắc Á"></i>
+                                                                        <input type="radio" value="BAB" runat="server" name="bankcode" />
+
+                                                                    </label>
+                                                                </li>
+
+                                                            </ul>
+
+</div>
+                                            </div>
+                                        </div>
+                                        @if (Model.Count() == 0)
+                                        {
+                                            <div class="Place-order mt-25">
+                                                <a href="javascript:void(0)" onclick="checkCartNull()" class="btn-hover">Thanh toán</a>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="Place-order mt-25">
+                                                <button class="btn w-100 text-white" style="background-color:#b200ff;" type="submit">Thanh toán</button>
+                                            </div>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+             
+                </div>
+            </div>
+        </form>
+    
+    </div>
+</div>
+
+<script>
+    function check() {
+        $("#CheckNH").attr('checked', true);
+    }
+    function checkCartNull() {
+        alertify.error("Bạn phải thêm SP vào giỏ hàng trước đã");
+    }
+</script>

@@ -1,0 +1,323 @@
+﻿@model ShopThoiTrang.Models.Product
+@{
+    ViewBag.Title = "Detail saen phẩm";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+    int sale = (int)Model.pricesale;
+    float price = (int)Model.price - (int)Model.price / 100 * (int)sale;
+
+    var size = ViewBag.size;
+
+    var sizeShoe = ViewBag.sizeShoe;
+}
+
+
+<div class="breadcrumb-area pt-35 pb-35 bg-gray-3">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li>
+                    <a href="~/">Trang chủ</a>
+                </li>
+                <li class="active">Chi tiết sản phẩm</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="shop-area pt-100 pb-100">
+    <div class="container bg-light p-3">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product-details border">
+                    <div class="product-details-img">
+                        <div class="tab-content jump">
+
+                            <div id="shop-details-2" class="tab-pane active large-img-style">
+                                <img src="~/public/images/product/@Model.img" alt="">
+                                @if (Model.pricesale > 0)
+                                {
+                                    <span class="dec-price bg-danger">-@Model.pricesale% </span>
+                                }
+                                <div class="img-popup-wrap">
+                                    <a class="img-popup" href="~/public/images/product/@Model.img"><i class="pe-7s-expand1"></i></a>
+                                </div>
+                            </div>
+                            <div id="shop-details-3" class="tab-pane  large-img-style">
+                                <img src="~/public/images/product/@Model.imgBehind" alt="">
+
+
+                                @if (Model.pricesale > 0)
+                                {
+                                    <span class="dec-price bg-danger">-@Model.pricesale% </span>
+                                }
+                                <div class="img-popup-wrap">
+                                    <a class="img-popup" href="~/public/images/product/@Model.imgBehind"><i class="pe-7s-expand1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shop-details-tab nav">
+                            <a class="shop-details-overly active" href="#shop-details-2" data-toggle="tab">
+                                <img src="~/public/images/product/@Model.img" alt="">
+                            </a>
+                            <a class="shop-details-overly" href="#shop-details-3" data-toggle="tab">
+                                <img src="~/public/images/product/@Model.imgBehind" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product-details-content ml-70">
+                    <h2 class="font-weight-bold p-2">@Model.name</h2>
+                    <div class="product-details-price">
+                        <span>@price.ToString("N0") đ</span>
+                        <span class="old">@Model.price.ToString("N0") đ</span>
+                    </div>
+                    @*
+                    <div class="pro-details-rating-wrap">
+                        <div class="pro-details-rating">
+                            <h4 class="text-danger">Cách chọn size</h4>
+                        </div>
+
+                    </div>
+                    <div class="product-anotherinfo-wrapper">
+                       
+                        <ul>
+                        <li class="pt-2">  Xem bảng size bên dưới hoặc liên hệ với nhân viên tư vấn nếu bạn chưa biết chọn size</li>
+                        <li class="pt-2">  Zalo: 0966-606-503</li>
+                        <li class="pt-2">  Instagram: seller.5theway</li>
+                        </ul>
+                    </div>*@
+                    @if (Model.type == 1)
+                    {
+                        <div class="pro-details-size-color pt-5">
+                            <div class="pro-details-size">
+                                <span>Chọn Size</span>
+                                <div class="pro-details-size-content">
+                                    <div class="custom-select" style="width:200px;">
+                                        <input type="hidden" id="protype" value="@Model.type" />
+                                        <select required id="size">
+                                            <option value="">Choose Size:</option>
+                                            @if (size.SizeS == 0)
+                                            {
+                                                <option value="S" disabled>S</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="S">S</option>
+                                            }
+                                            @if (size.SizeM == 0)
+                                            {
+                                                <option value="M" disabled>M</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="M"> M </option>
+                                            }
+                                            @if (size.SizeL == 0)
+                                            {
+                                                <option value="L" disabled>L</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="L">L</option>
+                                            }
+                                            @if (size.SizeXL == 0)
+                                            {
+                                                <option value="XL" disabled>XL</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="XL">XL</option>
+                                            }
+                                            @if (size.SizeXXL == 0)
+                                            {
+                                                <option value="XXL" disabled>XXL</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="XXL">XXL</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else if (Model.type == 2)
+                    {
+                        <div class="pro-details-size-color pt-5">
+                            <div class="pro-details-size">
+                                <span>Choose Size</span>
+                                <div class="pro-details-size-content">
+                                    <div class="custom-select" style="width:200px;">
+                                        <input type="hidden" id="protype" value="@Model.type" />
+                                        <select required id="size">
+                                            <option value="">Choose Size 0)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                <option value="36">Size 36</option>
+                                            }
+                                            @if (sizeShoe.Size_37 == 0)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                <option value="37"> Size 37 </option>
+                                            }
+                                            @if (sizeShoe.Size_38 == 0)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                <option value="38">Size 38</option>
+                                            }
+                                            @if (sizeShoe.Size_39 == 0)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                <option value="39">Size 39</option>
+                                            }
+                                            @if (sizeShoe.Size_40 == 0)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                <option value="40">Size 40</option>
+                                            }
+                                            @if (sizeShoe.Size_41 == 0)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                <option value="41">Size 41</option>
+                                            }
+                                            @if (sizeShoe.Size_42 == 0)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                <option value="42">Size 42</option>
+                                            }
+                                            @if (sizeShoe.Size_43 == 0)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                <option value="43">Size 43</option>
+                                            }
+                                            @if (sizeShoe.Size_44 == 0)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                <option value="44">Size 44</option>
+                                            }
+                                            @if (sizeShoe.Size_45 == 0)
+                                            {
+
+                                            }
+                                            else
+                                            {
+                                                <option value="44">Size 45</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <input type="hidden" id="protype" value="@Model.type" />
+                    }
+                    <div class="pro-details-quality">
+                        <div class="cart-plus-minus">
+                            <input class="cart-plus-minus-box" id="qty" type="text" name="qtybutton" min="1" value="1">
+                        </div>
+                        <div class="pro-details-cart btn-hover">
+                            <a onclick="AddTocart(@Model.ID)">Thêm vào giỏ hàng</a>
+                        </div>
+                        <div class="pro-details-wishlist">
+                            <a href="#"><i class="fa fa-heart-o"></i></a>
+                        </div>
+                        <div class="pro-details-compare">
+                            <a href="#"><i class="pe-7s-shuffle"></i></a>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Action("_relatedProducts", "Modules", new { CatId = Model.catid })
+<div class="description-review-area pb-90">
+    <div class="container">
+        <div class="description-review-wrapper">
+            <div class="description-review-topbar nav">
+                <a data-toggle="tab" href="#des-details1">Size</a>
+                <a class="active" data-toggle="tab" href="#des-details2">Mô tả</a>
+
+            </div>
+            <div class="tab-content description-review-bottom">
+                <div id="des-details2" class="tab-pane active">
+                    <div class="product-description-wrapper">
+                        <p>
+                            @Html.Raw(Model.detail)
+                        </p>
+                    </div>
+                </div>
+                <div id="des-details1" class="tab-pane ">
+                    <div class="product-anotherinfo-wrapper">
+                        <img class="w-100" src="~/Public/images/chach-chon-size.jpg" alt="~/Public/images/chach-chon-size.jpg" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function AddTocart(productID, size) {
+        var qty = $("#qty").val();
+        var size = $("#size").val();
+        var protype = $("#protype").val();
+        if (protype == 3) {
+        }
+        else {
+            if (!size) {
+                alertify.error("Please choose size");
+                return false;
+            }
+        }
+        $.ajax({
+            url: '/Cart/Additem?productID=' + productID + '&quantity=' + qty + '&size=' + size + '&protype=' + protype,
+            type: 'GET',
+            success: function (data) {
+
+                if (data.statuss == 3) {
+                    alertify.error("Product is out of stock");
+                    return false;
+                }
+                $("#cartItem").text("" + data.cartCount);
+                alertify.success(" Added to card(" + data.cartCount + ")");
+            }
+        })
+    }
+</script>

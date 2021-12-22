@@ -1,0 +1,166 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<ShopThoiTrang.Models.Product>
+@{
+    ViewBag.Title = "productOfCategory";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<div class="breadcrumb-area pt-35 pb-35 bg-gray-3">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li>
+                    <a href="~/">Trang chủ</a>
+                </li>
+                <li>Sản phẩm</li>
+                <li class="active"> @ViewBag.categoryName </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="shop-area pt-95 pb-100">
+    <div class="container">
+        <div class="row flex-row-reverse">
+            <div class="col-lg-9">
+                <div class="shop-top-bar bg-light p-3 row">
+                    <div class="select-shoing-wrap">
+                        <div class="shop-select">
+                            <select>
+                                <option value="">Sắp xếp theo tên </option>
+                                <option value="">A đến Z</option>
+                                <option value=""> Z đến A</option>
+                            </select>
+                        </div>
+                      
+                        <p>Hiện  1–@Model.PageSize trong @ViewBag.totalPage  kết quả</p>
+                    </div>
+                    <div class="shop-tab nav">
+                        <a class="active" href="#shop-1" data-toggle="tab">
+                            <i class="fa fa-table"></i>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="shop-bottom-area mt-35">
+                    <div class="tab-content jump">
+                        <div id="shop-1" class="tab-pane active">
+                            <div class="custom-row">
+                                @foreach (var item in Model)
+                                {
+                                    int sale = (int)item.pricesale;
+                                    float price = (int)item.price - (int)item.price / 100 * (int)sale;
+
+                                    <div class="custom-colh-4 border">
+                                        <div class="product-wrap-2 mb-25 scroll-zoom">
+
+                                            <div class="product-img">
+                                                <a href="~/@item.slug">
+                                                    <img class="default-img" src="~/public/images/product/@item.img" alt="">
+                                                    <img class="hover-img" src="~/public/images/product/@item.imgBehind" alt="">
+                                                </a>
+                                                @if (item.pricesale > 0)
+                                                {
+                                                    <span style="border-radius:2px;" class="px-3 bg-danger text-white">-@item.pricesale%</span>
+                                                }
+
+
+                                            </div>
+                                            <div class="product-content text-center">
+                                                <h5><a href="~/@item.slug">@item.name</a></h5>
+
+                                                <div class="product-price">
+                                                    <span class="text-danger font-weight-bold">@price.ToString("N0") đ</span>
+                                                    @if (item.pricesale > 0)
+                                                    {
+                                                        <span class="old text-dark">@item.price.ToString("N0") đ</span>
+                                                    }
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                <div class="pro-pagination-style text-center mt-30">
+
+                    <ul>
+                        <li>  <a href="~/@ViewBag.url?page=1" class="prev">Prev</a></li>
+                        <li>
+                            @{
+                                var firstPage = 1;
+                                if ((int)Model.PageNumber > 1)
+                                {
+                                    firstPage = (int)Model.PageNumber - 1;
+                                }
+
+                                var lastpage = Model.PageNumber;
+                                if (lastpage < Model.PageCount)
+                                {
+                                    lastpage = (int)Model.PageNumber + 1;
+                                }
+
+                            }
+                            <a href="~/@ViewBag.url?page=@firstPage" class="prev"><i class="fa fa-angle-double-left"></i></a>
+
+                        </li>
+
+                        @for (int i = Model.PageNumber; i <= Model.PageCount; i++)
+                        {
+
+                            if (i < Model.PageNumber + 5)
+                            {
+                                <li > <a id="active_@i" href="~/@ViewBag.url?page=@i">@i  </a> </li>
+                            }
+
+                        }
+                        <li>
+                            <a href="~/@ViewBag.url?page=@lastpage" class="next"><i class="fa fa-angle-double-right"></i></a>
+                        </li>
+                        <li>
+                            <a href="~/@ViewBag.url?page=@lastpage" class="next">Next</a>
+                        </li>
+                    </ul>
+
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="sidebar-style mr-30">
+                    <div class="sidebar-widget ">
+                        <h4 class="pro-sidebar-title bg-light p-3">Tìm kiếm </h4>
+                        <div class="pro-sidebar-search mb-50 mt-25">
+                            <form class="pro-sidebar-search-form" action="tim-kiem-san-pham" method="GET">
+                                <input type="text" name="keyW" placeholder="Nhập tìm kiếm...">
+                                <button type="submit">
+                                    <i class="pe-7s-search"></i>
+                                </button>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget border p-1">
+                        <h4 class="pro-sidebar-title p-2 text-white " style="background: #424242;">Danh mục sản phẩm </h4>
+                        <div class="sidebar-widget-list mt-30">
+                            @Html.Action("_category", "Modules")
+                        </div>
+                    </div>
+                    <div class="sidebar-widget mt-50 border p-1">
+                        <h4 class="pro-sidebar-title p-2 text-white " style="background: #424242;">Thẻ </h4>
+                        <div class="sidebar-widget-tag mt-25">
+                            @Html.Action("_category", "Modules")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $("#active_@Model.PageNumber").addClass("active");
+    
+</script>

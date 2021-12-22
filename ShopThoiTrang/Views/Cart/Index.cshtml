@@ -1,0 +1,174 @@
+﻿@model List<ShopThoiTrang.Models.Cart_item>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+
+
+
+<div class="breadcrumb-area pt-35 pb-35 bg-gray-3">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li>
+                    <a href="~/">Trang Chủ</a>
+                </li>
+                <li class="active">Giỏ hàng </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="cart-main-area pt-90 pb-100">
+    <div class="container">
+
+        @if (Model.Count() == 0)
+        {
+            <section class="checkout_wthree py-sm-5 py-3">
+                <div class="container">
+
+                    <h3 class="text-danger">Giỏ hàng của bạn chưa có sản phẩm </h3>
+                </div>
+            </section>
+        }
+        else
+        {
+            <h3 class="cart-page-title">Sản phẩm của bạn</h3>
+        }
+
+    <div class="row">
+        @Html.Partial("_MessgeAlert")
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="table-content table-responsive cart-table-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ảnh</th>
+                                <th>Têm</th>
+                                <th>Giá</th>
+                                <th>Size</th>
+                                <th>Số lượng</th>
+                                <th>Tổng</th>
+                                <th>Tùy chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ float sum = 0; }
+                            @foreach (var iten in Model)
+                            {
+                                int sale = (int)iten.product.pricesale;
+                                float price = ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale);
+                                float price1 = ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * (iten.quantity);
+                                float priveNsale = (int)iten.product.price * iten.quantity;
+                                if (sale > 0)
+                                {
+                                    sum += ((int)iten.product.price - (int)iten.product.price / 100 * (int)sale) * ((int)iten.quantity);
+                                }
+                                else
+                                {
+                                    sum += (int)iten.product.price * (int)iten.quantity;
+                                }
+
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <a href="#"><img style=" width: 80% !important; " src="~/Public/images/product/@iten.product.img" alt=""></a>
+                                    </td>
+                                    <td class="product-name"><a href="~/@iten.product.slug">@iten.product.name</a></td>
+                                    <td class="product-price-cart">
+                                        <del class="price-old">@iten.product.price.ToString("N0") đ</del>
+                                        <span class="text-danger font-weight-bold">@price.ToString("N0") đ </span>
+                                    </td>
+                                    <td>
+                                        <span> @iten.Size</span>
+                                    </td>
+                                    <td class="product-quantity">
+                                        <div class="cart-plus-minus">
+                                            <input class="cart-plus-minus-box" type="text" id="qty_@iten.product.ID" value="@iten.quantity">
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal">@price1.ToString("N0") đ</td>
+                                    <td class="product-remove">
+                                        <a onclick="UpdateItem(@iten.product.ID,'@iten.Size',@iten.product.type)"><i class="fas fa-retweet"></i></a>
+                                        <a href="~/Cart/deleteitem?productID=@iten.product.ID&size=@iten.Size"><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="cart-shiping-update-wrapper">
+                            <div class="cart-shiping-update">
+                                <a href="~/">Tiếp tục mua hàng</a>
+                            </div>
+                            <div class="cart-clear">
+                                <a href="~/Cart/deleteAllCart">Hủy giỏ hàng</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+
+                </div>
+                <div class="col-lg-4 col-md-6">
+
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="grand-totall">
+                        <div class="title-wrap">
+                            <h4 class="cart-bottom-title section-bg-gary-cart">Đặt hàng</h4>
+                        </div>
+                        <h5>
+                            Tổng <span>@sum.ToString("N0") đ</span>
+                        </h5>
+                        <div class="total-shipping">    
+                            <h5>Phí vận chuyển</h5>
+                            <ul>
+                                <li><input type="checkbox" checked value="35000">Phí vận chuyển <span>35.000 đ</span></li>
+                            </ul>
+                        </div>
+                        @{ 
+                            var total_sum = sum + 35000;
+                          }
+                    <h4 class="grand-totall-title">Tổng số lượng  <span>@total_sum.ToString("N0") đ</span></h4>
+                        @if (Model.Count() == 0)
+                        {
+                    <a href="javascript:void(0)" onclick="checkCartNull()" class="btn">Thanh toán</a>
+
+                        }
+                        else
+                        { 
+                            <a href="~/thanh-toan">Thanh toán</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<script>
+
+    function checkCartNull() {
+        alertify.error("Bạn phải thêm SP vào giỏ hàng trước đã");
+    }
+</script>
+<script>
+    function UpdateItem(productID, size, protype) {
+        var qty = $("#qty_" + productID + "").val();
+        $.ajax({
+            url: '/Cart/updateitem?productID=' + productID + '&quantity=' + qty + '&size=' + size + '&protype=' + protype,
+            type: 'GET',
+            success: function (data) {
+                if (data.statuss == 3) {
+                    alertify.error("Không đủ số lượng");
+                }
+                else {
+                    window.location.replace("/gio-hang");
+                }
+
+            }
+        })
+    }
+</script>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ShopThoiTrang.Models.Product>
+<div class="product-area pb-60 section-padding-1">
+    <div class="container-fluid">
+        <div class="section-title-2 text-center mb-60">
+            <h2>
+                Sản phẩm mới 
+            </h2>
+            <p>Sản phẩm mới ra mắt.</p>
+        </div>
+        <div class="custom-row">
+            @foreach (var item in Model)
+            {
+                int sale = (int)item.pricesale;
+                float price = (int)item.price - (int)item.price / 100 * (int)sale;
+                <div class="custom-col-5 border">
+                    <div class="product-wrap-2 mb-25 scroll-zoom">
+                        <div class="product-img">
+                            <a href="~/@item.slug">
+                                <img class="default-img" src="~/public/images/product/@item.img" alt="">
+                                <img class="hover-img" src="~/public/images/product/@item.imgBehind" alt="">
+                            </a>
+                            @if (item.pricesale > 0)
+                            {
+                                <span style="border-radius:2px;" class="px-3 bg-danger text-white">-@item.pricesale%</span>
+                            }
+                        </div>
+                        <div class="product-content-2">
+                            <div class="title-price-wrap-2">
+                                <h3><a class="font-weight-bold" href="~/@item.slug">@item.name</a></h3>
+                                <div class="price-2">
+                                    <span class="text-danger font-weight-bold">@price.ToString("N0") đ</span>
+                                    @if (item.pricesale > 0)
+                                    {
+                                        <span class="old text-dark">@item.price.ToString("N0") đ</span>
+                                    }
+
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

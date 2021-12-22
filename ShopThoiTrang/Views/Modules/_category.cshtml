@@ -1,0 +1,9 @@
+﻿@model IEnumerable<ShopThoiTrang.Models.Mcategory>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <a class="text-uppercase" href="~/@item.slug">@item.name</a>
+        </li>
+    }
+</ul>
