@@ -51,6 +51,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                         userSession.UserName = user.username;
                         userSession.UserID = user.ID;
                         userSession.GroupID = role.GropID;
+                        //chusng ta cuxng nsxhbasJklweuikdnskfdnajnc chung cjhdnsaij vc
                         userSession.AccessName = role.accessName;
                         Session.Add(CommonConstants.USER_SESSION, userSession);
                         var i = Session["SESSION_CREDENTIALS"];

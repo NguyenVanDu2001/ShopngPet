@@ -566,6 +566,10 @@
     <Compile Include="Migrations\202111270420385_init-migration.Designer.cs">
       <DependentUpon>202111270420385_init-migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112220944423_edit_entity_Foreign_all_table.cs" />
+    <Compile Include="Migrations\202112220944423_edit_entity_Foreign_all_table.Designer.cs">
+      <DependentUpon>202112220944423_edit_entity_Foreign_all_table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Mcontact.cs" />
     <Compile Include="Models\Mpost.cs" />
@@ -757,6 +761,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202111270420385_init-migration.resx">
       <DependentUpon>202111270420385_init-migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112220944423_edit_entity_Foreign_all_table.resx">
+      <DependentUpon>202112220944423_edit_entity_Foreign_all_table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -12,6 +12,8 @@ namespace ShopThoiTrang.Models
     {
         [Key]
         public int Id { get; set; }
+        [ForeignKey("ProductId")]
+        public virtual Product Products { get; set; }
         public int ProductId { get; set; }
         public int SizeS { get; set; }
         public int SizeM { get; set; }

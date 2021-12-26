@@ -21,10 +21,13 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         //index
         public ActionResult Index()
         {
-
+            //chusng ta cux 
             var list = db.Products.Where(m => m.status != 0).OrderByDescending(m => m.ID).ToList();
             return View(list);
         }
+
+
+
 
         // GET: Admin/Products/Create
 

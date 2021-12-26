@@ -20,6 +20,13 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         public ActionResult Index()
         {
          
+            //. chung ta cua hien tai ko con tri enene chay ncbch sdj gdfsa
+
+
+
+
+
+            //.. chusng ta cux hien tai khoogn cion tre nwha ro 
             ViewBag.listCate = db.Categorys.Where(m => m.status != 0).ToList();
             var list = db.Categorys.Where(m => m.status > 0).ToList();
             return View(list);

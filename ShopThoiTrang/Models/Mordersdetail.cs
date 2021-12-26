@@ -12,7 +12,11 @@ namespace ShopThoiTrang.Models
         [Key]
         [Column(Order = 0)]
         public int ID { get; set; }
-        public int orderid { get; set; }
+        [ForeignKey("orderid")]
+        public Morder Morder { get; set; }
+        public int? orderid { get; set; }
+        [ForeignKey("productid")]
+        public Product Products { get; set; }
         public int productid { get; set; }
         public double price { get; set; }
         public int quantity { get; set; }

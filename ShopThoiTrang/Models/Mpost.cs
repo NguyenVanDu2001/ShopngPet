@@ -12,6 +12,8 @@ namespace ShopThoiTrang.Models
         [Key]
         [Column(Order = 0)]
         public int ID { get; set; }
+        [ForeignKey("topid")]
+        public virtual Mtopic Mtopic { get; set; }
         public int? topid { get; set; }
         public string title { get; set; }
         public string slug { get; set; }
