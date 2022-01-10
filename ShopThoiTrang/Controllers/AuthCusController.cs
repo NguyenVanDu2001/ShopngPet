@@ -16,6 +16,10 @@ namespace ShopThoiTrang.Controllers
         {
             return View("login");
         }
+        public ActionResult Forget_pwd()
+        {
+            return View("reset-pwd");
+        }
         public void logout()
         {
             CommonConstants.CUSTOMER_SESSION = "";

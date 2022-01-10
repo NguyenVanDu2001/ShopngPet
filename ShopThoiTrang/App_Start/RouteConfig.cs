@@ -81,6 +81,11 @@ namespace ShopThoiTrang
                   defaults: new { controller = "AuthCus", action = "LoginOrRegister", id = UrlParameter.Optional }
                   );
             routes.MapRoute(
+                  name: "reset-pwd",
+                  url: "quen-mat-khau",
+                  defaults: new { controller = "AuthCus", action = "Forget_pwd", id = UrlParameter.Optional }
+                  );
+            routes.MapRoute(
                     name: "search product",
                     url: "tim-kiem-san-pham",
                     defaults: new { controller = "Site", action = "Sreach", id = UrlParameter.Optional }

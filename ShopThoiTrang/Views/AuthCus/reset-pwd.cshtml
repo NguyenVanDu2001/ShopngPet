@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "reset-pwd";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<div class="breadcrumb-area pt-35 pb-35 bg-gray-3">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li>
+                    <a href="~/">Trang chủ</a>
+                </li>
+                <li class="~/dang-nhap">Đăng nhập / &nbsp; Đăng ký</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="login-register-area pt-100 pb-100">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_MessgeAlert")
+            <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                <div class="login-register-wrapper">
+                    <h1>Quên mật khẩu?</h1>
+
+                    <form method="post" action="">
+
+                        <label for="newPassword">Mật khẩu mới:</label>
+                        <input type="password" id="newPassword" name="newPassword" title="New password" />
+
+                        <label for="confirmPassword">Nhập lại:</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" title="Confirm new password" />
+
+                        <label for="token">Pasword Token:</label>
+                        <input type="text" id="token" name="token" title="Password Token" />
+
+                        <p class="form-actions">
+                            <input type="submit" value="Đổi mật khẩu" title="Change password" />
+                        </p>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
