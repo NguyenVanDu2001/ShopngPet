@@ -36,7 +36,7 @@ namespace ShopThoiTrang.Controllers
             {
                 string Username = fc["uname"];
                 //string Pass = Mystring.ToMD5(fc["psw"]);      
-                string Pass =fc["psw"];
+                string Pass = fc["psw"];
                 //string PassNoMD5 = fc["psw"];
                 var user_account = db.Users.Where(m => (m.username == Username) && (m.access == 1));
 
@@ -59,7 +59,8 @@ namespace ShopThoiTrang.Controllers
                         var muser = user_account.First();
                         Session.Add(CommonConstants.CUSTOMER_SESSION, muser);
                         Message.set_flash("Login success", "success");
-                        if (!Session["Redirect"].Equals("")) {
+                        if (!Session["Redirect"].Equals(""))
+                        {
                             string Url = Session["Redirect"].ToString();
                             Session["Redirect"] = "";
                             return Redirect("~" + Url);
@@ -67,9 +68,9 @@ namespace ShopThoiTrang.Controllers
                         else
                         {
                             return Redirect("~/thong-tin-khach-hang");
-                            
+
                         }
-                      
+
                     }
                 }
 
@@ -125,11 +126,14 @@ namespace ShopThoiTrang.Controllers
                 }
                 Message.set_flash("register failure", "danger");
                 return Redirect("~/dang-nhap-dang-ky");
-            }  
-    }
+            }
+        }
 
-
-
-        //
+        [HttpPost]
+        public ActionResult ChangePassword(FormCollection fc)
+        {
+            string formType = Request.Form["typeName"];
+            return Redirect("~/quen-mat-khau");
+        }
     }
 }
