@@ -354,6 +354,9 @@
     <Content Include="Public\images\product\t-shirt\uzi-kids-new-tee-roseBehind.jpg" />
     <Content Include="Public\images\product\t-shirt\uzi-kids-new-tee-white.jpg" />
     <Content Include="Public\images\product\t-shirt\uzi-kids-new-tee-whiteBehind.jpg" />
+    <Content Include="Public\images\Template\Logo\homepage-logo.png" />
+    <Content Include="Public\images\Template\Logo\loadpage-logo.png" />
+    <Content Include="Public\images\Template\Logo\oto-logo.png" />
     <Content Include="Public\images\vietcombankkk.PNG" />
     <Content Include="Public\js\bootstrap.min.js" />
     <Content Include="Public\js\main.js" />
