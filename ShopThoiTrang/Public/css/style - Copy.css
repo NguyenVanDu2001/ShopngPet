@@ -2192,6 +2192,31 @@ a {
     width: 76%;
 }
 
+
+.row, .gallery {
+    width: 100%;
+    -js-display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+.container-width, .full-width .ubermenu-nav, .container, .row {
+    max-width: 1080px;
+}
+body, .container, .full-width .ubermenu-nav, .container-width, .row {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#row-617797559 > .col > .col-inner {
+    padding: 30px 30px 30px 30px;
+}
+
 @font-face {
     font-family: "Roboto";
     font-style: normal;
@@ -2579,3 +2604,55 @@ a {
         padding-right: 0px;
     }
 }
+
+
+/*kkk */
+.container:after, .row:after, .clearfix:after, .clear:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+ .col-inner {
+    border-radius: 100px;
+}
+
+.text-center > div, .text-center > div > div, .text-center .is-divider, .text-center .star-rating, .text-center .is-star-rating {
+    margin-left: auto;
+    margin-right: auto;
+}
+.star-rating {
+    text-align: left;
+    font-size: 16px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    height: 1em;
+    line-height: 1em;
+    letter-spacing: 0;
+    margin: 0.5em 0;
+    width: 5.06em;
+    font-family: "fl-icons" !important;
+    font-weight: normal !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+    .star-rating:before, .woocommerce-page .star-rating:before {
+        content: '\e006\e006\e006\e006\e006';
+        color: #5385ba;
+        float: left;
+        top: 0;
+        left: 0;
+        position: absolute;
+    }
+    .star-rating span {
+        overflow: hidden;
+        float: left;
+        width: 10px;
+        height: 10px;
+        top: 0;
+        left: 0;
+        font-family: "fl-icons" !important;
+        font-weight: normal !important;
+        position: absolute;
+        padding-top: 1.5em;
+    }
