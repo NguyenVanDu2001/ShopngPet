@@ -23,7 +23,7 @@ namespace ShopThoiTrang.Common
         [Display(Description = "Kích thước")]
         KICHTHUOC = 1,
         [Display(Description = "Kích thước")]
-        [Description("Màu sắc")]
+        //[Description("Màu sắc")]
         MAUSAC = 2,
 
 
