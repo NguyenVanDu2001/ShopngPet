@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace ShopThoiTrang.Controllers
 {
-    public class CartController : Controller
+    public class HomeController : Controller
     {
         // khởi tạo session:
         private const string SessionCart = "SessionCart";
@@ -29,7 +29,15 @@ namespace ShopThoiTrang.Controllers
             }
             return View(list);
         }
+        public ActionResult IndexClient()
+        {
+            return View();
+        }
         public ActionResult CartIndex()
+        {
+            return View();
+        }
+        public  ActionResult ProductIndex()
         {
             return View();
         }

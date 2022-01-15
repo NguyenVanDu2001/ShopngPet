@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<main id="main" class="">
+    <div class="checkout-page-title page-title">
+        <div class="page-title-inner flex-row medium-flex-wrap container">
+            <div class="flex-col flex-grow medium-text-center">
+                <nav class="breadcrumbs flex-row flex-row-center heading-font checkout-breadcrumbs text-center strong h2 uppercase">
+                    <a href="index.html" class="current">
+                        Shopping Cart
+                    </a>
+                    <span class="divider hide-for-small"><i class="icon-angle-right"></i></span>
+                    <a href="../checkout/index.html" class="hide-for-small">
+                        Checkout details
+                    </a>
+                    <span class="divider hide-for-small"><i class="icon-angle-right"></i></span>
+                    <a href="#" class="no-click hide-for-small">
+                        Order Complete
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="cart-container container page-wrapper page-checkout">
+        <div class="woocommerce">
+            <div class="text-center pt pb">
+                <div class="woocommerce-notices-wrapper"></div><p class="cart-empty woocommerce-info">Chưa có sản phẩm nào trong giỏ hàng.</p>		<p class="return-to-shop">
+                    <a class="button primary wc-backward" href="../san-pham/index.html">
+                        Quay trở lại cửa hàng
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="aiosrs-rating-wrap" data-schema-id="1111">
+            <div class="aiosrs-star-rating-wrap ">
+                <span class="aiosrs-star-rating dashicons dashicons-star-empty" data-index="1"></span>
+                <span class="aiosrs-star-rating dashicons dashicons-star-empty" data-index="2"></span>
+                <span class="aiosrs-star-rating dashicons dashicons-star-empty" data-index="3"></span>
+                <span class="aiosrs-star-rating dashicons dashicons-star-empty" data-index="4"></span>
+                <span class="aiosrs-star-rating dashicons dashicons-star-empty" data-index="5"></span>
+            </div>
+            <div class="aiosrs-rating-summary-wrap">
+                <span class="aiosrs-rating">
+                    0/5
+                </span>
+                <span class="aiosrs-rating-count">
+                    (0 Reviews)
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+    <script >
+    var heartbeatData = new FormData(); heartbeatData.append('nitroHeartbeat', '1');
+    fetch(location.href, {method: 'POST', body: heartbeatData, credentials: 'omit'});
+    </script>
+    <script >
+    document.cookie = 'nitroCachedPage=' + (!window.NITROPACK_STATE ? '0' : '1') + '; path=/';
+    </script>
+</main>
