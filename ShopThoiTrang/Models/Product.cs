@@ -27,6 +27,7 @@ namespace ShopThoiTrang.Models
         public int status { get; set; }
         // phan biet san pham giay, quan ao, phu kien
         public int type { get; set; }
-        
+        public string  JsonListAttr { get; set; }
+
     }
 }

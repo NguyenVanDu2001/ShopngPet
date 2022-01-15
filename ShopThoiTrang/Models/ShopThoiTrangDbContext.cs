@@ -20,6 +20,7 @@ namespace ShopThoiTrang.Models
         public virtual DbSet<Mcontact> Contacts { get; set; }
         public virtual DbSet<link> Link { get; set; }
         public virtual DbSet<SizeShoe> SizeShoes { get; set; }
+        public virtual DbSet<Attribute>Attributes { get; set; }
 
     }
 }

@@ -575,7 +575,12 @@
     <Compile Include="Migrations\202111270420385_init-migration.Designer.cs">
       <DependentUpon>202111270420385_init-migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201150425267_add-table-attribute.cs" />
+    <Compile Include="Migrations\202201150425267_add-table-attribute.designer.cs">
+      <DependentUpon>202201150425267_add-table-attribute.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Atrribute.cs" />
     <Compile Include="Models\Mcontact.cs" />
     <Compile Include="Models\Mpost.cs" />
     <Compile Include="Models\Mtopic.cs" />
@@ -770,6 +775,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202111270420385_init-migration.resx">
       <DependentUpon>202111270420385_init-migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201150425267_add-table-attribute.resx">
+      <DependentUpon>202201150425267_add-table-attribute.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -6,23 +6,18 @@ namespace ShopThoiTrang.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("category")]
-    public partial class Mcategory
+    [Table("Attribute")]
+    public partial class Attribute
     {
         [Key]
         [Column(Order = 0)]
-        public int ID { get; set; }
-        public string name { get; set; }
-        public string slug { get; set; }
-        public int parentid { get; set; }
-        public int orders { get; set; }
-        public string metakey { get; set; }
-        public string metadesc { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Type {get; set; }
         public DateTime? created_at { get; set; }
         public int? created_by { get; set; }
         public DateTime? updated_at { get; set; }
         public int? updated_by { get; set; }
         public int status { get; set; }
-        public string JsonListAttrId { get; set; }
     }
 }
