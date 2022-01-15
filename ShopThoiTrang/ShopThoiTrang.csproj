@@ -541,6 +541,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AttributesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
@@ -554,6 +555,7 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Common\EnumHelper.cs" />
     <Compile Include="Common\Userlogin.cs" />
     <Compile Include="Controllers\AuthCusController.cs" />
     <Compile Include="Controllers\BaseCusController.cs" />
@@ -578,6 +580,10 @@
     <Compile Include="Migrations\202201150425267_add-table-attribute.cs" />
     <Compile Include="Migrations\202201150425267_add-table-attribute.designer.cs">
       <DependentUpon>202201150425267_add-table-attribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201150924305_edit-entity-attr.cs" />
+    <Compile Include="Migrations\202201150924305_edit-entity-attr.designer.cs">
+      <DependentUpon>202201150924305_edit-entity-attr.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Atrribute.cs" />
@@ -651,6 +657,11 @@
     <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Contact\Trash.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\_Statistical.cshtml" />
+    <Content Include="Areas\Admin\Views\Attributes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Attributes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Attributes\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Attributes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Attributes\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Site\page404.cshtml" />
     <Content Include="Views\Shared\_layoutSite.cshtml" />
@@ -778,6 +789,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201150425267_add-table-attribute.resx">
       <DependentUpon>202201150425267_add-table-attribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201150924305_edit-entity-attr.resx">
+      <DependentUpon>202201150924305_edit-entity-attr.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -14,6 +14,7 @@ namespace ShopThoiTrang.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int Type {get; set; }
+        public string Value { get; set; }
         public DateTime? created_at { get; set; }
         public int? created_by { get; set; }
         public DateTime? updated_at { get; set; }
