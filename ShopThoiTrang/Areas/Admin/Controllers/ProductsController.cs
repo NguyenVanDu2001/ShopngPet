@@ -8,6 +8,7 @@ using System.Net;
 
 using System.Web;
 using System.Web.Mvc;
+using System.Text.Json;
 using ShopThoiTrang.Common;
 using ShopThoiTrang.Models;
 
@@ -31,10 +32,47 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
        //create
         public ActionResult Create()
         {
+            var listId = new List<int>
+            {
+                1,2
+            };
+            var listAttr = db.Attributes.Where(x => listId.Contains(x.Type));
 
             ViewBag.listCate = db.Categorys.Where(m => m.status != 0).ToList();
             return View();
         }
+        [HttpPost]
+        public JsonResult GetAttributeByCategoryId(int categroyId)
+        {
+            var attr = db.Categorys.Find(categroyId)?.JsonListAttrId;
+            if (string.IsNullOrEmpty(attr))
+            {
+                return new JsonResult
+                {
+                    Data = new
+                    {
+                        code = HttpStatusCode.BadRequest,
+                        status = 0,
+                        message = "error",
+                       
+                    },
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
+            }
+            var objectEnumAttr = JsonSerializer.Deserialize<List<int>>(attr);
+            return new JsonResult
+            {
+                Data = new
+                {
+                    code = HttpStatusCode.OK,
+                    status = 1,
+                    message = "success",
+                    data = objectEnumAttr
+                },
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
