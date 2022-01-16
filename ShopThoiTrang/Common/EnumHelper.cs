@@ -9,20 +9,13 @@ namespace ShopThoiTrang.Common
 {
     public class EnumHelper
     {
-        public static string GetDescriptionFromEnumValue(Enum value)
-        {
-            DisplayAttribute attribute = value.GetType()
-                .GetField(value.ToString())
-                .GetCustomAttributes(typeof(DisplayAttribute), false)
-                .SingleOrDefault() as DisplayAttribute;
-            return attribute == null ? value.ToString() : attribute.Description;
-        }
+        
     }
     public enum AttributeHelper
     {
         [Display(Description = "Kích thước")]
         KICHTHUOC = 1,
-        [Display(Description = "Kích thước")]
+        [Display(Description = "Màu sắc")]
         //[Description("Màu sắc")]
         MAUSAC = 2,
 

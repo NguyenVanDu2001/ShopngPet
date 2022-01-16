@@ -8,12 +8,7 @@
 @{
     List<SelectListItem> listcat = new List<SelectListItem>();
     List<SelectListItem> listorder = new List<SelectListItem>();
-    List<SelectListItem> status = new List<SelectListItem>();
-    SelectListItem statusitem1 = new SelectListItem() { Value = "1", Text = "Hiden " };
-    SelectListItem statusitem2 = new SelectListItem() { Value = "2", Text = "Show" };
-    status.Add(statusitem1);
-    status.Add(statusitem2);
-
+    List<SelectListItem> status = (List<SelectListItem>)ViewBag.listStatus;
 
     SelectListItem listorderitem;
     SelectListItem listcatitem;
@@ -28,9 +23,8 @@
         listcatitem = new SelectListItem() { Value = item.ID + "", Text = "son of [" + item.name + "]" };
         listcat.Add(listcatitem);
     }
-
+    List<SelectListItem> lstAttribute = (List<SelectListItem>)ViewBag.listAttribute;
 }
-<!-- Content Wrapper. Contains page content -->
 <div class="card card-title bg-white p-1">
     <div class="row">
         <div class="col-md-6 "> <h5 class="pl-2 mt-2 text-dark">Cập nhật danh mục sản phẩm</h5> </div>
@@ -68,41 +62,54 @@
                     @Html.HiddenFor(model => model.ID)
                     @Html.HiddenFor(model => model.created_at)
                     @Html.HiddenFor(model => model.created_by)
-
                     <div>
-                        <label for="psw"><span class="text-secondary ">Tên danh mục</span></label>
+                        <label for="psw"><span class="text-secondary ">Tên danh mục sản phẩm</span></label>
                         @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
                     </div>
                     <div>
-                        <label for="psw"><span class="text-secondary ">Mã danh mục</span></label>
+                        <label for="psw"><span class="text-secondary ">Metekey</span></label>
                         @Html.EditorFor(model => model.metakey, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.metakey, "", new { @class = "text-danger" })
                     </div>
                     <div>
-                        <label for="psw"><span class="text-secondary ">Mô tả / Ghi chú</span></label>
+                        <label for="psw"><span class="text-secondary ">Metadesc</span></label>
                         @Html.EditorFor(model => model.metadesc, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.metadesc, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <label for="psw"><span class="text-secondary ">Parent</span></label>
                     <div>
-                        @Html.DropDownListFor(model => model.parentid, listcat, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.parentid, "", new { @class = "text-danger" })
+                        <label for="psw"><span class="text-secondary ">Slug</span></label>
+                        @Html.EditorFor(model => model.slug, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.slug, "", new { @class = "text-danger" })
                     </div>
-
                     <div>
-                        <label for="psw"><span class="text-secondary ">Chọn đơn hàng</span></label>
+                        <label for="psw"><span class="text-secondary ">Localtion show</span></label>
                         @Html.DropDownListFor(model => model.orders, listorder, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.orders, "", new { @class = "text-danger" })
                     </div>
                     <div>
-                        <label for="psw"><span class="text-secondary ">Trạng thái</span></label>
+                        <label for="psw"><span class="text-secondary ">Status</span></label>
                         @Html.DropDownListFor(model => model.status, status, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
-
                     </div>
+                </div>
+                <div class="col-md-8">
+                    <div id="attribute">
+                        <label for="psw"><span class="text-secondary ">Thuộc tính</span></label>
+                        @if (lstAttribute != null)
+                        {
+                            foreach (var attribute in lstAttribute)
+                            {
+                                <div class="pb-3">
+                                    <input type="checkbox" name="checkbox" id="@attribute.Value" value="@attribute.Value">
+                                    <label for="@attribute.Value" class="card-text text-dark m-0">@attribute.Text</label>
+                                </div>
+                            }
+                        }
+                    </div>
+                    @Html.TextBoxFor(model => model.JsonListAttrId, new { @class = "d-none" })
                 </div>
 
 
@@ -112,5 +119,22 @@
 </section>
 <script>
     $("#category").addClass("active");
+    var lstAttribute = '@Model.JsonListAttrId';
+    $(document).ready(function () {
+        lstAttribute = lstAttribute.split(',');
+        $('#attribute input[type]:checkbox').each(function () {
+            let value = $(this).val().toString();
+            if (jQuery.inArray(value, lstAttribute) !== -1) {
+                $(this).attr('checked', true);
+            }
+        });
+        $('#attribute input[type=checkbox]').on('change', function () {
+            let arrAtrb = [];
+            $('#attribute input[type=checkbox]:checked').each(function () {
+                arrAtrb.push($(this).val());
+            })
+            $('#JsonListAttrId').val(arrAtrb.toString());
+        });
+    })
 </script>
 

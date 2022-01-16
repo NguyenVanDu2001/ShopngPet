@@ -110,3 +110,6 @@
     border-color: #FFFF00 !important;
     text-shadow: none !important;
 }
+.hidden{
+    display:none;
+}

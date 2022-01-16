@@ -565,11 +565,13 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Enums\Enums.cs" />
     <Compile Include="GiaoHangTietKiem\SendRequest.cs" />
     <Compile Include="GiaoHangTietKiem\TransportGHTK.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Helper.cs" />
     <Compile Include="library\Message.cs" />
     <Compile Include="library\Mystring.cs" />
     <Compile Include="library\Util.cs" />

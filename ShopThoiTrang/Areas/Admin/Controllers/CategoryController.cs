@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ShopThoiTrang.Common;
+using ShopThoiTrang.Enums;
 using ShopThoiTrang.Library;
 using ShopThoiTrang.Models;
 
@@ -21,34 +22,32 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         {
          
             ViewBag.listCate = db.Categorys.Where(m => m.status != 0).ToList();
-            var list = db.Categorys.Where(m => m.status > 0).ToList();
+            var list = db.Categorys.ToList();
             return View(list);
         }
 
         public ActionResult Create()
         {
-            
+            ViewBag.listAttribute = Helper.Helper.GetEnumSelectList<AttributeHelper>();
             ViewBag.listCate = db.Categorys.Where(m => m.status !=0 ).ToList();
+            ViewBag.listStatus = Helper.Helper.GetEnumSelectList<Status>();
             return View();
         }
-    //create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Mcategory mcategory)
+        public ActionResult Create(Mcategory mcategory)
         {       
             if (ModelState.IsValid)
             {
-                //category
                 string slug = Mystring.ToSlug(mcategory.name.ToString());
                 if (db.Categorys.Where(m=>m.slug == slug).Count()>0) {
                     Message.set_flash("The product type already exists in the Category table", "danger");
-                    return View(mcategory);
+                    return View("Index");
                 }
-                //topic
                 if (db.Products.Where(m => m.slug == slug).Count() > 0)
                 {
                     Message.set_flash("The product type already exists in the Product table", "danger");
-                    return View(mcategory);
+                    return View("Index");
                 }
                 mcategory.slug = slug;
                 mcategory.created_at = DateTime.Now;
@@ -57,6 +56,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                 mcategory.updated_by = int.Parse(Session["Admin_id"].ToString());
                 db.Categorys.Add(mcategory);
                 db.SaveChanges();
+
                 //create Link
                 link tt_link = new link();
                 tt_link.slug = slug;
@@ -70,13 +70,15 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
             }
             Message.set_flash("add failure", "danger");
             ViewBag.listCate = db.Categorys.Where(m => m.status != 0).ToList();
-            return View(mcategory);
+            return View("Index");
         }
 
         // GET: Admin/Category/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.listAttribute = Helper.Helper.GetEnumSelectList<AttributeHelper>();
             ViewBag.listCate = db.Categorys.Where(m => m.status != 0).ToList();
+            ViewBag.listStatus = Helper.Helper.GetEnumSelectList<Status>();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -118,14 +120,14 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             Message.set_flash("Edit failure", "success");
-            return View(mcategory);
+            return RedirectToAction("Index");
         }
 
         //status
         public ActionResult Status(int id)
         {
             Mcategory mcategory = db.Categorys.Find(id);
-            mcategory.status = (mcategory.status == 1) ? 2 : 1;
+            mcategory.status = (mcategory.status == 1) ? 0 : 1;
             mcategory.updated_at = DateTime.Now;
             mcategory.updated_by = int.Parse(Session["Admin_id"].ToString());
             db.Entry(mcategory).State = EntityState.Modified;
