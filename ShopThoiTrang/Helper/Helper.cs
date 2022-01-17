@@ -19,7 +19,9 @@ namespace ShopThoiTrang.Helper
         public static IEnumerable<SelectListItem> GetEnumSelectList<T>()
         {
             return (Enum.GetValues(typeof(T)).Cast<T>().Select(
-                enu => new SelectListItem() { Text = GetDescriptionFromEnumValue((Enum)(object)enu), Value = (Convert.ToInt32((Enum)(object)enu)).ToString() })).ToList();
+                enu => new SelectListItem() {   Text = GetDescriptionFromEnumValue((Enum)(object)enu),
+                                                Value = (Convert.ToInt32((Enum)(object)enu)).ToString() })
+                                        ).ToList();
         }
 
         public static string GetDescriptionFromEnumValue(Enum value)

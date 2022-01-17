@@ -59,7 +59,11 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                     JsonRequestBehavior = JsonRequestBehavior.AllowGet
                 };
             }
-            var objectEnumAttr = JsonSerializer.Deserialize<List<int>>(attr);
+            
+
+            var myArray=  attr.Split(',').Select(int.Parse).ToList();
+            var listAttribute = db.Attributes.Where(x => myArray.Contains(x.Type)).ToList();
+         //   var objectEnumAttr = JsonSerializer.Deserialize<List<int>>(attr);
             return new JsonResult
             {
                 Data = new
@@ -67,7 +71,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                     code = HttpStatusCode.OK,
                     status = 1,
                     message = "success",
-                    data = objectEnumAttr
+                    data = listAttribute
                 },
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
@@ -78,45 +82,11 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Create(Product product, HttpPostedFileBase file, FormCollection fc)
         {
-            string type = fc["typePro"];
-            int SizeS = int.Parse(fc["SizeS"]);
-            int SizeM = int.Parse(fc["SizeM"]);
-            int SizeL = int.Parse(fc["SizeL"]);
-            int SizeXL = int.Parse(fc["SizeXL"]);
-            int SizeXXL = int.Parse(fc["SizeXXL"]);
-
-            int Size_36 = int.Parse(fc["Size_36"]);
-            int Size_37 = int.Parse(fc["Size_37"]);
-            int Size_38 = int.Parse(fc["Size_38"]);
-            int Size_39 = int.Parse(fc["Size_39"]);
-            int Size_40 = int.Parse(fc["Size_40"]);
-            int Size_41 = int.Parse(fc["Size_41"]);
-            int Size_42 = int.Parse(fc["Size_42"]);
-            int Size_43 = int.Parse(fc["Size_43"]);
-            int Size_44 = int.Parse(fc["Size_44"]);
-            int Size_45 = int.Parse(fc["Size_45"]);
-
-            int numberProduct = 0;
+           
+          
+           // int numberProduct = 0;
             int typePro = 0;
-            if (type.Equals("fashion"))
-            {
-                typePro = 1;
-               
-                numberProduct = SizeS + SizeM + SizeL + SizeXL + SizeXXL;
-            }
-            else if (type.Equals("shoe"))
-            {
-                typePro = 2;
-                
-                numberProduct = Size_36 + Size_37 + Size_38 + Size_39 + Size_40 +
-                                Size_41 + Size_42 + Size_43 + Size_44 + Size_45;
-            }
-            else if (type.Equals("accessories"))
-            {
-                typePro = 3;
-                numberProduct = (int)product.number;
-            }
-
+            
             product.slug = "temp";
             product.type = typePro;
             ViewBag.listCate = db.Categorys.Where(m => m.status != 0).ToList();
@@ -162,45 +132,15 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                 file.SaveAs(path);
                 product.img = namefilenew;
                 product.slug = slug;
-                product.number = numberProduct;
+               // product.number = product.number;
                 product.created_at = DateTime.Now;
                 product.sold = 0;
                 product.imgBehind = namefileBehind;
                 product.created_by = int.Parse(Session["Admin_id"].ToString());
+            //    product.JsonListAttr = product.JsonListAttr;
                 db.Products.Add(product);
                 db.SaveChanges();
-                if (type.Equals("fashion"))
-                {
-                    Size size = new Size();
-                    size.SizeS = SizeS;
-                    size.SizeS = SizeM;
-                    size.SizeS = SizeL;
-                    size.SizeS = SizeXL;
-                    size.SizeS = SizeXXL;
-                    size.ProductId = product.ID;
-                    db.Sizes.Add(size);
-
-                }
-                else if (type.Equals("shoe"))
-                {
-                    SizeShoe shoeSize = new SizeShoe();
-                    shoeSize.Size_36 = Size_36;
-                    shoeSize.Size_37 = Size_37;
-                    shoeSize.Size_38 = Size_38;
-                    shoeSize.Size_39 = Size_39;
-                    shoeSize.Size_40 = Size_40;
-                    shoeSize.Size_41 = Size_41;
-                    shoeSize.Size_42 = Size_42;
-                    shoeSize.Size_43 = Size_43;
-                    shoeSize.Size_44 = Size_44;
-                    shoeSize.Size_45 = Size_45;
-                    shoeSize.ProductId = product.ID;
-                    db.SizeShoes.Add(shoeSize);
-                }
-                else if (type.Equals("accessories"))
-                {
-                    // no prosess
-                }
+                
                 db.SaveChanges();
                 Message.set_flash("Add success", "success");
                 return RedirectToAction("index");

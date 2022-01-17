@@ -65,14 +65,20 @@ namespace ShopThoiTrang.Controllers
             }
         }
         // Post
-        public ActionResult getAllPost(int ? page)
+        //public ActionResult getAllPost(int ? page)
+        //{
+        //    ViewBag.url = "bai-viet";
+        //    if (page == null) page = 1;
+        //    int pageSize = 9;
+        //    int pageNumber = (page ?? 1);
+        //    var list = db.Posts.Where(m => m.status == 1).OrderByDescending(m => m.ID).ToList();
+        //    return View("getAllPost", list.ToPagedList(pageNumber, pageSize));
+        //}
+        public ActionResult GetPostById(int id)
         {
-            ViewBag.url = "bai-viet";
-            if (page == null) page = 1;
-            int pageSize = 9;
-            int pageNumber = (page ?? 1);
-            var list = db.Posts.Where(m => m.status == 1).OrderByDescending(m => m.ID).ToList();
-            return View("getAllPost", list.ToPagedList(pageNumber, pageSize));
+            var post = db.Posts.Find(id);
+            return View( post);
+
         }
         private ActionResult PostOfTopic(string slug,int? page)
         {
