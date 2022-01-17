@@ -1,4 +1,5 @@
 ﻿using PagedList;
+using ShopThoiTrang.Dtos;
 using ShopThoiTrang.Models;
 using System;
 using System.Collections.Generic;
@@ -65,18 +66,36 @@ namespace ShopThoiTrang.Controllers
             }
         }
         // Post
-        //public ActionResult getAllPost(int ? page)
-        //{
-        //    ViewBag.url = "bai-viet";
-        //    if (page == null) page = 1;
-        //    int pageSize = 9;
-        //    int pageNumber = (page ?? 1);
-        //    var list = db.Posts.Where(m => m.status == 1).OrderByDescending(m => m.ID).ToList();
-        //    return View("getAllPost", list.ToPagedList(pageNumber, pageSize));
-        //}
+        public ActionResult getAllPost(int? page)
+        {
+            ViewBag.url = "bai-viet";
+            if (page == null) page = 1;
+            int pageSize = 9;
+            int pageNumber = (page ?? 1);
+            var list = db.Posts.Where(m => m.status == 1).OrderByDescending(m => m.ID).ToList();
+            return View("getAllPost", list.ToPagedList(pageNumber, pageSize));
+        }
         public ActionResult GetPostById(int id)
         {
-            var post = db.Posts.Find(id);
+            ViewBag.GetAll = db.Posts.Where(m => m.status == 1).OrderByDescending(m => m.ID).ToList();
+            var post = db.Posts.Where(x => x.ID == id).Select(x => new PostDtoOutput
+            {
+                ID = x.ID,
+                created_at = x.created_at,
+                title = x.title,    
+                descriptionShort = x.descriptionShort,  
+                detail = x.detail,  
+                created_by = x.created_by,  
+                img = x.img,    
+                metadesc = x.metadesc,
+                metakey = x.metakey,
+                slug = x.slug,
+                status = x.status,
+                topid = x.topid,
+                type = x.type,
+                updated_at = x.updated_at,
+                updated_by = x.updated_by,  
+            }).FirstOrDefault();
             return View( post);
 
         }

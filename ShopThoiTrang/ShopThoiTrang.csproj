@@ -593,6 +593,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Dtos\PostDtoOutput.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Dtos\ApiResponse.cs" />
     <Compile Include="GiaoHangTietKiem\SendRequest.cs" />

@@ -1,1 +1,338 @@
-﻿
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<ShopThoiTrang.Models.Mpost>
+@{
+
+    Layout = "~/Views/Shared/_layoutSite.cshtml";
+}
+<main id="main" class="">
+    <div id="content" class="blog-wrapper blog-archive page-wrapper">
+        <header class="archive-page-header">
+            <div class="row">
+                <div class="large-12 text-center col">
+                    <h1 class="page-title is-large uppercase"> Category Archives: <span>Tin tức</span> </h1>
+                </div>
+            </div>
+        </header>
+        <div class="row row-large row-divided ">
+            <div class="post-sidebar large-3 col">
+                <div id="secondary" class="widget-area " role="complementary">
+                    <aside id="flatsome_recent_posts-17" class="widget flatsome_recent_posts">
+                        <span class="widget-title "><span>Các bài viết khác</span></span>
+                        <div class="is-divider small"></div>
+                        <ul>
+                            @foreach (var item in Model)
+                            {
+                                <li class="recent-blog-posts-li">
+                                    <div class="flex-row recent-blog-posts align-top pt-half pb-half">
+                                        <div class="flex-col mr-half">
+                                            <div class="badge post-date badge-small badge-outline">
+                                                <div class="badge-inner bg-fill"> <span class="post-date-day">@item.created_at.ToString("dd")</span><br /> <span class="post-date-month is-xsmall">@item.created_at.ToString("MM")</span> </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-col flex-grow"> <a href="@Url.Action("GetPostById","Site",new {id = item.ID})" title="@item.title">@item.title</a> <span class="post_comments op-7 block is-xsmall"><a href="../thuc-an-cho-cho-me-moi-sinh-giup-phuc-hoi-nhanh/index.html#respond"></a></span>                                                </div>
+                                    </div>
+                                </li>
+                            }
+                           
+                        </ul>
+                    </aside>
+                   
+                    <aside id="archives-7" class="widget widget_archive">
+                        <span class="widget-title "><span>Lưu trữ</span></span>
+                        <div class="is-divider small"></div>
+                        <ul>
+                            <li><a href='../2021/10/index.html'>Tháng Mười 2021</a>&nbsp;(20)</li>
+                            <li><a href='../2021/09/index.html'>Tháng Chín 2021</a>&nbsp;(8)</li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+            <div class="large-9 col medium-col-first">
+                <div class="row large-columns-1 medium-columns- small-columns-1">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col post-item">
+                            <div class="col-inner">
+                                <a href="@Url.Action("GetPostById","Site",new {id = item.ID})" class="plain">
+                                    <div class="box box-vertical box-text-bottom box-blog-post has-hover">
+                                        <div class="box-image" style="width:40%;">
+                                            <div class="image-cover" style="padding-top:56%;">
+                                                <img  width="600" height="365" src="~/Public/images/Post/@item.img" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="box-text text-center">
+                                            <div class="box-text-inner blog-post-inner">
+                                                <h5 class="post-title is-large ">@item.title</h5>
+                                                <div class="is-divider"></div>
+                                                <p class="from_the_blog_excerpt ">@item.descriptionShort</p>
+                                            </div>
+                                        </div>
+                                        <div class="badge absolute top post-date badge-outline">
+                                            <div class="badge-inner"> <span class="post-date-day">@item.created_at.ToString("dd")</span><br /> <span class="post-date-month is-xsmall">Th @item.created_at.ToString("MM")</span> </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+
+                    @*<div class="col post-item">
+            <div class="col-inner">
+                <a href="../mot-so-can-benh-thuong-gap-o-thu-cung/index.html" class="plain">
+                    <div class="box box-vertical box-text-bottom box-blog-post has-hover">
+                        <div class="box-image" style="width:40%;">
+                            <div class="image-cover" style="padding-top:56%;">
+                                <img width="512" height="341" alt="mot-so-can-benh-thuong-gap-o-thu-cung" title="Một số căn bệnh thường gặp ở thú cưng 2" nitro-lazy-src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/09/53cf7147b5ba56f0bc8515adee7b2dc2.cac-dau-hieu-khi-cho-bi-benh.jpg"
+                                     class="attachment-medium size-medium wp-post-image nitro-lazy" nitro-lazy-empty id="NTEzOjMwNQ==-1" src="data:image/svg+xml;nitro-empty-id=NTEzOjMwNQ==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDM0MSIgd2lkdGg9IjUxMiIgaGVpZ2h0PSIzNDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+" />
+                            </div>
+                        </div>
+                        <div class="box-text text-center">
+                            <div class="box-text-inner blog-post-inner">
+                                <h5 class="post-title is-large ">Một số căn bệnh thường gặp ở thú cưng</h5>
+                                <div class="is-divider"></div>
+                                <p class="from_the_blog_excerpt ">MỘT SỐ CĂN BỆNH THƯỜNG GẶP Ở THÚ CƯNG BẠN NÊN BIẾT Chào các bạn, [...] </p>
+                                <p class="from_the_blog_comments uppercase is-xsmall"> 3 Comments </p>
+                            </div>
+                        </div>
+                        <div class="badge absolute top post-date badge-outline">
+                            <div class="badge-inner"> <span class="post-date-day">14</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col post-item">
+            <div class="col-inner">
+                <a href="../tu-lam-pate-cho-meo-sieu-don-gian/index.html" class="plain">
+                    <div class="box box-vertical box-text-bottom box-blog-post has-hover">
+                        <div class="box-image" style="width:40%;">
+                            <div class="image-cover" style="padding-top:56%;">
+                                <img width="601" height="400" alt="1356 pate cho meo 1" sizes="(max-width: 601px) 100vw, 601px" title="Tự làm pate cho mèo siêu đơn giản 3" nitro-lazy-srcset="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/1d4e1f7577cdf73b704b5520570267c5.1356_pate_cho_meo_1-601x400.gif 601w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/136bf74c240151a81c77ddb9606a0786.1356_pate_cho_meo_1-600x399.gif 600w"
+                                     nitro-lazy-src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/1d4e1f7577cdf73b704b5520570267c5.1356_pate_cho_meo_1-601x400.gif" class="attachment-medium size-medium wp-post-image nitro-lazy"
+                                     nitro-lazy-empty id="NTQ1OjUwMw==-1" src="data:image/svg+xml;nitro-empty-id=NTQ1OjUwMw==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNjAxIDQwMCIgd2lkdGg9IjYwMSIgaGVpZ2h0PSI0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+" />
+                            </div>
+                        </div>
+                        <div class="box-text text-center">
+                            <div class="box-text-inner blog-post-inner">
+                                <h5 class="post-title is-large ">Tự làm pate cho mèo siêu đơn giản</h5>
+                                <div class="is-divider"></div>
+                                <p class="from_the_blog_excerpt ">Tự làm pate cho mèo siêu đơn giản tại nhà. Nhiều bạn khi nuôi mèo [...] </p>
+                            </div>
+                        </div>
+                        <div class="badge absolute top post-date badge-outline">
+                            <div class="badge-inner"> <span class="post-date-day">12</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col post-item">
+            <div class="col-inner">
+                <a href="../co-nen-nhot-meo-trong-chuong1363-2/index.html" class="plain">
+                    <div class="box box-vertical box-text-bottom box-blog-post has-hover">
+                        <div class="box-image" style="width:40%;">
+                            <div class="image-cover" style="padding-top:56%;">
+                                <img width="225" height="225" alt="có nên nhốt mèo trong chuồng" sizes="(max-width: 225px) 100vw, 225px" title="Có nên nhốt mèo trong chuồng – bí quyết nuôi mèo cho người mới nuôi 4" nitro-lazy-srcset="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/2bf705fbdbe60ec94e354be1c2e84c8a.cach-lam-nem-cho-meo6.jpg 225w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/f0c7117e623341cedf4122ae55e578b1.cach-lam-nem-cho-meo6-100x100.jpg 100w"
+                                     nitro-lazy-src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/2bf705fbdbe60ec94e354be1c2e84c8a.cach-lam-nem-cho-meo6.jpg" class="attachment-medium size-medium wp-post-image nitro-lazy"
+                                     nitro-lazy-empty id="NTc1OjU1NA==-1" src="data:image/svg+xml;nitro-empty-id=NTc1OjU1NA==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjI1IDIyNSIgd2lkdGg9IjIyNSIgaGVpZ2h0PSIyMjUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+" />
+                            </div>
+                        </div>
+                        <div class="box-text text-center">
+                            <div class="box-text-inner blog-post-inner">
+                                <h5 class="post-title is-large ">Có nên nhốt mèo trong chuồng – bí quyết nuôi mèo cho người mới nuôi</h5>
+                                <div class="is-divider"></div>
+                                <p class="from_the_blog_excerpt ">Có nên nhốt mèo trong chuồng – bí quyết nuôi mèo cho người mới nuôi [...] </p>
+                            </div>
+                        </div>
+                        <div class="badge absolute top post-date badge-outline">
+                            <div class="badge-inner"> <span class="post-date-day">12</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col post-item">
+            <div class="col-inner">
+                <a href="../loai-hat-minino-cho-meo-co-tot-khong/index.html" class="plain">
+                    <div class="box box-vertical box-text-bottom box-blog-post has-hover">
+                        <div class="box-image" style="width:40%;">
+                            <div class="image-cover" style="padding-top:56%;">
+                                <img width="620" height="400" alt="2 3 1" sizes="(max-width: 620px) 100vw, 620px" title="Loại hạt minino cho mèo có tốt không? 5" nitro-lazy-srcset="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/8e193716ba78783e8e4dc00e9b1d00d4.2-3-1-620x400.jpg 620w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/3dd469f4f5dc4c20cca7175ffaae0f54.2-3-1-768x495.jpg 768w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/3fb3e629a778bf3e0788e3f9ccd9915b.2-3-1-600x387.jpg 600w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/686150d7d021f1dcbdd2c90fa14f28c5.2-3-1.jpg 800w"
+                                     nitro-lazy-src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/8e193716ba78783e8e4dc00e9b1d00d4.2-3-1-620x400.jpg" class="attachment-medium size-medium wp-post-image nitro-lazy"
+                                     nitro-lazy-empty id="NjA1OjU5NQ==-1" src="data:image/svg+xml;nitro-empty-id=NjA1OjU5NQ==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNjIwIDQwMCIgd2lkdGg9IjYyMCIgaGVpZ2h0PSI0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+" />
+                            </div>
+                        </div>
+                        <div class="box-text text-center">
+                            <div class="box-text-inner blog-post-inner">
+                                <h5 class="post-title is-large ">Loại hạt minino cho mèo có tốt không?</h5>
+                                <div class="is-divider"></div>
+                                <p class="from_the_blog_excerpt ">Loại hạt minino cho mèo có tốt không? Đây đang là một trong số những [...] </p>
+                            </div>
+                        </div>
+                        <div class="badge absolute top post-date badge-outline">
+                            <div class="badge-inner"> <span class="post-date-day">12</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col post-item">
+            <div class="col-inner">
+                <a href="../2-cach-lam-do-choi-cho-meo-tu-vat-dung-don-gian/index.html" class="plain">
+                    <div class="box box-vertical box-text-bottom box-blog-post has-hover">
+                        <div class="box-image" style="width:40%;">
+                            <div class="image-cover" style="padding-top:56%;">
+                                <img width="400" height="400" alt="làm đồ chơi cho mèo" sizes="(max-width: 400px) 100vw, 400px" title="2 cách làm đồ chơi cho mèo từ vật dụng đơn giản 6" nitro-lazy-srcset="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/395e87cdca78968ea45a92e579245823.meo4-400x400.jpg 400w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/820da107f7c0b75866d702f696433f59.meo4-280x280.jpg 280w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/2c8e5809024cdddfbea726f92cb7f123.meo4-300x300.jpg 300w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/5a0a5d143b72b418c399a7738f5893be.meo4-100x100.jpg 100w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/79f96e03fa3dfe3855e3ba90b1351c3e.meo4.jpg 600w"
+                                     nitro-lazy-src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/395e87cdca78968ea45a92e579245823.meo4-400x400.jpg" class="attachment-medium size-medium wp-post-image nitro-lazy"
+                                     nitro-lazy-empty id="NjM1OjcwMw==-1" src="data:image/svg+xml;nitro-empty-id=NjM1OjcwMw==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNDAwIDQwMCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+" />
+                            </div>
+                        </div>
+                        <div class="box-text text-center">
+                            <div class="box-text-inner blog-post-inner">
+                                <h5 class="post-title is-large ">2 cách làm đồ chơi cho mèo từ vật dụng đơn giản</h5>
+                                <div class="is-divider"></div>
+                                <p class="from_the_blog_excerpt ">Làm đồ chơi cho mèo thật sự có cần thiết không?&nbsp; Mèo cảnh mặc dù [...] </p>
+                                <p class="from_the_blog_comments uppercase is-xsmall"> 2 Comments </p>
+                            </div>
+                        </div>
+                        <div class="badge absolute top post-date badge-outline">
+                            <div class="badge-inner"> <span class="post-date-day">12</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col post-item">
+            <div class="col-inner">
+                <a href="../cach-lam-dem-cho-meo-don-gian-ma-ban-nen-biet/index.html" class="plain">
+                    <div class="box box-vertical box-text-bottom box-blog-post has-hover">
+                        <div class="box-image" style="width:40%;">
+                            <div class="image-cover" style="padding-top:56%;">
+                                <img width="225" height="225" alt="cách làm đệm cho mèo" sizes="(max-width: 225px) 100vw, 225px" title="Cách làm đệm cho mèo dễ thương đơn giản mà bạn nên biết 7" nitro-lazy-srcset="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/a7330fbf58fa6d40ebca0779fa7a32e3.cach-lam-nem-cho-meo4.jpg 225w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/ce76efc2f99925928d1c7653cc62051f.cach-lam-nem-cho-meo4-100x100.jpg 100w"
+                                     nitro-lazy-src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/a7330fbf58fa6d40ebca0779fa7a32e3.cach-lam-nem-cho-meo4.jpg" class="attachment-medium size-medium wp-post-image nitro-lazy"
+                                     nitro-lazy-empty id="NjY3OjUzMw==-1" src="data:image/svg+xml;nitro-empty-id=NjY3OjUzMw==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjI1IDIyNSIgd2lkdGg9IjIyNSIgaGVpZ2h0PSIyMjUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+" />
+                            </div>
+                        </div>
+                        <div class="box-text text-center">
+                            <div class="box-text-inner blog-post-inner">
+                                <h5 class="post-title is-large ">Cách làm đệm cho mèo dễ thương đơn giản mà bạn nên biết</h5>
+                                <div class="is-divider"></div>
+                                <p class="from_the_blog_excerpt ">Cách làm đệm cho mèo dễ thương , xinh xắn và đơn giản mà bạn [...] </p>
+                            </div>
+                        </div>
+                        <div class="badge absolute top post-date badge-outline">
+                            <div class="badge-inner"> <span class="post-date-day">12</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col post-item">
+            <div class="col-inner">
+                <a href="../cach-lam-vong-co-cho-meo-cung-sieu-dang-yeu/index.html" class="plain">
+                    <div class="box box-vertical box-text-bottom box-blog-post has-hover">
+                        <div class="box-image" style="width:40%;">
+                            <div class="image-cover" style="padding-top:56%;">
+                                <img width="750" height="400" alt="cách làm vòng cổ cho mèo" sizes="(max-width: 750px) 100vw, 750px" title="Cách làm vòng cổ cho mèo cưng siêu đáng yêu 8" nitro-lazy-srcset="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/4eb8d737320c149cbf4ad8c1893b59a1.cach-lam-vong-co-cho-meo-1.png 750w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/14a9603307333b8cfb716e795e315e1a.cach-lam-vong-co-cho-meo-1-600x320.png 600w"
+                                     nitro-lazy-src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/4eb8d737320c149cbf4ad8c1893b59a1.cach-lam-vong-co-cho-meo-1.png" class="attachment-medium size-medium wp-post-image nitro-lazy"
+                                     nitro-lazy-empty id="Njk3OjUzMQ==-1" src="data:image/svg+xml;nitro-empty-id=Njk3OjUzMQ==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNzUwIDQwMCIgd2lkdGg9Ijc1MCIgaGVpZ2h0PSI0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+" />
+                            </div>
+                        </div>
+                        <div class="box-text text-center">
+                            <div class="box-text-inner blog-post-inner">
+                                <h5 class="post-title is-large ">Cách làm vòng cổ cho mèo cưng siêu đáng yêu</h5>
+                                <div class="is-divider"></div>
+                                <p class="from_the_blog_excerpt ">Các Sen có phải là 1 người chủ khéo léo? Bạn có tự tin về [...] </p>
+                            </div>
+                        </div>
+                        <div class="badge absolute top post-date badge-outline">
+                            <div class="badge-inner"> <span class="post-date-day">12</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col post-item">
+            <div class="col-inner">
+                <a href="../review-cac-loai-sua-tam-cho-cho-tot-nhat/index.html" class="plain">
+                    <div class="box box-vertical box-text-bottom box-blog-post has-hover">
+                        <div class="box-image" style="width:40%;">
+                            <div class="image-cover" style="padding-top:56%;">
+                                <img width="613" height="400" alt="các loại sữa tắm cho chó" sizes="(max-width: 613px) 100vw, 613px" title="Review các loại sữa tắm cho chó tốt nhất 9" nitro-lazy-srcset="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/e54678d8223bca230dda337592bc81c8.7-loi-hay-gap-khi-tam-cho-cun-cung-613x400.jpg 613w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/03a66b3c1d0dc296e3ff898bbbef1151.7-loi-hay-gap-khi-tam-cho-cun-cung-600x391.jpg 600w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/25ae47e81722a251ee08d71eb05775d2.7-loi-hay-gap-khi-tam-cho-cun-cung.jpg 696w"
+                                     nitro-lazy-src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/e54678d8223bca230dda337592bc81c8.7-loi-hay-gap-khi-tam-cho-cun-cung-613x400.jpg"
+                                     class="attachment-medium size-medium wp-post-image nitro-lazy" nitro-lazy-empty id="NzI3OjY2OA==-1" src="data:image/svg+xml;nitro-empty-id=NzI3OjY2OA==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNjEzIDQwMCIgd2lkdGg9IjYxMyIgaGVpZ2h0PSI0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+" />
+                            </div>
+                        </div>
+                        <div class="box-text text-center">
+                            <div class="box-text-inner blog-post-inner">
+                                <h5 class="post-title is-large ">Review các loại sữa tắm cho chó tốt nhất</h5>
+                                <div class="is-divider"></div>
+                                <p class="from_the_blog_excerpt ">Trên thị trường ngày nay các loại sữa tắm cho chó đang được sử dụng [...] </p>
+                                <p class="from_the_blog_comments uppercase is-xsmall"> 1 Comment </p>
+                            </div>
+                        </div>
+                        <div class="badge absolute top post-date badge-outline">
+                            <div class="badge-inner"> <span class="post-date-day">12</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col post-item">
+            <div class="col-inner">
+                <a href="../lam-ao-cho-meo-tu-tat/index.html" class="plain">
+                    <div class="box box-vertical box-text-bottom box-blog-post has-hover">
+                        <div class="box-image" style="width:40%;">
+                            <div class="image-cover" style="padding-top:56%;">
+                                <img width="711" height="400" alt="lam ao cho meo tu tat." sizes="(max-width: 711px) 100vw, 711px" title="Làm áo cho mèo từ tất 10" nitro-lazy-srcset="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/4544cf5f5efa168ed145ad94340b5146.lam-ao-cho-meo-tu-tat.-711x400.jpg 711w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/33ec6282bf3eaed034d8645519d78b8c.lam-ao-cho-meo-tu-tat.-768x432.jpg 768w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/e00f88356e1b14eed949ad470645f034.lam-ao-cho-meo-tu-tat.-600x338.jpg 600w, https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/56359f319ae0ad7b267d12c5c75accc4.lam-ao-cho-meo-tu-tat..jpg 1280w"
+                                     nitro-lazy-src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/4544cf5f5efa168ed145ad94340b5146.lam-ao-cho-meo-tu-tat.-711x400.jpg"
+                                     class="attachment-medium size-medium wp-post-image nitro-lazy" nitro-lazy-empty id="NzU5OjY4MQ==-1" src="data:image/svg+xml;nitro-empty-id=NzU5OjY4MQ==-1;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNzExIDQwMCIgd2lkdGg9IjcxMSIgaGVpZ2h0PSI0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PC9zdmc+" />
+                            </div>
+                        </div>
+                        <div class="box-text text-center">
+                            <div class="box-text-inner blog-post-inner">
+                                <h5 class="post-title is-large ">Làm áo cho mèo từ tất</h5>
+                                <div class="is-divider"></div>
+                                <p class="from_the_blog_excerpt ">Cùng học làm áo cho mèo từ tất vào những ngày mùa đông, mưa lạnh, [...] </p>
+                            </div>
+                        </div>
+                        <div class="badge absolute top post-date badge-outline">
+                            <div class="badge-inner"> <span class="post-date-day">11</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>*@
+                </div>
+                <ul class="page-numbers nav-pagination links text-center">
+                    <li><span aria-current="page" class="page-number current">1</span></li>
+                    <li><a class="page-number" href="page/2/index.html">2</a></li>
+                    <li><a class="page-number" href="page/3/index.html">3</a></li>
+                    <li><a class="next page-number" href="page/2/index.html"><i class="icon-angle-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script nitro-exclude>
+        document.cookie = 'nitroCachedPage=' + (!window.NITROPACK_STATE ? '0' : '1') + '; path=/';
+    </script>
+    <script nitro-exclude>
+        if (!window.NITROPACK_STATE || window.NITROPACK_STATE != 'FRESH') {
+            var proxyPurgeOnly = 0;
+            if (typeof navigator.sendBeacon !== 'undefined') {
+                var nitroData = new FormData();
+                nitroData.append('nitroBeaconUrl', 'aHR0cHM6Ly9kaWx5c3BldHNob3AuY29tL3Rpbi10dWMv');
+                nitroData.append('nitroBeaconCookies', 'W10=');
+                nitroData.append('nitroBeaconHash', '85bcc0d7b23fc67422090536cffa43bcf725126e78e0ce85b41b9523f01bda10190f9431b66a05617943ba0088b0ee6a92ccade8555e8257b8632d26512a739c');
+                nitroData.append('proxyPurgeOnly', '');
+                nitroData.append('layout', 'category');
+                navigator.sendBeacon(location.href, nitroData);
+            } else {
+                var xhr = new XMLHttpRequest();
+                xhr.open('../index.html', location.href, true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send('nitroBeaconUrl=aHR0cHM6Ly9kaWx5c3BldHNob3AuY29tL3Rpbi10dWMv&nitroBeaconCookies=W10=&nitroBeaconHash=85bcc0d7b23fc67422090536cffa43bcf725126e78e0ce85b41b9523f01bda10190f9431b66a05617943ba0088b0ee6a92ccade8555e8257b8632d26512a739c&proxyPurgeOnly=&layout=category');
+            }
+        }
+    </script>
+</main>
