@@ -587,11 +587,13 @@
     <Compile Include="Common\Userlogin.cs" />
     <Compile Include="Controllers\AuthCusController.cs" />
     <Compile Include="Controllers\BaseCusController.cs" />
+    <Compile Include="Controllers\ContactCustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Dtos\ApiResponse.cs" />
@@ -802,6 +804,8 @@
     <Content Include="Views\Home\CartIndex.cshtml" />
     <Content Include="Views\Home\IndexClient.cshtml" />
     <Content Include="Views\Home\ProductIndex.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\ContactCustomer\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

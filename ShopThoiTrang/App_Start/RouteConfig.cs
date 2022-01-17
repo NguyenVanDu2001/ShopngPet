@@ -16,9 +16,14 @@ namespace ShopThoiTrang
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
       name: "Contact",
-      url: "Contact",
-      defaults: new { controller = "Site", action = "contact", id = UrlParameter.Optional }
+      url: "Index",
+      defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional }
       );
+            //      routes.MapRoute(
+            //name: "Contact",
+            //url: "Contact",
+            //defaults: new { controller = "Site", action = "contact", id = UrlParameter.Optional }
+            //);
             routes.MapRoute(
         name: "men",
         url: "men",
