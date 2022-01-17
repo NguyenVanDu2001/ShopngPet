@@ -16,15 +16,12 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
     {
         private ShopThoiTrangDbContext db = new ShopThoiTrangDbContext();
 
-        // GET: Admin/Contact
-   
         public ActionResult Index()
         {
             var list = db.Contacts.Where(m => m.status > 0).ToList();
             return View(list);
         }
 
-        // GET: Admin/Contact/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
