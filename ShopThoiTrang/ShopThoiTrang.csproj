@@ -587,6 +587,7 @@
     <Compile Include="Common\Userlogin.cs" />
     <Compile Include="Controllers\AuthCusController.cs" />
     <Compile Include="Controllers\BaseCusController.cs" />
+    <Compile Include="Controllers\CartgoryOfCustomerController.cs" />
     <Compile Include="Controllers\ContactCustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -594,6 +595,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\ProductOfCustomerController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Dtos\PostDtoOutput.cs" />
     <Compile Include="Enums\Enums.cs" />
@@ -803,12 +805,13 @@
     <Content Include="Public\scss\_testimonial.scss" />
     <Content Include="Public\scss\_timers.scss" />
     <Content Include="Public\scss\_variabls.scss" />
-    <Content Include="Views\Home\CartIndex.cshtml" />
     <Content Include="Views\Home\IndexClient.cshtml" />
-    <Content Include="Views\Home\ProductIndex.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\ContactCustomer\Index.cshtml" />
     <Content Include="Views\Site\GetPostById.cshtml" />
+    <Content Include="Views\ProductOfCustomer\Index.cshtml" />
+    <Content Include="Views\ProductOfCustomer\Detail.cshtml" />
+    <Content Include="Views\CartgoryOfCustomer\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -847,7 +850,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64861</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:64861/</IISUrl>
+          <IISUrl>http://localhost:5880/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

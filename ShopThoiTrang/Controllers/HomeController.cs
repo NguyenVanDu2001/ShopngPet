@@ -37,10 +37,6 @@ namespace ShopThoiTrang.Controllers
         {
             return View();
         }
-        public  ActionResult ProductIndex()
-        {
-            return View();
-        }
         [HttpGet]
         public RedirectResult deleteitem(long productID, string size)
         {

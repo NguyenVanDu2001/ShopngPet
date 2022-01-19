@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_layoutSite.cshtml";
 }
@@ -52,11 +53,12 @@
     </div>
 
 
-    <script >
+    <script>
     var heartbeatData = new FormData(); heartbeatData.append('nitroHeartbeat', '1');
     fetch(location.href, {method: 'POST', body: heartbeatData, credentials: 'omit'});
     </script>
-    <script >
+    <script>
     document.cookie = 'nitroCachedPage=' + (!window.NITROPACK_STATE ? '0' : '1') + '; path=/';
     </script>
 </main>
+
