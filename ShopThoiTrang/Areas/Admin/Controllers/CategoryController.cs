@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -35,7 +36,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Mcategory mcategory)
+        public ActionResult Create(Mcategory mcategory, HttpPostedFileBase file)
         {       
             if (ModelState.IsValid)
             {
@@ -49,6 +50,21 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                     Message.set_flash("The product type already exists in the Product table", "danger");
                     return View("Index");
                 }
+                // lưu file 
+                file = Request.Files["img"];
+                string filename = file.FileName.ToString();
+                string ExtensionFile = Mystring.GetFileExtension(filename);
+                string namefilenew = mcategory.name + "/" + slug + "." + ExtensionFile;
+                var path = Path.Combine(Server.MapPath("~/public/images/Cate"), namefilenew);
+                var folder = Server.MapPath("~/public/images/Cate/");
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+                
+                file.SaveAs(path);
+                mcategory.img = filename;
+
                 mcategory.slug = slug;
                 mcategory.created_at = DateTime.Now;
                 mcategory.updated_at = DateTime.Now;
@@ -94,7 +110,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
      
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( Mcategory mcategory)
+        public ActionResult Edit( Mcategory mcategory, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -102,6 +118,33 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                 mcategory.slug = slug;
                 mcategory.updated_at = DateTime.Now;
                 mcategory.updated_by = int.Parse(Session["Admin_id"].ToString());
+
+                file = Request.Files["img"];
+                string filename = file.FileName.ToString();
+
+                if (!filename.Equals(""))
+                {
+
+                    string ExtensionFile = Mystring.GetFileExtension(filename);
+                    string namefilenew = mcategory.name + "/" + slug + "." + ExtensionFile;
+                    var path = Path.Combine(Server.MapPath("~/public/images/Cate"));
+                    var folder = Server.MapPath("~/public/images/Cate/");
+                    if (!Directory.Exists(folder))
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+                    var folderdeleteImg = Server.MapPath("~/public/images/product/" + mcategory.img);
+                    if (Directory.Exists(folderdeleteImg))
+                    {
+                        Directory.Delete(folderdeleteImg);
+                    }
+                    file.SaveAs(path);
+
+                    mcategory.img = filename;
+                }
+
+
+
                 db.Entry(mcategory).State = EntityState.Modified;
                 try
                 {
@@ -183,6 +226,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
             Message.set_flash("Permanently deleted 1 product", "success");
             return RedirectToAction("trash");
         }
+
 
     }
 }

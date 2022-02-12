@@ -24,5 +24,6 @@ namespace ShopThoiTrang.Models
         public int? updated_by { get; set; }
         public int status { get; set; }
         public string JsonListAttrId { get; set; }
+        public string  img { get; set; }
     }
 }

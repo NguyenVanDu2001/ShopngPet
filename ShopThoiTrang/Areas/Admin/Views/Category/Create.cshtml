@@ -43,7 +43,7 @@
 <section class=" pt-2 card  ">
     @Html.Partial("_MessgeAlert")
     <div class="bg-white p-4 ">
-        @using (Html.BeginForm("Create", "Category"))
+        @using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data" })    )
         {
             @Html.AntiForgeryToken()
             <div class=" row ">
@@ -90,6 +90,11 @@
                         @Html.DropDownListFor(model => model.status, status, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
                     </div>
+                    <div>
+                        <label for="">Image</label>
+                        <br />
+                        <input type="file" name="img" value="" />
+                    </div>
                 </div>
                 <div class="col-md-8">
                     <div id="attribute">
@@ -104,6 +109,7 @@
                                 </div>
                             }
                         }
+
                     </div>
                     @Html.TextBoxFor(model => model.JsonListAttrId, new { @class = "d-none" })
                 </div>

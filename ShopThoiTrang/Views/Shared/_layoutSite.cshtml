@@ -189,20 +189,14 @@
                         </div>
                         <div class="flex-col hide-for-medium flex-center">
                             <ul class="nav header-nav header-bottom-nav nav-center  nav-pills nav-spacing-large nav-uppercase">
-                                <li id="menu-item-245" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-220 current_page_item menu-item-245 active menu-item-design-default"><a href="index.html" aria-current="page" class="nav-top-link">Trang chủ</a></li>
+                                <li id="menu-item-245" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-220 current_page_item menu-item-245 @(Request.Path.StartsWith(@Url.Action("IndexClient","Home")) ? "active" : "") menu-item-design-default">
+                                <a href="@Url.Action("IndexClient","Home")" aria-current="page" class="nav-top-link">Trang chủ</a></li>
                                 <li id="menu-item-258" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-258 menu-item-design-default has-dropdown">
                                     <a href="../ProductOfCustomer/Index" class="nav-top-link">Sản Phẩm<i class="icon-angle-down"></i></a>
-                                    <ul class="sub-menu nav-dropdown nav-dropdown-bold">
-                                        <li id="menu-item-551" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-551"><a href="do-an-dinh-duong/index.html">Đồ ăn dinh dưỡng</a></li>
-                                        <li id="menu-item-255" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-255"><a href="phu-kien/index.html">Phụ kiện</a></li>
-                                        <li id="menu-item-254" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-254"><a href="do-choi/index.html">Đồ chơi</a></li>
-                                        <li id="menu-item-256" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-256"><a href="quan-ao/index.html">Quần áo</a></li>
-                                        <li id="menu-item-257" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-257"><a href="sua-tam/index.html">Sữa tắm</a></li>
-                                        <li id="menu-item-312" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-312"><a href="chuong/index.html">Chuồng cho thú cưng</a></li>
-                                    </ul>
+                                   @Html.Action("MenuCategory","Home")
                                 </li>
                                 <li id="menu-item-243" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-243 menu-item-design-default @(Request.Path.StartsWith(@Url.Action("getAllPost","Site")) ? "active" : "")" ><a href="@Url.Action("getAllPost","Site")" class="nav-top-link">Tin tức</a></li>
-                                <li id="menu-item-298" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-298 menu-item-design-default"><a href="../AboutCustomer/Index" class="nav-top-link">Giới thiệu</a></li>
+                                <li id="menu-item-298" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-298 menu-item-design-default  @(Request.Path.StartsWith(@Url.Action("Index","AboutCustomer")) ? "active" : "")" ><a href="../AboutCustomer/Index" class="nav-top-link">Giới thiệu</a></li>
                                 <li id="menu-item-244" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-244 menu-item-design-default"><a href="../ContactCustomer/Index" class="nav-top-link">Liên hệ</a></li>
                             </ul>
                         </div>

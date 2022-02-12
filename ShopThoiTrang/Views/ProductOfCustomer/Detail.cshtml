@@ -1,7 +1,11 @@
-﻿
+﻿@model ShopThoiTrang.Models.Product
+@using ShopThoiTrang.Models;
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_layoutSite.cshtml";
+
+    // 
+    var category = (Mcategory)ViewBag.viewBagCategoryByProductDeteil != null ? (Mcategory)ViewBag.viewBagCategoryByProductDeteil : null;
 }
 <main id="main" class="">
     <div class="shop-container">
@@ -19,7 +23,7 @@
                             <div class="product-images relative mb-half has-hover woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4">
 
                                 <div class="badge-container is-larger absolute left top z-1">
-                                    <div class="callout badge badge-circle"><div class="badge-inner secondary on-sale"><span class="onsale">-17%</span></div></div>
+                                    <div class="callout badge badge-circle"><div class="badge-inner secondary on-sale"><span class="onsale">@Model.pricesale %</span></div></div>
                                 </div>
                                 <div class="image-tools absolute top show-on-hover right z-3">
                                     <div class="wishlist-icon">
@@ -65,7 +69,7 @@
                 "dragThreshold" : 15,
                 "pageDots": false,
                 "rightToLeft": false       }'>
-                                    <div data-thumb="https://dilyspetshop.com/wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-2-100x100.jpg" class="woocommerce-product-gallery__image slide first"><a href="../wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-2.jpg"><img width="320" height="320" src="../wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-2.jpg" class="wp-post-image skip-lazy" alt="áo mưa cho chó" loading="lazy" title="ao-mua-cho-cho" data-caption="áo mưa cho chó" data-src="https://dilyspetshop.com/wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-2.jpg" data-large_image="https://dilyspetshop.com/wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-2.jpg" data-large_image_width="320" data-large_image_height="320" srcset="https://dilyspetshop.com/wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-2.jpg 320w, https://dilyspetshop.com/wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-2-280x280.jpg 280w, https://dilyspetshop.com/wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-2-300x300.jpg 300w, https://dilyspetshop.com/wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-2-100x100.jpg 100w" sizes="(max-width: 320px) 100vw, 320px" /></a></div>
+                                    <div data-thumb="/public/images/product/@Model.img" class="woocommerce-product-gallery__image slide first"><a href="../wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-2.jpg"><img width="320" height="320" src="/public/images/product/@Model.img" class="wp-post-image skip-lazy" alt="áo mưa cho chó" loading="lazy" title="ao-mua-cho-cho" data-caption="áo mưa cho chó" data-src="/public/images/product/@Model.img" data-large_image="/public/images/product/@Model.img" data-large_image_width="320" data-large_image_height="320" srcset="/public/images/product/@Model.img 320w,/public/images/product/@Model.img  280w, /public/images/product/@Model.img 300w, /public/images/product/@Model.img 100w" sizes="(max-width: 320px) 100vw, 320px" /></a></div>
                                 </figure>
 
                                 <div class="image-tools absolute bottom left z-3">
@@ -78,8 +82,8 @@
                         </div>
 
                         <div class="product-info summary col-fit col entry-summary product-summary">
-                            <nav class="woocommerce-breadcrumb breadcrumbs uppercase"><a href="../index.html">Trang chủ</a> <span class="divider">&#47;</span> <a href="../san-pham/index.html">Sản Phẩm</a> <span class="divider">&#47;</span> <a href="../quan-ao/index.html">Quần áo</a></nav><h1 class="product-title product_title entry-title">
-                                áo mưa cho chó
+                            <nav class="woocommerce-breadcrumb breadcrumbs uppercase"><a href="../index.html">Trang chủ</a> <span class="divider">&#47;</span> <a href="../san-pham/index.html">Sản Phẩm</a> <span class="divider">&#47;</span> <a href="../quan-ao/index.html">@category.name</a></nav><h1 class="product-title product_title entry-title">
+                                @Model.name
                             </h1>
 
                             <div class="is-divider small"></div>
@@ -106,14 +110,14 @@
                                 </li>
                             </ul><div class="price-wrapper">
                                 <p class="price product-page-price price-on-sale">
-                                    <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>120.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi>100.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></ins>
+                                    <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>@Model.price&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi>100.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></ins>
                                 </p>
                             </div>
-                            <p class="stock in-stock">còn 9 hàng</p>
+                            <p class="stock in-stock">còn @Model.number hàng</p>
 
 
                             <form class="cart" action="https://dilyspetshop.com/ao-mua-cho-cho/" method="post" enctype='multipart/form-data'>
-                                <button type="submit" name="wsb-buy-now" value="1483" class="wsb-button js-wsb-add-to-cart">Buy Now</button>
+                                <button type="submit" name="wsb-buy-now" value="1483" class="wsb-button js-wsb-add-to-cart">Mua ngay</button>
 
                                 <div class="quantity buttons_added">
                                     <input type="button" value="-" class="minus button is-form">				<label class="screen-reader-text" for="quantity_61dec823352b9">áo mưa cho chó số lượng</label>
@@ -141,11 +145,14 @@
 
 
 
-                                <span class="posted_in">Danh mục: <a href="../quan-ao/index.html" rel="tag">Quần áo</a></span>
-                                <span class="tagged_as">Từ khóa: <a href="../tu-khoa-san-pham/ao-mua-cho-cho/index.html" rel="tag">áo mưa cho chó</a></span>
+                                <span class="posted_in">Danh mục: <a href="../quan-ao/index.html" rel="tag">@category.name</a></span>
+                                <span class="tagged_as">Từ khóa: <a href="../tu-khoa-san-pham/ao-mua-cho-cho/index.html" rel="tag">@Model.slug</a></span>
 
                             </div>
-                            <div class="social-icons share-icons share-row relative"><a href="https://www.facebook.com/sharer.php?u=https://dilyspetshop.com/ao-mua-cho-cho/" data-label="Facebook" onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;" rel="noopener noreferrer nofollow" target="_blank" class="icon primary button circle tooltip facebook" title="Share on Facebook"><i class="icon-facebook"></i></a><a href="https://twitter.com/share?url=https://dilyspetshop.com/ao-mua-cho-cho/" onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;" rel="noopener noreferrer nofollow" target="_blank" class="icon primary button circle tooltip twitter" title="Share on Twitter"><i class="icon-twitter"></i></a><a href="mailto:enteryour@addresshere.com?subject=%C3%A1o%20m%C6%B0a%20cho%20ch%C3%B3&amp;body=Check%20this%20out:%20https://dilyspetshop.com/ao-mua-cho-cho/" rel="nofollow" class="icon primary button circle tooltip email" title="Email to a Friend"><i class="icon-envelop"></i></a><a href="https://pinterest.com/pin/create/button/?url=https://dilyspetshop.com/ao-mua-cho-cho/&amp;media=https://dilyspetshop.com/wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-2.jpg&amp;description=%C3%A1o%20m%C6%B0a%20cho%20ch%C3%B3" onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;" rel="noopener noreferrer nofollow" target="_blank" class="icon primary button circle tooltip pinterest" title="Pin on Pinterest"><i class="icon-pinterest"></i></a><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://dilyspetshop.com/ao-mua-cho-cho/&amp;title=%C3%A1o%20m%C6%B0a%20cho%20ch%C3%B3" onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;" rel="noopener noreferrer nofollow" target="_blank" class="icon primary button circle tooltip linkedin" title="Share on LinkedIn"><i class="icon-linkedin"></i></a></div>
+                            <div class="social-icons share-icons share-row relative">
+                            <a href="https://www.facebook.com/sharer.php?u=https://dilyspetshop.com/ao-mua-cho-cho/" data-label="Facebook"
+                               onclick="window.open(this.href, this.title, 'width=500,height=500,top=300px,left=300px');
+                        return false;" rel="noopener noreferrer nofollow" target="_blank" class="icon primary button circle tooltip facebook" title="Share on Facebook"><i class="icon-facebook"></i></a><a href="https://twitter.com/share?url=https://dilyspetshop.com/ao-mua-cho-cho/" onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;" rel="noopener noreferrer nofollow" target="_blank" class="icon primary button circle tooltip twitter" title="Share on Twitter"><i class="icon-twitter"></i></a><a href="mailto:enteryour@addresshere.com?subject=%C3%A1o%20m%C6%B0a%20cho%20ch%C3%B3&amp;body=Check%20this%20out:%20https://dilyspetshop.com/ao-mua-cho-cho/" rel="nofollow" class="icon primary button circle tooltip email" title="Email to a Friend"><i class="icon-envelop"></i></a><a href="https://pinterest.com/pin/create/button/?url=https://dilyspetshop.com/ao-mua-cho-cho/&amp;media=https://dilyspetshop.com/wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-2.jpg&amp;description=%C3%A1o%20m%C6%B0a%20cho%20ch%C3%B3" onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;" rel="noopener noreferrer nofollow" target="_blank" class="icon primary button circle tooltip pinterest" title="Pin on Pinterest"><i class="icon-pinterest"></i></a><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://dilyspetshop.com/ao-mua-cho-cho/&amp;title=%C3%A1o%20m%C6%B0a%20cho%20ch%C3%B3" onclick="window.open(this.href,this.title,'width=500,height=500,top=300px,left=300px');  return false;" rel="noopener noreferrer nofollow" target="_blank" class="icon primary button circle tooltip linkedin" title="Share on LinkedIn"><i class="icon-linkedin"></i></a></div>
                         </div>
 
 
@@ -203,58 +210,7 @@
                             <div class="tab-panels">
                                 <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content active" id="tab-description" role="tabpanel" aria-labelledby="tab-title-description">
 
-
-                                    <p>
-                                        Vào những ngày rảnh rỗi các “boss” muốn dắt chú chó của mình đi chơi hoặc đi dạo ngoài trời mà vô tình gặp trời mưa. Rất nhiều người thắc mắc có cần thiết phải mặc áo mưa cho chó không? Câu trả lời là có cần nhé các bạn. Thực ra những chú chó cũng như chúng ta ra ngoài gặp mưa rất dễ bị ốm. Và những chú chó luôn năng động và cần được ra ngoài mỗi ngày nên khi trời mưa chúng sẽ dễ bị bẩn. Vì vậy nhiều nuôi thú cưng thường ngại đưa chú chó của mình ra ngoài khi trời mưa.<br />
-                                        <strong>Áo mưa cho chó </strong>không chỉ là một món phụ kiện đơn giản, mà nó còn giúp bảo vệ cơ thể của chó. Áo mưa còn có tác dụng giữ ấm thân nhiệt, làm đẹp cho chó. Hãy cùng <a href="../index.html">Dilys Pet Shop</a> hiểu cách mặc áo mưa cho chó đúng nhé.
-                                    </p>
-                                    <h1><strong>Vì sao nên mặc áo mưa cho chó?</strong></h1>
-                                    <p>Theo các bác sĩ thú y cho biết, khi cho chó đi dạo vào những ngày ẩm ướt, chó rất cần được mặc áo mưa. Đặc biệt là với những chú chó con vì chúng yếu ớt hơn. Áo mưa cjo chó giúp cách ly cơ thể chó với nước mưa bên ngoài, thấm nước, cản gió, giữ ấm cho chó.</p>
-                                    <figure id="attachment_1446" aria-describedby="caption-attachment-1446" style="width: 400px" class="wp-caption aligncenter"><img loading="lazy" class="wp-image-1446 size-medium" src="../wp-content/uploads/2021/10/d28b699219c2aa36aac9deaa5a6719b6-400x400.jpg" alt="áo mưa cho chó " width="400" height="400" srcset="https://dilyspetshop.com/wp-content/uploads/2021/10/d28b699219c2aa36aac9deaa5a6719b6-400x400.jpg 400w, https://dilyspetshop.com/wp-content/uploads/2021/10/d28b699219c2aa36aac9deaa5a6719b6-280x280.jpg 280w, https://dilyspetshop.com/wp-content/uploads/2021/10/d28b699219c2aa36aac9deaa5a6719b6-300x300.jpg 300w, https://dilyspetshop.com/wp-content/uploads/2021/10/d28b699219c2aa36aac9deaa5a6719b6-600x600.jpg 600w, https://dilyspetshop.com/wp-content/uploads/2021/10/d28b699219c2aa36aac9deaa5a6719b6-100x100.jpg 100w, https://dilyspetshop.com/wp-content/uploads/2021/10/d28b699219c2aa36aac9deaa5a6719b6.jpg 640w" sizes="(max-width: 400px) 100vw, 400px" title="áo mưa cho chó 5"><figcaption id="caption-attachment-1446" class="wp-caption-text">áo mưa cho chó</figcaption></figure>
-                                    <p>Không chỉ giữ ấm bảo vệ cơ thể mà những chiếc áo mưa cho chó có những họa tiết xinh xắn sẽ làm cho chó cưng của bạn đáng yêu hơn. Thời tiết sẽ không còn là trở ngại với những chuyến đi dạo của cún cưng. Và đặc biệt hơn là đang tới mùa đông, chiếc áo mưa có thể dùng như một loại áo gió hiệu quả.</p>
-                                    <h2><strong>Mô tả sản phẩm áo mưa cho chó</strong></h2>
-                                    <ul>
-                                        <li>Áo mưa cho chó dễ dàng giúp các bé yêu thoải mái đi chơi cùng ba mẹ mà không lo bị ướt lông.</li>
-                                        <li>Áo có mũ trùm đầu vô cùng tiện lợi. Kiểu dáng ôm trọn từ đầu đến tận đuôi, che chắn toàn diện cho bé.</li>
-                                        <li>Chất liệu da nhựa mềm mại êm ái, không kích ứng da, cao cấp chống thấm nước</li>
-                                        <li>Áo có thêm nút gài để giữ ấm cho bé yêu.</li>
-                                        <li>Có thêm phần khoét lỗ trên cổ áo dễ dàng xỏ dây vào dẫn bé đi vô cùng tiện lợi.</li>
-                                        <li>Có nhiều màu sắc họa tiết nổi bật dễ thương, giúp bé yêu tỏa sáng khắp mọi<a href="https://dantri.com.vn/suc-khoe/ha-noi-du-kien-lay-65000-mau-xet-nghiem-sarscov2-trong-hom-nay-20210812131524355.htm" rel="noopener"> nơi</a>.</li>
-                                    </ul>
-                                    <figure id="attachment_1448" aria-describedby="caption-attachment-1448" style="width: 320px" class="wp-caption aligncenter"><img loading="lazy" class="wp-image-1448 size-full" src="../wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi.jpg" alt="áo mưa cho chó " width="320" height="320" srcset="https://dilyspetshop.com/wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi.jpg 320w, https://dilyspetshop.com/wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-280x280.jpg 280w, https://dilyspetshop.com/wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-300x300.jpg 300w, https://dilyspetshop.com/wp-content/uploads/2021/10/ao-mua-cho-cho-ha-noi-100x100.jpg 100w" sizes="(max-width: 320px) 100vw, 320px" title="áo mưa cho chó 6"><figcaption id="caption-attachment-1448" class="wp-caption-text">áo mưa cho chó</figcaption></figure>
-                                    <p><strong> </strong></p>
-                                    <p><strong> </strong></p>
-                                    <h3><strong>Cách chọn áo mưa cho chó</strong></h3>
-                                    <ul>
-                                        <li>Bạn nên chọn áo mưa rộng hơn chút để giúp chó đi lại thoải mái</li>
-                                        <li>Lựa loại vải áo mưa cần mềm mại, chống thấm nước tốt và cản được gió. Không bó chặt vào thân chó</li>
-                                        <li>Một điểm lưu ý nữa là không nên chọn áo mưa quá rộng sẽ hạn chế hoạt động của chú chó</li>
-                                        <li>Bạn có thể thử khả năng chống nước của áo mưa bằng cách phun nước lên bề mặt áp bằng bình xịt. Sau 10 &#8211; 15 phút, lật lớp trong của áo mưa ra và lấy khăn giấy lau. Nếu lớp bên trong áo có hiện tượng ẩm ướt, khăn giấy bị ướt sau khi lau nghĩa là áo không đạt chuẩn.</li>
-                                    </ul>
-                                    <h4><strong>Lưu ý khi lựa chọn áo mưa cho chó</strong></h4>
-                                    <p>Áo mưa cần có dây đai ở eo. Nếu chú chó của bạn mập hay gầy hơn, dây đai sẽ giúp điều chỉnh kích thước, cố định áo mưa. Bạn có thể ghé qua các shop phụ kiện thú cưng Dilys Pet Shop để sắm áo mưa cho chó nhà bạn nhé. Shop chuyên cung cấp những chiếc áo mưa cho chó giúp đảm bảo an toàn cún cưng khi đi biển, vượt sông hay đi bơi.</p>
-                                    <p>Link bài viết: <a href="index.html">https://dilyspetshop.com/ao-mua-cho-cho/</a></p>
-                                    <p>Bạn đã bao giờ thử nghĩ mình sẽ tự tay may cho áo cho chú cún của mình chưa? Hãy để Dilys Pet Shop giúp bạn nha. Chúc bạn thành công!</p>
-                                    <p>Linh tham khảo : <a href="../may-ao-cho-cho-tu-ao-cu-tai-sao-khong/index.html">https://dilyspetshop.com/may-ao-cho-cho-tu-ao-cu-tai-sao-khong/</a></p>
-                                    <p>&nbsp;</p>
-                                    <p>&nbsp;</p>
-                                    <div class="aiosrs-rating-wrap" data-schema-id="1111">
-                                        <div class="aiosrs-star-rating-wrap ">
-                                            <span class="aiosrs-star-rating dashicons dashicons-star-empty" data-index="1"></span>
-                                            <span class="aiosrs-star-rating dashicons dashicons-star-empty" data-index="2"></span>
-                                            <span class="aiosrs-star-rating dashicons dashicons-star-empty" data-index="3"></span>
-                                            <span class="aiosrs-star-rating dashicons dashicons-star-empty" data-index="4"></span>
-                                            <span class="aiosrs-star-rating dashicons dashicons-star-empty" data-index="5"></span>
-                                        </div>
-                                        <div class="aiosrs-rating-summary-wrap">
-                                            <span class="aiosrs-rating">
-                                                0/5
-                                            </span>
-                                            <span class="aiosrs-rating-count">
-                                                (0 Reviews)
-                                            </span>
-                                        </div>
-                                    </div>
+                                    @Html.Raw(Model.detail)
                                 </div>
                                 <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--additional_information panel entry-content " id="tab-additional_information" role="tabpanel" aria-labelledby="tab-title-additional_information">
 
@@ -332,6 +288,8 @@
 
 
 
+                                @foreach (var item in (List<Product>)ViewBag.productByCategory)
+                                {
 
                                 <div class="product-small col has-hover product type-product post-618 status-publish instock product_cat-quan-ao has-post-thumbnail shipping-taxable purchasable product-type-simple">
                                     <div class="col-inner">
@@ -341,8 +299,9 @@
                                         <div class="product-small box ">
                                             <div class="box-image">
                                                 <div class="image-fade_in_back">
-                                                    <a href="../quan-ao-cho-thu-cung-hoat-tiet-khung-long/index.html">
-                                                        <img width="300" height="300" src="../wp-content/uploads/2021/09/top-shop-ban-phu-kien-cho-thu-cung-uy-tin-hcm-696x463-1-300x300.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="quần áo cho thú cưng" loading="lazy" srcset="https://dilyspetshop.com/wp-content/uploads/2021/09/top-shop-ban-phu-kien-cho-thu-cung-uy-tin-hcm-696x463-1-300x300.jpg 300w, https://dilyspetshop.com/wp-content/uploads/2021/09/top-shop-ban-phu-kien-cho-thu-cung-uy-tin-hcm-696x463-1-280x280.jpg 280w, https://dilyspetshop.com/wp-content/uploads/2021/09/top-shop-ban-phu-kien-cho-thu-cung-uy-tin-hcm-696x463-1-100x100.jpg 100w" sizes="(max-width: 300px) 100vw, 300px" />
+                                                    <a href="@Url.Action("Detail", "ProductOfCustomer", new {id=item.ID})">
+                                                        <img width="300" height="300" src="/public/images/product/@item.img" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="quần áo cho thú cưng" loading="lazy" srcset="/public/images/product/@item.img 300w,
+                                                             /public/images/product/@item.img 280w, /public/images/product/@item.img 100w" sizes="(max-width: 300px) 100vw, 300px" />
                                                     </a>
                                                 </div>
                                                 <div class="image-tools is-small top right show-on-hover">
@@ -354,7 +313,7 @@
 
                                                             <div class="yith-wcwl-add-to-wishlist add-to-wishlist-618  wishlist-fragment on-first-load"
                                                                  data-fragment-ref="618"
-                                                                 data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:618,&quot;parent_product_id&quot;:618,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+                                                                 data-fragment-options="{&quot;base_url&    quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:618,&quot;parent_product_id&quot;:618,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
 
                                                                 <!-- ADD TO WISHLIST -->
 
@@ -386,11 +345,11 @@
                                             <div class="box-text box-text-products text-center grid-style-2">
                                                 <div class="title-wrapper">
                                                     <p class="category uppercase is-smaller no-text-overflow product-cat op-7">
-                                                        Quần áo
+                                                        @category.name
                                                     </p>
-                                                    <p class="name product-title woocommerce-loop-product__title"><a href="../quan-ao-cho-thu-cung-hoat-tiet-khung-long/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Quần Áo Cho Thú Hoạt Tiết Khủng Long</a></p>
+                                                    <p class="name product-title woocommerce-loop-product__title"><a href="../quan-ao-cho-thu-cung-hoat-tiet-khung-long/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">@item.name</a></p>
                                                 </div><div class="price-wrapper">
-                                                    <span class="price"><span class="woocommerce-Price-amount amount"><bdi>12.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></span>
+                                                    <span class="price"><span class="woocommerce-Price-amount amount"><bdi>@item.price&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></span>
                                                 </div><div class="add-to-cart-button"><a href="index974f.html?add-to-cart=618" data-quantity="1" class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline" data-product_id="618" data-product_sku="" aria-label="Thêm &ldquo;Quần Áo Cho Thú Hoạt Tiết Khủng Long&rdquo; vào giỏ hàng" rel="nofollow">Thêm vào giỏ hàng</a></div>
                                             </div>
                                         </div>
@@ -398,8 +357,9 @@
                                 </div>
 
 
+                                }
 
-                                <div class="product-small col has-hover product type-product post-1358 status-publish instock product_cat-quan-ao product_tag-ao-cho-cho-phoc-soc product_tag-quan-ao-cho-cho-phoc-soc has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
+                                <!--<div class="product-small col has-hover product type-product post-1358 status-publish instock product_cat-quan-ao product_tag-ao-cho-cho-phoc-soc product_tag-quan-ao-cho-cho-phoc-soc has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
                                     <div class="col-inner">
 
                                         <div class="badge-container absolute left top z-1">
@@ -539,11 +499,11 @@
 
                                                             <div class="yith-wcwl-add-to-wishlist add-to-wishlist-1471  wishlist-fragment on-first-load"
                                                                  data-fragment-ref="1471"
-                                                                 data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:1471,&quot;parent_product_id&quot;:1471,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+                                                                 data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:1471,&quot;parent_product_id&quot;:1471,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">-->
 
                                                                 <!-- ADD TO WISHLIST -->
 
-                                                                <div class="yith-wcwl-add-button">
+                                                                <!--<div class="yith-wcwl-add-button">
                                                                     <a href="indexb9b3.html?add_to_wishlist=1471&amp;_wpnonce=53025a881c"
                                                                        class="add_to_wishlist single_add_to_wishlist button alt"
                                                                        data-product-id="1471"
@@ -553,11 +513,11 @@
                                                                        rel="nofollow">
                                                                         <i class="yith-wcwl-icon fa fa-heart-o"></i>		<span>Thêm vào yêu thích</span>
                                                                     </a>
-                                                                </div>
+                                                                </div>-->
 
                                                                 <!-- COUNT TEXT -->
 
-                                                            </div>
+                                                            <!--</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -602,11 +562,11 @@
 
                                                             <div class="yith-wcwl-add-to-wishlist add-to-wishlist-1593  wishlist-fragment on-first-load"
                                                                  data-fragment-ref="1593"
-                                                                 data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:1593,&quot;parent_product_id&quot;:1593,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+                                                                 data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:1593,&quot;parent_product_id&quot;:1593,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">-->
 
                                                                 <!-- ADD TO WISHLIST -->
 
-                                                                <div class="yith-wcwl-add-button">
+                                                                <!--<div class="yith-wcwl-add-button">
                                                                     <a href="index5d80.html?add_to_wishlist=1593&amp;_wpnonce=53025a881c"
                                                                        class="add_to_wishlist single_add_to_wishlist button alt"
                                                                        data-product-id="1593"
@@ -616,11 +576,11 @@
                                                                        rel="nofollow">
                                                                         <i class="yith-wcwl-icon fa fa-heart-o"></i>		<span>Thêm vào yêu thích</span>
                                                                     </a>
-                                                                </div>
+                                                                </div>-->
 
                                                                 <!-- COUNT TEXT -->
 
-                                                            </div>
+                                                            <!--</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -643,7 +603,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
+                           
                             </div>
                         </div>
 

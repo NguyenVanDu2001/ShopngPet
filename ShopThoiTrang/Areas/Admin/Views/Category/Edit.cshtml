@@ -42,7 +42,7 @@
     @Html.Partial("_MessgeAlert")
     <div class="container bg-white p-4 ">
 
-        @using (Html.BeginForm("Edit", "Category"))
+        @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
@@ -93,6 +93,11 @@
                         <label for="psw"><span class="text-secondary ">Status</span></label>
                         @Html.DropDownListFor(model => model.status, status, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        <label for="">Image</label>
+                        <br />
+                        <input type="file" name="img" value="" />
                     </div>
                 </div>
                 <div class="col-md-8">

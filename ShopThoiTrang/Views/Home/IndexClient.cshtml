@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ShopThoiTrang.Dtos.IndexClientDto
+
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_layoutSite.cshtml";
 }
@@ -93,26 +95,34 @@
             <h1 class="section-title section-title-center"><b></b><span class="section-title-main"><i class="icon-gift"></i>Danh mục sản phẩm Ở DILYS PET</span><b></b></h1>
         </div>
         <div class="row large-columns-4 medium-columns-3 small-columns-2 row-small slider row-slider slider-nav-reveal" data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": false, "rightToLeft": false, "autoPlay" : false}'>
-            <div class="product-category col">
-                <div class="col-inner">
-                    <a href="do-an-dinh-duong/index.html">
-                        <div class="box box-category has-hover box-badge hover-dark ">
-                            <div class="box-image">
-                                <div class="">
-                                    <img alt="Đồ ăn dinh dưỡng" width="300" height="300" title="Trang chủ 13" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/09/81e6384a9bd5861f3a71608dbe3583d3.thuc-an-hat-cho-cho-dog-mania-5kg-1579252168-300x300.png " />
+
+            @foreach (var item in Model.listCate)
+            {
+                <div class="product-category col">
+                    <div class="col-inner">
+                        <a href="do-an-dinh-duong/index.html">
+                            <div class="box box-category has-hover box-badge hover-dark ">
+                                <div class="box-image">
+                                    <div class="">
+                                        <img alt="@item.name" width="300" height="300" title="Trang chủ 13" src="~/Public/images/Cate/chuong.webp" />
+                                    </div>
+                                </div>
+                                <div class="box-text text-center">
+                                    <div class="box-text-inner">
+                                        <h5 class="uppercase header-title"> @item.name </h5>
+                                        <p class="is-xsmall uppercase count "> @(Model.ListProducts.Where(x => x.catid == item.ID).Count().ToString()) Sản phẩm </p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="box-text text-center">
-                                <div class="box-text-inner">
-                                    <h5 class="uppercase header-title"> Đồ ăn dinh dưỡng </h5>
-                                    <p class="is-xsmall uppercase count "> 12 Sản phẩm </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="product-category col">
+            }
+
+
+
+
+            @*<div class="product-category col">
                 <div class="col-inner">
                     <a href="do-choi/index.html">
                         <div class="box box-category has-hover box-badge hover-dark ">
@@ -206,436 +216,448 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div>*@
         </div>
         <div class="container section-title-container">
             <h2 class="section-title section-title-center"><b></b><span class="section-title-main"><i class="icon-heart-o"></i>Sản phẩm bán chạy nhất</span><b></b></h2>
         </div>
+        
         <div class="row large-columns-4 medium-columns-3 small-columns-2 row-small">
-            <div class="product-small col has-hover product type-product post-1330 status-publish first instock product_cat-phu-kien product_tag-ro-mom-cho product_tag-ro-mom-cho-mo-vit has-post-thumbnail shipping-taxable purchasable product-type-variable">
-                <div class="col-inner">
-                    <div class="badge-container absolute left top z-1"> </div>
-                    <div class="product-small box ">
-                        <div class="box-image">
-                            <div class="image-fade_in_back">
-                                <a href="do-bit-mom-cho-ro-mom-cho-mo-vit/index.html">
-                                    <img width="300" height="300" alt="Đồ bịt mõm chó- Rọ mõm chó mỏ vịt" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/ab8ca8f09382b0d8ae45a46cddea4acb.do-bit-mom-cho-300x300.jpg " />
-                                </a>
-                            </div>
-                            <div class="image-tools is-small top right show-on-hover">
-                                <div class="wishlist-icon">
-                                    <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
-                                    <div class="wishlist-popup dark">
-                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-1330  wishlist-fragment on-first-load" data-fragment-ref="1330" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:1330,&quot;parent_product_id&quot;:1330,&quot;product_type&quot;:&quot;variable&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="index8910.html?add_to_wishlist=1330&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="1330" data-product-type="variable" data-original-product-id="1330" data-title="Thêm vào yêu thích" rel="nofollow">
-                                                    <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
-                                                </a>
+            @foreach (var item in Model.ListProducts)
+            {
+                <div class="product-small col has-hover product type-product post-1330 status-publish first instock product_cat-phu-kien product_tag-ro-mom-cho product_tag-ro-mom-cho-mo-vit has-post-thumbnail shipping-taxable purchasable product-type-variable">
+                    <div class="col-inner">
+                        <div class="badge-container absolute left top z-1"> </div>
+                        <div class="product-small box ">
+                            <div class="box-image">
+                                <div class="image-fade_in_back">
+                                    <a href="do-bit-mom-cho-ro-mom-cho-mo-vit/index.html">
+                                        <img width="300" height="300" alt="@item.name" src="/public/images/product/@item.img" />
+                                    </a>
+                                </div>
+                                <div class="image-tools is-small top right show-on-hover">
+                                    <div class="wishlist-icon">
+                                        <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
+                                        <div class="wishlist-popup dark">
+                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-1330  wishlist-fragment on-first-load" data-fragment-ref="1330" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:1330,&quot;parent_product_id&quot;:1330,&quot;product_type&quot;:&quot;variable&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+                                                <div class="yith-wcwl-add-button">
+                                                    <a href="index8910.html?add_to_wishlist=1330&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="1330" data-product-type="variable" data-original-product-id="1330" data-title="Thêm vào yêu thích" rel="nofollow">
+                                                        <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
+                                <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="1330" href="#quick-view">Quick View</a> </div>
                             </div>
-                            <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
-                            <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="1330" href="#quick-view">Quick View</a> </div>
-                        </div>
-                        <div class="box-text box-text-products text-center grid-style-2">
-                            <div class="title-wrapper">
-                                <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Phụ kiện </p>
-                                <p class="name product-title woocommerce-loop-product__title"><a href="do-bit-mom-cho-ro-mom-cho-mo-vit/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Đồ bịt mõm chó &#8211; Rọ mõm chó mỏ vịt</a></p>
-                            </div>
-                            <div class="price-wrapper">
-                                <span class="price">
-                                    <span class="woocommerce-Price-amount amount">
-                                        <bdi>25.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
-                                    </span> &ndash; <span class="woocommerce-Price-amount amount">
-                                        <bdi>31.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
-                                    </span>
-                                </span>
-                            </div>
-                            <div class="add-to-cart-button">
-                                <a href="do-bit-mom-cho-ro-mom-cho-mo-vit/index.html" data-quantity="1" class="primary is-small mb-0 button product_type_variable add_to_cart_button is-outline" data-product_id="1330" data-product_sku="" aria-label="Lựa chọn cho &ldquo;Đồ bịt mõm chó - Rọ mõm chó mỏ vịt&rdquo;"
-                                   rel="nofollow">Lựa chọn các tùy chọn</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-small col has-hover product type-product post-1576 status-publish instock product_cat-phu-kien product_tag-balo-phi-hanh-gia product_tag-balo-van-chuyen-cho-meo product_tag-balo-vuong-dung-meo product_tag-cap-trong-suot-dung-meo has-post-thumbnail sale shipping-taxable purchasable product-type-variable">
-                <div class="col-inner">
-                    <div class="badge-container absolute left top z-1">
-                        <div class="callout badge badge-circle">
-                            <div class="badge-inner secondary on-sale"><span class="onsale">-1%</span></div>
-                        </div>
-                    </div>
-                    <div class="product-small box ">
-                        <div class="box-image">
-                            <div class="image-fade_in_back">
-                                <a href="cap-dung-meo-balo-vuong-trong-suot-cho-meo/index.html">
-                                    <img width="300" height="300" alt="Cặp đựng mèo trong suốt" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/c2face2776898cdf1b8151d02d945625.cap-dung-meo-hong-300x300.jpg" />
-                                </a>
-                            </div>
-                            <div class="image-tools is-small top right show-on-hover">
-                                <div class="wishlist-icon">
-                                    <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
-                                    <div class="wishlist-popup dark">
-                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-1576  wishlist-fragment on-first-load" data-fragment-ref="1576" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:1576,&quot;parent_product_id&quot;:1576,&quot;product_type&quot;:&quot;variable&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="index0044.html?add_to_wishlist=1576&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="1576" data-product-type="variable" data-original-product-id="1576" data-title="Thêm vào yêu thích" rel="nofollow">
-                                                    <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="box-text box-text-products text-center grid-style-2">
+                                <div class="title-wrapper">
+                                    @{ 
+                                        var cateName = Model?.listCate?.FirstOrDefault(x => x.ID == item.catid)?.name;
+                                    }
+                                    <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> @cateName </p>
+                                    <p class="name product-title woocommerce-loop-product__title"><a href="Home/Detail/@item.ID" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">@item.name</a></p>
                                 </div>
-                            </div>
-                            <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
-                            <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="1576" href="#quick-view">Quick View</a> </div>
-                        </div>
-                        <div class="box-text box-text-products text-center grid-style-2">
-                            <div class="title-wrapper">
-                                <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Phụ kiện </p>
-                                <p class="name product-title woocommerce-loop-product__title"><a href="cap-dung-meo-balo-vuong-trong-suot-cho-meo/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Cặp đựng mèo &#8211; Balo vuông trong suốt cho mèo</a></p>
-                            </div>
-                            <div class="price-wrapper">
-                                <span class="price">
-                                    <del aria-hidden="true">
+                                <div class="price-wrapper">
+                                    <span class="price">
                                         <span class="woocommerce-Price-amount amount">
-                                            <bdi>700.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
-                                        </span>
-                                    </del> <ins><span class="woocommerce-Price-amount amount"><bdi>695.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></ins>
-                                </span>
-                            </div>
-                            <div class="add-to-cart-button">
-                                <a href="cap-dung-meo-balo-vuong-trong-suot-cho-meo/index.html" data-quantity="1" class="primary is-small mb-0 button product_type_variable add_to_cart_button is-outline" data-product_id="1576" data-product_sku="CDM1701"
-                                   aria-label="Lựa chọn cho &ldquo;Cặp đựng mèo - Balo vuông trong suốt cho mèo&rdquo;" rel="nofollow">Lựa chọn các tùy chọn</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-small col has-hover product type-product post-887 status-publish last instock product_cat-do-choi product_tag-dochoi product_tag-do-choi-cho-cho product_tag-niem-vui-thu-cung product_tag-thucung has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
-                <div class="col-inner">
-                    <div class="badge-container absolute left top z-1">
-                        <div class="callout badge badge-circle">
-                            <div class="badge-inner secondary on-sale"><span class="onsale">-21%</span></div>
-                        </div>
-                    </div>
-                    <div class="product-small box ">
-                        <div class="box-image">
-                            <div class="image-fade_in_back">
-                                <a href="do-choi-cho-cho-ngua-rang-gam-hinh-xuong/index.html">
-                                    <img width="300" height="300" alt="Đồ chơi cho chó ngứa răng" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/09/89a3fd5c3134fe1c7279081c615fae27.5-1-300x300.jpg" />
-                                </a>
-                            </div>
-                            <div class="image-tools is-small top right show-on-hover">
-                                <div class="wishlist-icon">
-                                    <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
-                                    <div class="wishlist-popup dark">
-                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-887  wishlist-fragment on-first-load" data-fragment-ref="887" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:887,&quot;parent_product_id&quot;:887,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="indexf4a1.html?add_to_wishlist=887&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="887" data-product-type="simple" data-original-product-id="887" data-title="Thêm vào yêu thích" rel="nofollow">
-                                                    <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
-                            <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="887" href="#quick-view">Quick View</a> </div>
-                        </div>
-                        <div class="box-text box-text-products text-center grid-style-2">
-                            <div class="title-wrapper">
-                                <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Đồ chơi </p>
-                                <p class="name product-title woocommerce-loop-product__title"><a href="do-choi-cho-cho-ngua-rang-gam-hinh-xuong/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Đồ chơi cho chó ngứa răng gặm hình xương</a></p>
-                            </div>
-                            <div class="price-wrapper">
-                                <span class="price">
-                                    <del aria-hidden="true">
-                                        <span class="woocommerce-Price-amount amount">
-                                            <bdi>95.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
-                                        </span>
-                                    </del> <ins><span class="woocommerce-Price-amount amount"><bdi>75.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></ins>
-                                </span>
-                            </div>
-                            <div class="add-to-cart-button">
-                                <a href="indexad93.html?add-to-cart=887" data-quantity="1" class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline" data-product_id="887" data-product_sku="" aria-label="Thêm &ldquo;Đồ chơi cho chó ngứa răng gặm hình xương&rdquo; vào giỏ hàng"
-                                   rel="nofollow">Thêm vào giỏ hàng</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="product-small col has-hover product type-product post-484 status-publish first instock product_cat-do-an-dinh-duong product_tag-pate-cho-meo product_tag-pate-cho-meo-chat-luong product_tag-pate-cho-meo-dinh-duong product_tag-pate-whiskas-cho-meo product_tag-pate-whiskas-meo product_tag-whiskas has-post-thumbnail shipping-taxable purchasable product-type-variable">
-                <div class="col-inner">
-                    <div class="badge-container absolute left top z-1"> </div>
-                    <div class="product-small box ">
-                        <div class="box-image">
-                            <div class="image-fade_in_back">
-                                <a href="pate-cho-meo-loai-nao-tot-5-loai-pate-whiskas/index.html">
-                                    <img width="300" height="300" alt="9837dbb874368268db27" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/09/0c1fe3a347d47834cf46f91d0ee8dac1.9837dbb874368268db27-300x300.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail nitro-lazy" />
-                                </a>
-                            </div>
-                            <div class="image-tools is-small top right show-on-hover">
-                                <div class="wishlist-icon">
-                                    <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
-                                    <div class="wishlist-popup dark">
-                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-484  wishlist-fragment on-first-load" data-fragment-ref="484" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:484,&quot;parent_product_id&quot;:484,&quot;product_type&quot;:&quot;variable&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="index81da.html?add_to_wishlist=484&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="484" data-product-type="variable" data-original-product-id="484" data-title="Thêm vào yêu thích" rel="nofollow">
-                                                    <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
-                            <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="484" href="#quick-view">Quick View</a> </div>
-                        </div>
-                        <div class="box-text box-text-products text-center grid-style-2">
-                            <div class="title-wrapper">
-                                <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Đồ ăn dinh dưỡng </p>
-                                <p class="name product-title woocommerce-loop-product__title"><a href="pate-cho-meo-loai-nao-tot-5-loai-pate-whiskas/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Pate cho mèo loại nào tốt? 5 loại Pate Whiskas.</a></p>
-                            </div>
-                            <div class="price-wrapper">
-                                <span class="price">
-                                    <span class="woocommerce-Price-amount amount">
-                                        <bdi>10.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
+                                            <bdi>@item.price&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
+                                        </span> 
+                                        @*&ndash; <span class="woocommerce-Price-amount amount">
+                                            <bdi>31.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
+                                        </span>*@
                                     </span>
-                                </span>
-                            </div>
-                            <div class="add-to-cart-button">
-                                <a href="pate-cho-meo-loai-nao-tot-5-loai-pate-whiskas/index.html" data-quantity="1" class="primary is-small mb-0 button product_type_variable add_to_cart_button is-outline" data-product_id="484" data-product_sku="PW01"
-                                   aria-label="Lựa chọn cho &ldquo;Pate cho mèo loại nào tốt? 5 loại Pate Whiskas.&rdquo;" rel="nofollow">Lựa chọn các tùy chọn</a>
+                                </div>
+                                <div class="add-to-cart-button">
+                                    <a href="do-bit-mom-cho-ro-mom-cho-mo-vit/index.html" data-quantity="1" class="primary is-small mb-0 button product_type_variable add_to_cart_button is-outline" data-product_id="1330" data-product_sku="" aria-label="Lựa chọn cho &ldquo;Đồ bịt mõm chó - Rọ mõm chó mỏ vịt&rdquo;"
+                                       rel="nofollow">Lựa chọn các tùy chọn</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="product-small col has-hover product type-product post-542 status-publish instock product_cat-do-choi product_tag-boss product_tag-dochoicho-meo product_tag-ma1005 product_tag-thucung has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                <div class="col-inner">
-                    <div class="badge-container absolute left top z-1"> </div>
-                    <div class="product-small box ">
-                        <div class="box-image">
-                            <div class="image-fade_in_back">
-                                <a href="do-choi-danh-cho-meo-cao-mong-paw-1005/index.html">
-                                    <img width="300" height="300" alt="Đồ chơi dành cho mèo cào móng" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/09/1723b992e63b99f4764342d40b9ee3c9.1-2-300x300.jpg" />
+            }
 
-                                </a>
-                            </div>
-                            <div class="image-tools is-small top right show-on-hover">
-                                <div class="wishlist-icon">
-                                    <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
-                                    <div class="wishlist-popup dark">
-                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-542  wishlist-fragment on-first-load" data-fragment-ref="542" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:542,&quot;parent_product_id&quot;:542,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="index98a9.html?add_to_wishlist=542&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="542" data-product-type="simple" data-original-product-id="542" data-title="Thêm vào yêu thích" rel="nofollow">
-                                                    <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
-                                                </a>
-                                            </div>
+            @*<div class="product-small col has-hover product type-product post-1576 status-publish instock product_cat-phu-kien product_tag-balo-phi-hanh-gia product_tag-balo-van-chuyen-cho-meo product_tag-balo-vuong-dung-meo product_tag-cap-trong-suot-dung-meo has-post-thumbnail sale shipping-taxable purchasable product-type-variable">
+            <div class="col-inner">
+                <div class="badge-container absolute left top z-1">
+                    <div class="callout badge badge-circle">
+                        <div class="badge-inner secondary on-sale"><span class="onsale">-1%</span></div>
+                    </div>
+                </div>
+                <div class="product-small box ">
+                    <div class="box-image">
+                        <div class="image-fade_in_back">
+                            <a href="cap-dung-meo-balo-vuong-trong-suot-cho-meo/index.html">
+                                <img width="300" height="300" alt="Cặp đựng mèo trong suốt" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/c2face2776898cdf1b8151d02d945625.cap-dung-meo-hong-300x300.jpg" />
+                            </a>
+                        </div>
+                        <div class="image-tools is-small top right show-on-hover">
+                            <div class="wishlist-icon">
+                                <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
+                                <div class="wishlist-popup dark">
+                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-1576  wishlist-fragment on-first-load" data-fragment-ref="1576" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:1576,&quot;parent_product_id&quot;:1576,&quot;product_type&quot;:&quot;variable&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+                                        <div class="yith-wcwl-add-button">
+                                            <a href="index0044.html?add_to_wishlist=1576&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="1576" data-product-type="variable" data-original-product-id="1576" data-title="Thêm vào yêu thích" rel="nofollow">
+                                                <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
-                            <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="542" href="#quick-view">Quick View</a> </div>
                         </div>
-                        <div class="box-text box-text-products text-center grid-style-2">
-                            <div class="title-wrapper">
-                                <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Đồ chơi </p>
-                                <p class="name product-title woocommerce-loop-product__title"><a href="do-choi-danh-cho-meo-cao-mong-paw-1005/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Đồ chơi dành cho mèo cào móng PAW 1005</a></p>
-                            </div>
-                            <div class="price-wrapper">
-                                <span class="price">
+                        <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
+                        <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="1576" href="#quick-view">Quick View</a> </div>
+                    </div>
+                    <div class="box-text box-text-products text-center grid-style-2">
+                        <div class="title-wrapper">
+                            <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Phụ kiện </p>
+                            <p class="name product-title woocommerce-loop-product__title"><a href="cap-dung-meo-balo-vuong-trong-suot-cho-meo/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Cặp đựng mèo &#8211; Balo vuông trong suốt cho mèo</a></p>
+                        </div>
+                        <div class="price-wrapper">
+                            <span class="price">
+                                <del aria-hidden="true">
                                     <span class="woocommerce-Price-amount amount">
-                                        <bdi>220.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
+                                        <bdi>700.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
                                     </span>
-                                </span>
-                            </div>
-                            <div class="add-to-cart-button">
-                                <a href="indexfe0c.html?add-to-cart=542" data-quantity="1" class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline" data-product_id="542" data-product_sku="" aria-label="Thêm &ldquo;Đồ chơi dành cho mèo cào móng PAW 1005&rdquo; vào giỏ hàng"
-                                   rel="nofollow">Thêm vào giỏ hàng</a>
-                            </div>
+                                </del> <ins><span class="woocommerce-Price-amount amount"><bdi>695.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></ins>
+                            </span>
+                        </div>
+                        <div class="add-to-cart-button">
+                            <a href="cap-dung-meo-balo-vuong-trong-suot-cho-meo/index.html" data-quantity="1" class="primary is-small mb-0 button product_type_variable add_to_cart_button is-outline" data-product_id="1576" data-product_sku="CDM1701"
+                               aria-label="Lựa chọn cho &ldquo;Cặp đựng mèo - Balo vuông trong suốt cho mèo&rdquo;" rel="nofollow">Lựa chọn các tùy chọn</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="product-small col has-hover product type-product post-1254 status-publish last instock product_cat-chuong has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
-                <div class="col-inner">
-                    <div class="badge-container absolute left top z-1">
-                        <div class="callout badge badge-circle">
-                            <div class="badge-inner secondary on-sale"><span class="onsale">-7%</span></div>
-                        </div>
-                    </div>
-                    <div class="product-small box ">
-                        <div class="box-image">
-                            <div class="image-fade_in_back">
-                                <a href="mau-chuong-nuoi-cho-ngoai-troi-bang-go/index.html">
-                                    <img width="300" height="300" alt="chuồng nuôi chó ngoài trời" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/eb4763547cf1688cf8fcd2da4e8d399f.cach-lam-chuong-cho-bang-go-300x300.jpg" />
-                                </a>
-                            </div>
-                            <div class="image-tools is-small top right show-on-hover">
-                                <div class="wishlist-icon">
-                                    <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
-                                    <div class="wishlist-popup dark">
-                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-1254  wishlist-fragment on-first-load" data-fragment-ref="1254" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:1254,&quot;parent_product_id&quot;:1254,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="indexce8f.html?add_to_wishlist=1254&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="1254" data-product-type="simple" data-original-product-id="1254" data-title="Thêm vào yêu thích" rel="nofollow">
-                                                    <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
-                            <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="1254" href="#quick-view">Quick View</a> </div>
-                        </div>
-                        <div class="box-text box-text-products text-center grid-style-2">
-                            <div class="title-wrapper">
-                                <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Chuồng </p>
-                                <p class="name product-title woocommerce-loop-product__title"><a href="mau-chuong-nuoi-cho-ngoai-troi-bang-go/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">mẫu chuồng nuôi chó ngoài trời bằng gỗ</a></p>
-                            </div>
-                            <div class="price-wrapper">
-                                <span class="price">
-                                    <del aria-hidden="true">
-                                        <span class="woocommerce-Price-amount amount">
-                                            <bdi>1.500.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
-                                        </span>
-                                    </del> <ins><span class="woocommerce-Price-amount amount"><bdi>1.400.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></ins>
-                                </span>
-                            </div>
-                            <div class="add-to-cart-button">
-                                <a href="index1bad.html?add-to-cart=1254" data-quantity="1" class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline" data-product_id="1254" data-product_sku="" aria-label="Thêm &ldquo;mẫu chuồng nuôi chó ngoài trời bằng gỗ&rdquo; vào giỏ hàng"
-                                   rel="nofollow">Thêm vào giỏ hàng</a>
-                            </div>
-                        </div>
+        </div>
+        <div class="product-small col has-hover product type-product post-887 status-publish last instock product_cat-do-choi product_tag-dochoi product_tag-do-choi-cho-cho product_tag-niem-vui-thu-cung product_tag-thucung has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
+            <div class="col-inner">
+                <div class="badge-container absolute left top z-1">
+                    <div class="callout badge badge-circle">
+                        <div class="badge-inner secondary on-sale"><span class="onsale">-21%</span></div>
                     </div>
                 </div>
-            </div>
-            <div class="product-small col has-hover product type-product post-334 status-publish first instock product_cat-do-an-dinh-duong product_tag-catsrang product_tag-do-an-cho-meo-chat-luong-cao product_tag-do-an-dinh-duong product_tag-do-an-dinh-duong-cho-meo product_tag-hat-cho-meo-an product_tag-hat-meo product_tag-thuc-an-cho-meo has-post-thumbnail shipping-taxable purchasable product-type-variable">
-                <div class="col-inner">
-                    <div class="badge-container absolute left top z-1"> </div>
-                    <div class="product-small box ">
-                        <div class="box-image">
-                            <div class="image-fade_in_back">
-                                <a href="thuc-an-cho-meo-catsrang/index.html">
-                                    <img width="300" height="300" alt="5dc26afbfd1b69d93e71e6ab414e32d7" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/09/d6a1df36683c218f6099a9aed061abe8.5dc26afbfd1b69d93e71e6ab414e32d7-300x300.jpg" />
-                                </a>
-                            </div>
-                            <div class="image-tools is-small top right show-on-hover">
-                                <div class="wishlist-icon">
-                                    <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
-                                    <div class="wishlist-popup dark">
-                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-334  wishlist-fragment on-first-load" data-fragment-ref="334" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:334,&quot;parent_product_id&quot;:334,&quot;product_type&quot;:&quot;variable&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="index48c0.html?add_to_wishlist=334&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="334" data-product-type="variable" data-original-product-id="334" data-title="Thêm vào yêu thích" rel="nofollow">
-                                                    <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
-                                                </a>
-                                            </div>
+                <div class="product-small box ">
+                    <div class="box-image">
+                        <div class="image-fade_in_back">
+                            <a href="do-choi-cho-cho-ngua-rang-gam-hinh-xuong/index.html">
+                                <img width="300" height="300" alt="Đồ chơi cho chó ngứa răng" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/09/89a3fd5c3134fe1c7279081c615fae27.5-1-300x300.jpg" />
+                            </a>
+                        </div>
+                        <div class="image-tools is-small top right show-on-hover">
+                            <div class="wishlist-icon">
+                                <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
+                                <div class="wishlist-popup dark">
+                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-887  wishlist-fragment on-first-load" data-fragment-ref="887" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:887,&quot;parent_product_id&quot;:887,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+                                        <div class="yith-wcwl-add-button">
+                                            <a href="indexf4a1.html?add_to_wishlist=887&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="887" data-product-type="simple" data-original-product-id="887" data-title="Thêm vào yêu thích" rel="nofollow">
+                                                <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
-                            <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="334" href="#quick-view">Quick View</a> </div>
                         </div>
-                        <div class="box-text box-text-products text-center grid-style-2">
-                            <div class="title-wrapper">
-                                <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Đồ ăn dinh dưỡng </p>
-                                <p class="name product-title woocommerce-loop-product__title"><a href="thuc-an-cho-meo-catsrang/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Thức ăn cho mèo Catsrang</a></p>
-                            </div>
-                            <div class="price-wrapper">
-                                <span class="price">
+                        <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
+                        <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="887" href="#quick-view">Quick View</a> </div>
+                    </div>
+                    <div class="box-text box-text-products text-center grid-style-2">
+                        <div class="title-wrapper">
+                            <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Đồ chơi </p>
+                            <p class="name product-title woocommerce-loop-product__title"><a href="do-choi-cho-cho-ngua-rang-gam-hinh-xuong/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Đồ chơi cho chó ngứa răng gặm hình xương</a></p>
+                        </div>
+                        <div class="price-wrapper">
+                            <span class="price">
+                                <del aria-hidden="true">
                                     <span class="woocommerce-Price-amount amount">
-                                        <bdi>80.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
-                                    </span> &ndash; <span class="woocommerce-Price-amount amount">
-                                        <bdi>390.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
+                                        <bdi>95.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
                                     </span>
-                                </span>
-                            </div>
-                            <div class="add-to-cart-button">
-                                <a href="thuc-an-cho-meo-catsrang/index.html" data-quantity="1" class="primary is-small mb-0 button product_type_variable add_to_cart_button is-outline" data-product_id="334" data-product_sku="CR01" aria-label="Lựa chọn cho &ldquo;Thức ăn cho mèo Catsrang&rdquo;"
-                                   rel="nofollow">Lựa chọn các tùy chọn</a>
-                            </div>
+                                </del> <ins><span class="woocommerce-Price-amount amount"><bdi>75.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></ins>
+                            </span>
+                        </div>
+                        <div class="add-to-cart-button">
+                            <a href="indexad93.html?add-to-cart=887" data-quantity="1" class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline" data-product_id="887" data-product_sku="" aria-label="Thêm &ldquo;Đồ chơi cho chó ngứa răng gặm hình xương&rdquo; vào giỏ hàng"
+                               rel="nofollow">Thêm vào giỏ hàng</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="product-small col has-hover product type-product post-1471 status-publish instock product_cat-quan-ao product_tag-vay-cho-cho-poodle has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
-                <div class="col-inner">
-                    <div class="badge-container absolute left top z-1">
-                        <div class="callout badge badge-circle">
-                            <div class="badge-inner secondary on-sale"><span class="onsale">-7%</span></div>
+        </div>
+        <div class="product-small col has-hover product type-product post-484 status-publish first instock product_cat-do-an-dinh-duong product_tag-pate-cho-meo product_tag-pate-cho-meo-chat-luong product_tag-pate-cho-meo-dinh-duong product_tag-pate-whiskas-cho-meo product_tag-pate-whiskas-meo product_tag-whiskas has-post-thumbnail shipping-taxable purchasable product-type-variable">
+            <div class="col-inner">
+                <div class="badge-container absolute left top z-1"> </div>
+                <div class="product-small box ">
+                    <div class="box-image">
+                        <div class="image-fade_in_back">
+                            <a href="pate-cho-meo-loai-nao-tot-5-loai-pate-whiskas/index.html">
+                                <img width="300" height="300" alt="9837dbb874368268db27" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/09/0c1fe3a347d47834cf46f91d0ee8dac1.9837dbb874368268db27-300x300.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail nitro-lazy" />
+                            </a>
                         </div>
-                    </div>
-                    <div class="product-small box ">
-                        <div class="box-image">
-                            <div class="image-fade_in_back">
-                                <a href="vay-cho-cho-poodle/index.html">
-                                    <img width="300" height="300" alt="váy cho chó poodle gắn nơ lớn" sizes="(max-width: 300px) 100vw, 300px" title="Trang chủ 33" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/4a46d11b24f69c9db9ca5723de6731ff.vay-cho-cho-poodle-no-lon1-300x300.jpg" />
-                                </a>
-                            </div>
-                            <div class="image-tools is-small top right show-on-hover">
-                                <div class="wishlist-icon">
-                                    <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
-                                    <div class="wishlist-popup dark">
-                                        <div class="yith-wcwl-add-to-wishlist add-to-wishlist-1471  wishlist-fragment on-first-load" data-fragment-ref="1471" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:1471,&quot;parent_product_id&quot;:1471,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
-                                            <div class="yith-wcwl-add-button">
-                                                <a href="index6230.html?add_to_wishlist=1471&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="1471" data-product-type="simple" data-original-product-id="1471" data-title="Thêm vào yêu thích" rel="nofollow">
-                                                    <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
-                                                </a>
-                                            </div>
+                        <div class="image-tools is-small top right show-on-hover">
+                            <div class="wishlist-icon">
+                                <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
+                                <div class="wishlist-popup dark">
+                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-484  wishlist-fragment on-first-load" data-fragment-ref="484" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:484,&quot;parent_product_id&quot;:484,&quot;product_type&quot;:&quot;variable&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+                                        <div class="yith-wcwl-add-button">
+                                            <a href="index81da.html?add_to_wishlist=484&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="484" data-product-type="variable" data-original-product-id="484" data-title="Thêm vào yêu thích" rel="nofollow">
+                                                <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
-                            <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="1471" href="#quick-view">Quick View</a> </div>
                         </div>
-                        <div class="box-text box-text-products text-center grid-style-2">
-                            <div class="title-wrapper">
-                                <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Quần áo </p>
-                                <p class="name product-title woocommerce-loop-product__title"><a href="vay-cho-cho-poodle/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">váy cho chó poodle</a></p>
-                            </div>
-                            <div class="price-wrapper">
-                                <span class="price">
-                                    <del aria-hidden="true">
-                                        <span class="woocommerce-Price-amount amount">
-                                            <bdi>75.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
-                                        </span>
-                                    </del> <ins><span class="woocommerce-Price-amount amount"><bdi>70.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></ins>
+                        <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
+                        <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="484" href="#quick-view">Quick View</a> </div>
+                    </div>
+                    <div class="box-text box-text-products text-center grid-style-2">
+                        <div class="title-wrapper">
+                            <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Đồ ăn dinh dưỡng </p>
+                            <p class="name product-title woocommerce-loop-product__title"><a href="pate-cho-meo-loai-nao-tot-5-loai-pate-whiskas/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Pate cho mèo loại nào tốt? 5 loại Pate Whiskas.</a></p>
+                        </div>
+                        <div class="price-wrapper">
+                            <span class="price">
+                                <span class="woocommerce-Price-amount amount">
+                                    <bdi>10.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
                                 </span>
-                            </div>
-                            <div class="add-to-cart-button">
-                                <a href="index544a.html?add-to-cart=1471" data-quantity="1" class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline" data-product_id="1471" data-product_sku="h9" aria-label="Thêm &ldquo;váy cho chó poodle&rdquo; vào giỏ hàng"
-                                   rel="nofollow">Thêm vào giỏ hàng</a>
-                            </div>
+                            </span>
+                        </div>
+                        <div class="add-to-cart-button">
+                            <a href="pate-cho-meo-loai-nao-tot-5-loai-pate-whiskas/index.html" data-quantity="1" class="primary is-small mb-0 button product_type_variable add_to_cart_button is-outline" data-product_id="484" data-product_sku="PW01"
+                               aria-label="Lựa chọn cho &ldquo;Pate cho mèo loại nào tốt? 5 loại Pate Whiskas.&rdquo;" rel="nofollow">Lựa chọn các tùy chọn</a>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="product-small col has-hover product type-product post-542 status-publish instock product_cat-do-choi product_tag-boss product_tag-dochoicho-meo product_tag-ma1005 product_tag-thucung has-post-thumbnail shipping-taxable purchasable product-type-simple">
+            <div class="col-inner">
+                <div class="badge-container absolute left top z-1"> </div>
+                <div class="product-small box ">
+                    <div class="box-image">
+                        <div class="image-fade_in_back">
+                            <a href="do-choi-danh-cho-meo-cao-mong-paw-1005/index.html">
+                                <img width="300" height="300" alt="Đồ chơi dành cho mèo cào móng" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/09/1723b992e63b99f4764342d40b9ee3c9.1-2-300x300.jpg" />
+
+                            </a>
+                        </div>
+                        <div class="image-tools is-small top right show-on-hover">
+                            <div class="wishlist-icon">
+                                <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
+                                <div class="wishlist-popup dark">
+                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-542  wishlist-fragment on-first-load" data-fragment-ref="542" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:542,&quot;parent_product_id&quot;:542,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+                                        <div class="yith-wcwl-add-button">
+                                            <a href="index98a9.html?add_to_wishlist=542&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="542" data-product-type="simple" data-original-product-id="542" data-title="Thêm vào yêu thích" rel="nofollow">
+                                                <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
+                        <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="542" href="#quick-view">Quick View</a> </div>
+                    </div>
+                    <div class="box-text box-text-products text-center grid-style-2">
+                        <div class="title-wrapper">
+                            <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Đồ chơi </p>
+                            <p class="name product-title woocommerce-loop-product__title"><a href="do-choi-danh-cho-meo-cao-mong-paw-1005/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Đồ chơi dành cho mèo cào móng PAW 1005</a></p>
+                        </div>
+                        <div class="price-wrapper">
+                            <span class="price">
+                                <span class="woocommerce-Price-amount amount">
+                                    <bdi>220.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="add-to-cart-button">
+                            <a href="indexfe0c.html?add-to-cart=542" data-quantity="1" class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline" data-product_id="542" data-product_sku="" aria-label="Thêm &ldquo;Đồ chơi dành cho mèo cào móng PAW 1005&rdquo; vào giỏ hàng"
+                               rel="nofollow">Thêm vào giỏ hàng</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-small col has-hover product type-product post-1254 status-publish last instock product_cat-chuong has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
+            <div class="col-inner">
+                <div class="badge-container absolute left top z-1">
+                    <div class="callout badge badge-circle">
+                        <div class="badge-inner secondary on-sale"><span class="onsale">-7%</span></div>
+                    </div>
+                </div>
+                <div class="product-small box ">
+                    <div class="box-image">
+                        <div class="image-fade_in_back">
+                            <a href="mau-chuong-nuoi-cho-ngoai-troi-bang-go/index.html">
+                                <img width="300" height="300" alt="chuồng nuôi chó ngoài trời" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/eb4763547cf1688cf8fcd2da4e8d399f.cach-lam-chuong-cho-bang-go-300x300.jpg" />
+                            </a>
+                        </div>
+                        <div class="image-tools is-small top right show-on-hover">
+                            <div class="wishlist-icon">
+                                <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
+                                <div class="wishlist-popup dark">
+                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-1254  wishlist-fragment on-first-load" data-fragment-ref="1254" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:1254,&quot;parent_product_id&quot;:1254,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+                                        <div class="yith-wcwl-add-button">
+                                            <a href="indexce8f.html?add_to_wishlist=1254&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="1254" data-product-type="simple" data-original-product-id="1254" data-title="Thêm vào yêu thích" rel="nofollow">
+                                                <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
+                        <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="1254" href="#quick-view">Quick View</a> </div>
+                    </div>
+                    <div class="box-text box-text-products text-center grid-style-2">
+                        <div class="title-wrapper">
+                            <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Chuồng </p>
+                            <p class="name product-title woocommerce-loop-product__title"><a href="mau-chuong-nuoi-cho-ngoai-troi-bang-go/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">mẫu chuồng nuôi chó ngoài trời bằng gỗ</a></p>
+                        </div>
+                        <div class="price-wrapper">
+                            <span class="price">
+                                <del aria-hidden="true">
+                                    <span class="woocommerce-Price-amount amount">
+                                        <bdi>1.500.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
+                                    </span>
+                                </del> <ins><span class="woocommerce-Price-amount amount"><bdi>1.400.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></ins>
+                            </span>
+                        </div>
+                        <div class="add-to-cart-button">
+                            <a href="index1bad.html?add-to-cart=1254" data-quantity="1" class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline" data-product_id="1254" data-product_sku="" aria-label="Thêm &ldquo;mẫu chuồng nuôi chó ngoài trời bằng gỗ&rdquo; vào giỏ hàng"
+                               rel="nofollow">Thêm vào giỏ hàng</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-small col has-hover product type-product post-334 status-publish first instock product_cat-do-an-dinh-duong product_tag-catsrang product_tag-do-an-cho-meo-chat-luong-cao product_tag-do-an-dinh-duong product_tag-do-an-dinh-duong-cho-meo product_tag-hat-cho-meo-an product_tag-hat-meo product_tag-thuc-an-cho-meo has-post-thumbnail shipping-taxable purchasable product-type-variable">
+            <div class="col-inner">
+                <div class="badge-container absolute left top z-1"> </div>
+                <div class="product-small box ">
+                    <div class="box-image">
+                        <div class="image-fade_in_back">
+                            <a href="thuc-an-cho-meo-catsrang/index.html">
+                                <img width="300" height="300" alt="5dc26afbfd1b69d93e71e6ab414e32d7" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/09/d6a1df36683c218f6099a9aed061abe8.5dc26afbfd1b69d93e71e6ab414e32d7-300x300.jpg" />
+                            </a>
+                        </div>
+                        <div class="image-tools is-small top right show-on-hover">
+                            <div class="wishlist-icon">
+                                <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
+                                <div class="wishlist-popup dark">
+                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-334  wishlist-fragment on-first-load" data-fragment-ref="334" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:334,&quot;parent_product_id&quot;:334,&quot;product_type&quot;:&quot;variable&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+                                        <div class="yith-wcwl-add-button">
+                                            <a href="index48c0.html?add_to_wishlist=334&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="334" data-product-type="variable" data-original-product-id="334" data-title="Thêm vào yêu thích" rel="nofollow">
+                                                <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
+                        <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="334" href="#quick-view">Quick View</a> </div>
+                    </div>
+                    <div class="box-text box-text-products text-center grid-style-2">
+                        <div class="title-wrapper">
+                            <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Đồ ăn dinh dưỡng </p>
+                            <p class="name product-title woocommerce-loop-product__title"><a href="thuc-an-cho-meo-catsrang/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">Thức ăn cho mèo Catsrang</a></p>
+                        </div>
+                        <div class="price-wrapper">
+                            <span class="price">
+                                <span class="woocommerce-Price-amount amount">
+                                    <bdi>80.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
+                                </span> &ndash; <span class="woocommerce-Price-amount amount">
+                                    <bdi>390.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="add-to-cart-button">
+                            <a href="thuc-an-cho-meo-catsrang/index.html" data-quantity="1" class="primary is-small mb-0 button product_type_variable add_to_cart_button is-outline" data-product_id="334" data-product_sku="CR01" aria-label="Lựa chọn cho &ldquo;Thức ăn cho mèo Catsrang&rdquo;"
+                               rel="nofollow">Lựa chọn các tùy chọn</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-small col has-hover product type-product post-1471 status-publish instock product_cat-quan-ao product_tag-vay-cho-cho-poodle has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
+            <div class="col-inner">
+                <div class="badge-container absolute left top z-1">
+                    <div class="callout badge badge-circle">
+                        <div class="badge-inner secondary on-sale"><span class="onsale">-7%</span></div>
+                    </div>
+                </div>
+                <div class="product-small box ">
+                    <div class="box-image">
+                        <div class="image-fade_in_back">
+                            <a href="vay-cho-cho-poodle/index.html">
+                                <img width="300" height="300" alt="váy cho chó poodle gắn nơ lớn" sizes="(max-width: 300px) 100vw, 300px" title="Trang chủ 33" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/10/4a46d11b24f69c9db9ca5723de6731ff.vay-cho-cho-poodle-no-lon1-300x300.jpg" />
+                            </a>
+                        </div>
+                        <div class="image-tools is-small top right show-on-hover">
+                            <div class="wishlist-icon">
+                                <button class="wishlist-button button is-outline circle icon" aria-label="Wishlist"> <i class="icon-heart"></i> </button>
+                                <div class="wishlist-popup dark">
+                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-1471  wishlist-fragment on-first-load" data-fragment-ref="1471" data-fragment-options="{&quot;base_url&quot;:&quot;&quot;,&quot;in_default_wishlist&quot;:false,&quot;is_single&quot;:false,&quot;show_exists&quot;:false,&quot;product_id&quot;:1471,&quot;parent_product_id&quot;:1471,&quot;product_type&quot;:&quot;simple&quot;,&quot;show_view&quot;:false,&quot;browse_wishlist_text&quot;:&quot;Browse wishlist&quot;,&quot;already_in_wishslist_text&quot;:&quot;The product is already in your wishlist!&quot;,&quot;product_added_text&quot;:&quot;s\u1ea3n ph\u1ea9m \u0111\u00e3 \u0111\u01b0\u1ee3c th\u00eam&quot;,&quot;heading_icon&quot;:&quot;fa-heart-o&quot;,&quot;available_multi_wishlist&quot;:false,&quot;disable_wishlist&quot;:false,&quot;show_count&quot;:false,&quot;ajax_loading&quot;:false,&quot;loop_position&quot;:&quot;after_add_to_cart&quot;,&quot;item&quot;:&quot;add_to_wishlist&quot;}">
+                                        <div class="yith-wcwl-add-button">
+                                            <a href="index6230.html?add_to_wishlist=1471&amp;_wpnonce=2549577499" class="add_to_wishlist single_add_to_wishlist button alt" data-product-id="1471" data-product-type="simple" data-original-product-id="1471" data-title="Thêm vào yêu thích" rel="nofollow">
+                                                <i class="yith-wcwl-icon fa fa-heart-o"></i> <span>Thêm vào yêu thích</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="image-tools is-small hide-for-small bottom left show-on-hover"> </div>
+                        <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover"> <a class="quick-view" data-prod="1471" href="#quick-view">Quick View</a> </div>
+                    </div>
+                    <div class="box-text box-text-products text-center grid-style-2">
+                        <div class="title-wrapper">
+                            <p class="category uppercase is-smaller no-text-overflow product-cat op-7"> Quần áo </p>
+                            <p class="name product-title woocommerce-loop-product__title"><a href="vay-cho-cho-poodle/index.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">váy cho chó poodle</a></p>
+                        </div>
+                        <div class="price-wrapper">
+                            <span class="price">
+                                <del aria-hidden="true">
+                                    <span class="woocommerce-Price-amount amount">
+                                        <bdi>75.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi>
+                                    </span>
+                                </del> <ins><span class="woocommerce-Price-amount amount"><bdi>70.000&nbsp;<span class="woocommerce-Price-currencySymbol">VND</span></bdi></span></ins>
+                            </span>
+                        </div>
+                        <div class="add-to-cart-button">
+                            <a href="index544a.html?add-to-cart=1471" data-quantity="1" class="primary is-small mb-0 button product_type_simple add_to_cart_button ajax_add_to_cart is-outline" data-product_id="1471" data-product_sku="h9" aria-label="Thêm &ldquo;váy cho chó poodle&rdquo; vào giỏ hàng"
+                               rel="nofollow">Thêm vào giỏ hàng</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
         </div>
         <div class="container section-title-container">
             <h2 class="section-title section-title-center"><b></b><span class="section-title-main"><i class="icon-envelop"></i>TIN TỨC DILYS PET</span><b></b></h2>
         </div>
         <div class="row large-columns-4 medium-columns-3 small-columns-1 slider row-slider slider-nav-reveal slider-nav-push" data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": false, "rightToLeft": false, "autoPlay" : false}'>
-            <div class="col post-item">
+           @foreach (var item in Model.ListPosts)
+           {
+                <div class="col post-item">
                 <div class="col-inner">
-                    <a href="thuc-an-cho-cho-me-moi-sinh-giup-phuc-hoi-nhanh/index.html" class="plain">
+                    <a href="@Url.Action("GetPostById","Site",new {id = item.ID})" class="plain">
                         <div class="box box-text-bottom box-blog-post has-hover">
                             <div class="box-image">
                                 <div class="image-cover" style="padding-top:56%;">
-                                    <img width="600" height="365" alt="thuc-an-cho-cho-me-moi-sinh" src="https://cdn-dhjke.nitrocdn.com/RyMhjbHpKwDEDTuxeyxsyvtfIwRsUMsL/assets/static/optimized/wp-content/uploads/2021/09/53cf7147b5ba56f0bc8515adee7b2dc2.cac-dau-hieu-khi-cho-bi-benh.jpg" />
+                                    <img width="600" height="365" alt="thuc-an-cho-cho-me-moi-sinh" src="~/public/images/post/@item.img" />
                                 </div>
                             </div>
                             <div class="box-text text-center">
                                 <div class="box-text-inner blog-post-inner">
-                                    <h5 class="post-title is-large ">Thức ăn cho chó mẹ mới sinh giúp phục hồi nhanh</h5>
+                                    <h5 class="post-title is-large ">@item.title</h5>
                                     <div class="is-divider"></div>
-                                    <p class="from_the_blog_excerpt ">&nbsp;THỨC ĂN CHO CHÓ MẸ MỚI SINH &#8211; TẦM QUAN TRỌNG CỦA DINH DƯỠNG Chào [...] </p>
+                                    <p class="from_the_blog_excerpt ">@item.descriptionShort [...] </p>
                                 </div>
                             </div>
                             @*<div class="badge absolute top post-date badge-outline">
@@ -645,7 +667,8 @@
                     </a>
                 </div>
             </div>
-            <div class="col post-item">
+           }
+            <!--<div class="col post-item">
                 <div class="col-inner">
                     <a href="mot-so-can-benh-thuong-gap-o-thu-cung/index.html" class="plain">
                         <div class="box box-text-bottom box-blog-post has-hover">
@@ -661,11 +684,11 @@
                                     <p class="from_the_blog_excerpt ">MỘT SỐ CĂN BỆNH THƯỜNG GẶP Ở THÚ CƯNG BẠN NÊN BIẾT Chào các bạn, [...] </p>
                                     <p class="from_the_blog_comments uppercase is-xsmall"> 3 Comments </p>
                                 </div>
-                            </div>
+                            </div>-->
                             @*<div class="badge absolute top post-date badge-outline">
                                     <div class="badge-inner"> <span class="post-date-day">14</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
                                 </div>*@
-                        </div>
+                        <!--</div>
                     </a>
                 </div>
             </div>
@@ -684,11 +707,11 @@
                                     <div class="is-divider"></div>
                                     <p class="from_the_blog_excerpt ">Tự làm pate cho mèo siêu đơn giản tại nhà. Nhiều bạn khi nuôi mèo [...] </p>
                                 </div>
-                            </div>
+                            </div>-->
                             @*<div class="badge absolute top post-date badge-outline">
                                     <div class="badge-inner"> <span class="post-date-day">12</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
                                 </div>*@
-                        </div>
+                        <!--</div>
                     </a>
                 </div>
             </div>
@@ -707,11 +730,11 @@
                                     <div class="is-divider"></div>
                                     <p class="from_the_blog_excerpt ">Có nên nhốt mèo trong chuồng – bí quyết nuôi mèo cho người mới nuôi [...] </p>
                                 </div>
-                            </div>
+                            </div>-->
                             @*<div class="badge absolute top post-date badge-outline">
                                     <div class="badge-inner"> <span class="post-date-day">12</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
                                 </div>*@
-                        </div>
+                        <!--</div>
                     </a>
                 </div>
             </div>
@@ -730,11 +753,11 @@
                                     <div class="is-divider"></div>
                                     <p class="from_the_blog_excerpt ">Loại hạt minino cho mèo có tốt không? Đây đang là một trong số những [...] </p>
                                 </div>
-                            </div>
+                            </div>-->
                             @*<div class="badge absolute top post-date badge-outline">
                                     <div class="badge-inner"> <span class="post-date-day">12</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
                                 </div>*@
-                        </div>
+                        <!--</div>
                     </a>
                 </div>
             </div>
@@ -754,11 +777,11 @@
                                     <p class="from_the_blog_excerpt ">Làm đồ chơi cho mèo thật sự có cần thiết không?&nbsp; Mèo cảnh mặc dù [...] </p>
                                     <p class="from_the_blog_comments uppercase is-xsmall"> 2 Comments </p>
                                 </div>
-                            </div>
+                            </div>-->
                             @*<div class="badge absolute top post-date badge-outline">
                                     <div class="badge-inner"> <span class="post-date-day">12</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
                                 </div>*@
-                        </div>
+                        <!--</div>
                     </a>
                 </div>
             </div>
@@ -777,11 +800,11 @@
                                     <div class="is-divider"></div>
                                     <p class="from_the_blog_excerpt ">Cách làm đệm cho mèo dễ thương , xinh xắn và đơn giản mà bạn [...] </p>
                                 </div>
-                            </div>
+                            </div>-->
                             @*<div class="badge absolute top post-date badge-outline">
                                     <div class="badge-inner"> <span class="post-date-day">12</span><br /> <span class="post-date-month is-xsmall">Th10</span> </div>
                                 </div>*@
-                        </div>
+                        <!--</div>
                     </a>
                 </div>
             </div>
@@ -807,7 +830,7 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div>-->
         </div>
         <a href="tin-tuc/index.html" target="_self" class="button primary expand" style="border-radius:18px;"> <span>TÌM HIỂU THÊM</span> </a>
         <div id="gap-1961579004" class="gap-element clearfix" style="display:block;height:auto;"> </div>

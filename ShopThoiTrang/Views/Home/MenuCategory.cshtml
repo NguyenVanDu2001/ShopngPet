@@ -1,0 +1,11 @@
+﻿@{
+    Layout = null;
+}
+@model List<ShopThoiTrang.Models.Mcategory>
+<ul class="sub-menu nav-dropdown nav-dropdown-bold">
+    @foreach (var item in Model)
+    {
+    <li id="menu-item-551" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-551"><a href="@("Category/Show/id"+item.ID)">@item.name</a></li>
+    }
+
+</ul>

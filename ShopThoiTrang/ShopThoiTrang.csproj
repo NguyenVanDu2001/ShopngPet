@@ -244,6 +244,7 @@
     <Content Include="Public\images\product\category\product.jpg" />
     <Content Include="Public\images\product\category\product.png" />
     <Content Include="Public\images\product\category\productBehind.png" />
+    <Content Include="Public\images\product\chuong\chuong-cho-bang-sat-gia-re-hien-dai.jpg" />
     <Content Include="Public\images\product\jacket\coock.png" />
     <Content Include="Public\images\product\jacket\jacket-university.jpg" />
     <Content Include="Public\images\product\jacket\jacket-universityBehind.jpg" />
@@ -598,6 +599,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductOfCustomerController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Dtos\IndexClientDto.cs" />
     <Compile Include="Dtos\PostDtoOutput.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Dtos\ApiResponse.cs" />
@@ -621,6 +623,10 @@
     <Compile Include="Migrations\202201150924305_edit-entity-attr.cs" />
     <Compile Include="Migrations\202201150924305_edit-entity-attr.designer.cs">
       <DependentUpon>202201150924305_edit-entity-attr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201191607572_add-img-cate.cs" />
+    <Compile Include="Migrations\202201191607572_add-img-cate.designer.cs">
+      <DependentUpon>202201191607572_add-img-cate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Atrribute.cs" />
@@ -814,6 +820,10 @@
     <Content Include="Views\ProductOfCustomer\Detail.cshtml" />
     <Content Include="Views\CartgoryOfCustomer\Index.cshtml" />
     <Content Include="Views\AboutCustomer\Index.cshtml" />
+    <Content Include="Views\Home\MenuCategory.cshtml" />
+    <Content Include="Public\images\Cate\Phụ Kiện\phu-kien.webp" />
+    <Content Include="Public\images\product\Chuồng\chuong.webp" />
+    <Content Include="Public\images\Cate\chuong.webp" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -835,6 +845,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201150924305_edit-entity-attr.resx">
       <DependentUpon>202201150924305_edit-entity-attr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201191607572_add-img-cate.resx">
+      <DependentUpon>202201191607572_add-img-cate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

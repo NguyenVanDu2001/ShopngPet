@@ -1,4 +1,5 @@
-﻿using ShopThoiTrang.Models;
+﻿using ShopThoiTrang.Dtos;
+using ShopThoiTrang.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,19 @@ namespace ShopThoiTrang.Controllers
         }
         public ActionResult IndexClient()
         {
-            return View();
+            var cate = db.Categorys.ToList();
+            var listproduct = db.Products.ToList();
+            var listPosts = db.Posts.ToList();
+            var model = new IndexClientDto
+            {
+                listCate = cate,
+                ListProducts = listproduct,
+                ListPosts = listPosts
+            };
+            ViewBag.listcate = cate;
+            ViewBag.listproduct = listproduct;
+
+            return View(model);
         }
         public ActionResult CartIndex()
         {
@@ -1122,6 +1135,11 @@ namespace ShopThoiTrang.Controllers
                     cartCount = 1
                 }
                , JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult MenuCategory()
+        {
+            var cate = db.Categorys.ToList();
+            return PartialView(cate);
         }
     }
 }
