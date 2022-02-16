@@ -654,7 +654,6 @@
     <Content Include="Views\Modules\_SubMainMenu2.cshtml" />
     <Content Include="Views\Site\productOfCategory.cshtml" />
     <Content Include="Views\Modules\_category.cshtml" />
-    <Content Include="Views\AuthCus\login.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Cart\_cartHeader.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
@@ -743,6 +742,7 @@
     <Content Include="Public\scss\_testimonial.scss" />
     <Content Include="Public\scss\_timers.scss" />
     <Content Include="Public\scss\_variabls.scss" />
+    <Content Include="Views\AuthCus\LoginOrRegister.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

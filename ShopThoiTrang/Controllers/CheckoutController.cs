@@ -1,4 +1,5 @@
 ﻿using API_NganLuong;
+using ShopThoiTrang.Common;
 using ShopThoiTrang.Models;
 using ShopThoiTrang.nganluonAPI;
 using System;
@@ -10,6 +11,7 @@ using System.Web.Routing;
 
 namespace ShopThoiTrang.Controllers
 {
+    [CustomAuthorize]
     public class CheckoutController : Controller
     {
         protected override void OnActionExecuting(ActionExecutingContext filterContext)

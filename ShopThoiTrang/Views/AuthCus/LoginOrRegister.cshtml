@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "login";
+    ViewBag.Title = "Đăng nhập - Đăng ký";
     Layout = "~/Views/Shared/_layoutSite.cshtml";
 }
 <div class="breadcrumb-area pt-35 pb-35 bg-gray-3">
@@ -33,21 +33,23 @@
                         <div id="lg1" class="tab-pane active">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form action="AuthCus/LoginOrRegister" method="POST">
+                                    @using (Html.BeginForm("LoginOrRegister", "AuthCus", FormMethod.Post))
+                                    {
                                         <input type="hidden" name="typeName" value="login" />
                                         <input type="text" name="uname" placeholder="Username">
                                         <input type="password" name="psw" placeholder="Password">
                                         <div class="button-box">
                                             <button type="submit"><span>Login</span></button>
                                         </div>
-                                    </form>
+                                    }
                                 </div>
                             </div>
                         </div>
                         <div id="lg2" class="tab-pane">
                             <div class="login-form-container">
                                 <div class="login-register-form">
-                                    <form action="#" method="post">
+                                    @using (Html.BeginForm("LoginOrRegister", "AuthCus", FormMethod.Post))
+                                    {
                                         <input type="hidden" name="typeName" value="register" />
                                         <input type="text" placeholder="Username" name="uname" required>
                                         <input type="text" placeholder="Fullname" name="fname" required>
@@ -59,8 +61,8 @@
                                         <div class="button-box">
                                             <button type="submit"><span>Register</span></button>
                                         </div>
-                                    </form>
-                                </div>
+                                    }
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -69,3 +71,4 @@
         </div>
     </div>
 </div>
+

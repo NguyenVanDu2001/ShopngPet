@@ -32,9 +32,9 @@ namespace ShopThoiTrang.Common
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             //neu chua dang nhap
-            if (HttpContext.Current.Session["Admin_id"].Equals(""))
+            if (HttpContext.Current.Session[Common.CommonConstants.USER_SESSION] == null)
             {
-                RouteValueDictionary route = new RouteValueDictionary(new { Controller = "Auth", Action = "Login" });
+                RouteValueDictionary route = new RouteValueDictionary(new { Controller = "AuthCus", Action = "LoginOrRegister" });
                 filterContext.Result = new RedirectToRouteResult(route);
                 return;
             }

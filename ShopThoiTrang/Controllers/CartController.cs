@@ -1,4 +1,5 @@
-﻿using ShopThoiTrang.Models;
+﻿using ShopThoiTrang.Common;
+using ShopThoiTrang.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ShopThoiTrang.Controllers
 {
+    [CustomAuthorize]
     public class CartController : Controller
     {
         // khởi tạo session:

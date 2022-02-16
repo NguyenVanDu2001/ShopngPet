@@ -14,7 +14,7 @@ namespace ShopThoiTrang.Controllers
         // GET: AuthCus
         public ActionResult LoginOrRegister()
         {
-            return View("login");
+            return View();
         }
         public void logout()
         {
@@ -31,12 +31,11 @@ namespace ShopThoiTrang.Controllers
             if (formType.Equals("login"))
             {
                 string Username = fc["uname"];
-                //string Pass = Mystring.ToMD5(fc["psw"]);      
-                string Pass =fc["psw"];
-                //string PassNoMD5 = fc["psw"];
+                string Pass = fc["psw"];
+
                 var user_account = db.Users.Where(m => (m.username == Username) && (m.access == 1));
 
-                if (user_account.Count() == 0)
+                if (user_account?.Any() != true)
                 {
                     Message.set_flash("Username is not Exist", "danger");
                     return Redirect("~/dang-nhap-dang-ky");
@@ -45,27 +44,20 @@ namespace ShopThoiTrang.Controllers
                 {
                     var pass_account = db.Users.Where(m => m.status == 1 && (m.password == Pass) && (m.access == 1));
 
-                    if (pass_account.Count() == 0)
+                    if (pass_account?.Any() != true)
                     {
                         Message.set_flash("Password incorrect", "danger");
                         return Redirect("~/dang-nhap-dang-ky");
                     }
                     else
                     {
-                        var muser = user_account.First();
+                        var muser = pass_account.FirstOrDefault();
                         Session.Add(CommonConstants.CUSTOMER_SESSION, muser);
+                        Session.Add(CommonConstants.USER_SESSION, muser);
+
                         Message.set_flash("Login success", "success");
-                        if (!Session["Redirect"].Equals("")) {
-                            string Url = Session["Redirect"].ToString();
-                            Session["Redirect"] = "";
-                            return Redirect("~" + Url);
-                        }
-                        else
-                        {
-                            return Redirect("~/thong-tin-khach-hang");
-                            
-                        }
-                      
+                        return Redirect("~/");
+
                     }
                 }
 
@@ -74,8 +66,7 @@ namespace ShopThoiTrang.Controllers
             {
                 string uname = fc["uname"];
                 string fname = fc["fname"];
-                //string Pass = Mystring.ToMD5(fc["psw"]);
-                //string Pass2 = Mystring.ToMD5(fc["repsw"]);
+               
                 string Pass = fc["psw"];
                 string Pass2 = fc["repsw"];
                 if (Pass2 != Pass)
@@ -88,8 +79,8 @@ namespace ShopThoiTrang.Controllers
                 string phone = fc["phone"];
                 if (ModelState.IsValid)
                 {
-                    var muserCheck = db.Users.Where(m => m.status == 1 && m.username == uname && m.access == 1).FirstOrDefault();
-                    if (muserCheck != null)
+                    var muserCheck = db.Users.Where(m => m.status == 1 && m.username == uname && m.access == 1);
+                    if (muserCheck?.Any() == true)
                     {
                         Message.set_flash("Username available", "danger");
 
@@ -121,11 +112,7 @@ namespace ShopThoiTrang.Controllers
                 }
                 Message.set_flash("register failure", "danger");
                 return Redirect("~/dang-nhap-dang-ky");
-            }  
-    }
-
-
-
-        //
+            }
+        }
     }
 }
