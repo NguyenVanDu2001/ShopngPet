@@ -11,16 +11,18 @@ namespace ShopThoiTrang.Common
     public class CustomAuthorizeAttribute : AuthorizeAttribute
     {
 
-        public string RoleID { set; get; }
+        public string RoleID { set; get; } = string.Empty;
+        public bool IsAdmin { get; set; } = true;
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
             var session = (Userlogin)HttpContext.Current.Session[Common.CommonConstants.USER_SESSION];
+
             if (session == null)
             {
                 return false;
             }
 
-            if (session.AccessName.Contains(this.RoleID) || session.GroupID == CommonConstants.ADMIN_GROUP)
+            if (session.AccessName.Contains(this.RoleID) || session.GroupID == CommonConstants.ADMIN_GROUP || session.GroupID == "Customer" )
             {
                 return true;
             }

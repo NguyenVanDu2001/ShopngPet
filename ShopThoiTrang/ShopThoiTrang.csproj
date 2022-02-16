@@ -546,6 +546,8 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Common\UserControl.cs" />
+    <Compile Include="Common\UserControlService.cs" />
     <Compile Include="Common\Userlogin.cs" />
     <Compile Include="Controllers\AuthCusController.cs" />
     <Compile Include="Controllers\BaseCusController.cs" />
@@ -566,10 +568,15 @@
     <Compile Include="Migrations\202111270420385_init-migration.Designer.cs">
       <DependentUpon>202111270420385_init-migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202160623179_createTable_Permission_UserRoles_UserPermission.cs" />
+    <Compile Include="Migrations\202202160623179_createTable_Permission_UserRoles_UserPermission.Designer.cs">
+      <DependentUpon>202202160623179_createTable_Permission_UserRoles_UserPermission.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Mcontact.cs" />
     <Compile Include="Models\Mpost.cs" />
     <Compile Include="Models\Mtopic.cs" />
+    <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\ShopThoiTrangDbContext.cs" />
     <Compile Include="Models\Cart_item.cs" />
     <Compile Include="Models\link.cs" />
@@ -584,6 +591,8 @@
     <Compile Include="Models\role.cs" />
     <Compile Include="Models\Size.cs" />
     <Compile Include="Models\SizeShoe.cs" />
+    <Compile Include="Models\UserPermission.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="MomoAPI\momoInfo.cs" />
     <Compile Include="MomoAPI\MoMoSecurity.cs" />
     <Compile Include="MomoAPI\PaymentRequest.cs" />
@@ -757,6 +766,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202111270420385_init-migration.resx">
       <DependentUpon>202111270420385_init-migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202160623179_createTable_Permission_UserRoles_UserPermission.resx">
+      <DependentUpon>202202160623179_createTable_Permission_UserRoles_UserPermission.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
