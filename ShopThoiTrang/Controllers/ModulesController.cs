@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace ShopThoiTrang.Controllers
 {
-    [CustomAuthorize]
     public class ModulesController : Controller
     {
         private ShopThoiTrangDbContext db = new ShopThoiTrangDbContext();

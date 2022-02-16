@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace ShopThoiTrang.Controllers
 {
-    [CustomAuthorize]
     public class CartController : Controller
     {
         // khởi tạo session:
