@@ -21,13 +21,19 @@ namespace ShopThoiTrang.Common
             {
                 return false;
             }
-
-            if (session.AccessName.Contains(this.RoleID) || session.GroupID == CommonConstants.ADMIN_GROUP || session.GroupID == "Customer" )
+            if (!string.IsNullOrEmpty(RoleID))
             {
-                return true;
-            }
-            else
+                if (session.Roles.Contains(this.RoleID) && (session.GroupID == CommonConstants.ADMIN_GROUP || session.GroupID == "Customer"))
+                {
+                    return true;
+                }
+                return false;
+            }else
             {
+                if ((session.GroupID == CommonConstants.ADMIN_GROUP || session.GroupID == "Customer"))
+                {
+                    return true;
+                }
                 return false;
             }
         }
